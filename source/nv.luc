@@ -1,0 +1,19 @@
+module nv (
+    input a31,
+    input b31,
+    input s31,
+    input alufn,
+    output v,
+    output n
+  ) {
+
+  always {
+    n = s31;
+    if(alufn == 1){
+      v = (-b31&a31&(~s31)) | ((~(-b31))&(~a31)&s31);
+    }
+    else{
+      v = (b31&a31&(~s31)) | ((~b31)&(~a31)&s31);
+    }
+  }
+}

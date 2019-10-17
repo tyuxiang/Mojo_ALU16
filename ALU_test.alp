@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ALU_test" board="Mojo" language="Lucid" version="2">
+  <files>
+    <src>comp.luc</src>
+    <src>shft.luc</src>
+    <src top="true">mojo_top.luc</src>
+    <component>reset_conditioner.luc</component>
+    <src>alu.luc</src>
+    <src>adder.luc</src>
+    <src>bool.luc</src>
+    <src>nv.luc</src>
+    <constraint>custom.ucf</constraint>
+    <constraint lib="true">mojo.ucf</constraint>
+    <constraint lib="true">io_shield.ucf</constraint>
+  </files>
+</project>

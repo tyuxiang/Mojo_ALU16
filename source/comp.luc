@@ -1,0 +1,24 @@
+module comp (
+    input z,
+    input v,
+    input n,
+    input alufn[2],
+    output answer[16]
+  ) {
+
+  always {
+    answer = hx;
+    if(alufn == b01){
+      answer = 16x{0};
+      answer[0] = z;
+    }
+    if(alufn == b10){
+      answer = 16x{0};
+      answer[0] = (n ^ v);
+    }
+    if(alufn == b01){
+      answer = 16x{0};
+      answer[0] = z|(n^v);
+    }
+  }
+}

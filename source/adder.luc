@@ -1,0 +1,24 @@
+module adder (
+    input firstNumber[16],  // input of 1st number
+    input secondNumber[16], // inoput of 2nd number
+    input alufn,         // input of alufn
+    output answer[16],       // output of answer
+    output z
+  ) {
+
+  always {
+    answer = hx;
+    if(firstNumber == secondNumber){
+      z = 1;
+    }
+    else{
+      z = 0;
+    }
+    if(alufn == 0){
+      answer = firstNumber + secondNumber;
+    }
+    if(alufn == 1){
+      answer = firstNumber - secondNumber;
+    }
+  }
+}

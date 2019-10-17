@@ -1,0 +1,66 @@
+module alu (
+    input firstNumber[16],  // input of 1st number
+    input secondNumber[16], // inoput of 2nd number
+    input alufn[6],         // input of alufn
+    output answer[16]       // output of answer
+  ) {
+  
+    adder adder;
+    bool bool;
+    shft shft;
+    comp comp;
+    nv nv;
+  
+  
+  always {
+    answer = hx;                // not have any answer
+    adder.firstNumber = hx;
+    adder.secondNumber = hx;
+    adder.alufn = hx;
+    bool.firstNumber = hx;
+    bool.secondNumber = hx;
+    bool.alufn = hx;
+    shft.firstNumber = hx;
+    shft.secondNumber = hx;
+    shft.alufn = hx;
+    comp.z = hx;
+    comp.v = hx;
+    comp.n = hx;
+    comp.alufn = hx;
+    nv.a31 = hx;
+    nv.b31 = hx;
+    nv.s31 = hx;
+    nv.alufn = hx;
+    if(alufn[5:4] == 00){
+      adder.firstNumber = firstNumber;
+      adder.secondNumber = secondNumber;
+      adder.alufn = alufn[0];
+      answer = adder.answer;
+    }
+    if(alufn[5:4] == 01){
+      bool.firstNumber = firstNumber;
+      bool.secondNumber = secondNumber;
+      bool.alufn = alufn[3:0];
+      answer = bool.answer;
+    }
+    if(alufn[5:4] == 10){
+      shft.firstNumber = firstNumber;
+      shft.secondNumber = secondNumber[4:0];
+      shft.alufn = alufn[1:0];
+      answer = shft.answer;
+    }
+    if(alufn[5:4] == 11){
+      adder.firstNumber = firstNumber;
+      adder.secondNumber = secondNumber;
+      adder.alufn = alufn[0];
+      nv.s31 = adder.answer[15];
+      nv.a31 = firstNumber[15];
+      nv.b31 = secondNumber[15];
+      comp.z = adder.z;
+      comp.v = nv.v;
+      comp.n = nv.n;
+      comp.alufn = alufn[2:1];
+      answer = comp.answer;
+    }
+  }
+}
