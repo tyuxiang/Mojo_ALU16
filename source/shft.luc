@@ -1,0 +1,20 @@
+module shft (
+    input firstNumber[16],  // input of 1st number
+    input secondNumber[5], // inoput of 2nd number
+    input alufn[2],         // input of alufn
+    output answer[16]       // output of answer
+  ) {
+
+  always {
+    answer = hx;
+    if(alufn == 00){
+      answer = firstNumber << secondNumber;
+    }
+    if(alufn == 01){
+      answer = firstNumber >> secondNumber;
+    }
+    if(alufn == 11){
+      answer = firstNumber >>> secondNumber;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+module bool (
+    input firstNumber[16],  // input of 1st number
+    input secondNumber[16], // inoput of 2nd number
+    input alufn[4],         // input of alufn
+    output answer[16]       // output of answer
+  ) {
+
+  always {
+    answer = hx;
+    if(alufn == b1000){
+      answer[15:0] = firstNumber[15:0] & secondNumber[15:0];
+    }
+    if(alufn == b1110){
+      answer[15:0] = firstNumber[15:0] | secondNumber[15:0];
+    }
+    if(alufn == b0110){
+      answer[15:0] = firstNumber[15:0] ^ secondNumber[15:0];
+    }
+  }
+}
