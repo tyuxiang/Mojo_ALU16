@@ -1,7 +1,7 @@
 module adder (
     input firstNumber[16],  // input of 1st number
     input secondNumber[16], // inoput of 2nd number
-    input alufn,         // input of alufn
+    input alufn[2],         // input of alufn
     output answer[16],       // output of answer
     output z
   ) {
@@ -14,11 +14,17 @@ module adder (
     else{
       z = 0;
     }
-    if(alufn == 0){
+    if(alufn == b00){
       answer = firstNumber + secondNumber;
     }
-    if(alufn == 1){
+    if(alufn == b01){
       answer = firstNumber - secondNumber;
+    }
+    if(alufn == b10){
+      answer = firstNumber * secondNumber;
+    }
+    if(alufn == b11){
+      answer = firstNumber / secondNumber;
     }
   }
 }

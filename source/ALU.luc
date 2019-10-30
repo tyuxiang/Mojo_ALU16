@@ -31,25 +31,25 @@ module alu (
     nv.b31 = hx;
     nv.s31 = hx;
     nv.alufn = hx;
-    if(alufn[5:4] == 00){
+    if(alufn[5] == b0 & alufn[4] == b0){
       adder.firstNumber = firstNumber;
       adder.secondNumber = secondNumber;
-      adder.alufn = alufn[0];
+      adder.alufn = alufn[1:0];
       answer = adder.answer;
     }
-    if(alufn[5:4] == 01){
+    if(alufn[5] == b0 & alufn[4] == b1){
       bool.firstNumber = firstNumber;
       bool.secondNumber = secondNumber;
       bool.alufn = alufn[3:0];
       answer = bool.answer;
     }
-    if(alufn[5:4] == 10){
+    if(alufn[5] == b1 & alufn[4] == b0){
       shft.firstNumber = firstNumber;
-      shft.secondNumber = secondNumber[4:0];
+      shft.secondNumber = secondNumber[3:0];
       shft.alufn = alufn[1:0];
       answer = shft.answer;
     }
-    if(alufn[5:4] == 11){
+    if(alufn[5] == b1 & alufn[4] == b1){
       adder.firstNumber = firstNumber;
       adder.secondNumber = secondNumber;
       adder.alufn = alufn[0];

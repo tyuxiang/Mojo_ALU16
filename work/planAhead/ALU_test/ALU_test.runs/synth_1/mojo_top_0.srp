@@ -2,8 +2,8 @@ Release 14.7 - xst P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> Reading design: mojo_top_0.prj
 
@@ -87,7 +87,7 @@ Elaborating module <shft_5>.
 Elaborating module <comp_6>.
 
 Elaborating module <nv_7>.
-WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 83: Result of 4-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 83: Result of 4-bit expression is truncated to fit in 2-bit target.
 WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 89: Result of 4-bit expression is truncated to fit in 2-bit target.
 WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 90: Result of 4-bit expression is truncated to fit in 1-bit target.
 WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 91: Result of 4-bit expression is truncated to fit in 1-bit target.
@@ -99,9 +99,6 @@ WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test
 WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 97: Result of 4-bit expression is truncated to fit in 1-bit target.
 
 Elaborating module <reset_conditioner_2>.
-WARNING:Xst:2972 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" line 44. All outputs of instance <shft> of block <shft_5> are unconnected in block <alu_1>. Underlying logic will be removed.
-WARNING:Xst:2972 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" line 56. All outputs of instance <comp> of block <comp_6> are unconnected in block <alu_1>. Underlying logic will be removed.
-WARNING:Xst:2972 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" line 70. All outputs of instance <nv> of block <nv_7> are unconnected in block <alu_1>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -142,38 +139,62 @@ WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved
     Found 1-bit tristate buffer for signal <avr_rx> created at line 61
     Summary:
 	inferred  38 D-type flip-flop(s).
-	inferred   8 Multiplexer(s).
+	inferred   3 Multiplexer(s).
 	inferred   6 Tristate(s).
 	inferred   1 Finite State Machine(s).
 Unit <mojo_top_0> synthesized.
 
 Synthesizing Unit <alu_1>.
     Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v".
-INFO:Xst:3210 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" line 21: Output port <z> of the instance <adder> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" line 44: Output port <answer> of the instance <shft> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" line 56: Output port <answer> of the instance <comp> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" line 70: Output port <v> of the instance <nv> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" line 70: Output port <n> of the instance <nv> is unconnected or connected to loadless signal.
     Summary:
-	inferred   5 Multiplexer(s).
+	inferred  12 Multiplexer(s).
 Unit <alu_1> synthesized.
 
 Synthesizing Unit <adder_3>.
     Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/adder_3.v".
     Found 16-bit subtractor for signal <firstNumber[15]_secondNumber[15]_sub_6_OUT> created at line 28.
     Found 16-bit adder for signal <firstNumber[15]_secondNumber[15]_add_2_OUT> created at line 25.
+    Found 16x16-bit multiplier for signal <n0018> created at line 31.
+    Found 16-bit 4-to-1 multiplexer for signal <answer> created at line 11.
     Found 16-bit comparator equal for signal <z> created at line 19
     Summary:
+	inferred   1 Multiplier(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred   1 Comparator(s).
-	inferred   4 Multiplexer(s).
+	inferred   2 Multiplexer(s).
 Unit <adder_3> synthesized.
 
 Synthesizing Unit <bool_4>.
     Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/bool_4.v".
     Summary:
-	inferred   3 Multiplexer(s).
+	inferred  10 Multiplexer(s).
 Unit <bool_4> synthesized.
+
+Synthesizing Unit <shft_5>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/shft_5.v".
+    Found 16-bit shifter logical left for signal <firstNumber[15]_secondNumber[3]_shift_left_1_OUT> created at line 19
+    Found 16-bit shifter logical right for signal <firstNumber[15]_secondNumber[3]_shift_right_4_OUT> created at line 22
+    Found 16-bit shifter arithmetic right for signal <firstNumber[15]_secondNumber[3]_shift_right_7_OUT> created at line 25
+    Found 16-bit 4-to-1 multiplexer for signal <answer> created at line 11.
+    Summary:
+	inferred   1 Multiplexer(s).
+	inferred   3 Combinational logic shifter(s).
+Unit <shft_5> synthesized.
+
+Synthesizing Unit <comp_6>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/comp_6.v".
+    Found 16-bit 4-to-1 multiplexer for signal <answer> created at line 12.
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <comp_6> synthesized.
+
+Synthesizing Unit <nv_7>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/nv_7.v".
+    Found 1-bit subtractor for signal <b31_unary_minus_2_OUT<0>> created at line 21.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Multiplexer(s).
+Unit <nv_7> synthesized.
 
 Synthesizing Unit <reset_conditioner_2>.
     Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/reset_conditioner_2.v".
@@ -186,7 +207,10 @@ Unit <reset_conditioner_2> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 1
+# Multipliers                                          : 1
+ 16x16-bit multiplier                                  : 1
+# Adders/Subtractors                                   : 2
+ 1-bit subtractor                                      : 1
  16-bit addsub                                         : 1
 # Registers                                            : 4
  16-bit register                                       : 2
@@ -194,14 +218,21 @@ Macro Statistics
  6-bit register                                        : 1
 # Comparators                                          : 1
  16-bit comparator equal                               : 1
-# Multiplexers                                         : 20
- 1-bit 2-to-1 multiplexer                              : 5
- 16-bit 2-to-1 multiplexer                             : 14
+# Multiplexers                                         : 30
+ 1-bit 2-to-1 multiplexer                              : 1
+ 16-bit 2-to-1 multiplexer                             : 25
+ 16-bit 4-to-1 multiplexer                             : 2
+ 2-bit 2-to-1 multiplexer                              : 1
  6-bit 2-to-1 multiplexer                              : 1
+# Logic shifters                                       : 3
+ 16-bit shifter arithmetic right                       : 1
+ 16-bit shifter logical left                           : 1
+ 16-bit shifter logical right                          : 1
 # Tristates                                            : 6
  1-bit tristate buffer                                 : 6
 # FSMs                                                 : 1
-# Xors                                                 : 1
+# Xors                                                 : 2
+ 1-bit xor2                                            : 1
  16-bit xor2                                           : 1
 
 =========================================================================
@@ -216,18 +247,26 @@ INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmet
 Advanced HDL Synthesis Report
 
 Macro Statistics
+# Multipliers                                          : 1
+ 16x16-bit multiplier                                  : 1
 # Adders/Subtractors                                   : 1
  16-bit addsub                                         : 1
 # Registers                                            : 42
  Flip-Flops                                            : 42
 # Comparators                                          : 1
  16-bit comparator equal                               : 1
-# Multiplexers                                         : 20
- 1-bit 2-to-1 multiplexer                              : 5
- 16-bit 2-to-1 multiplexer                             : 14
+# Multiplexers                                         : 29
+ 16-bit 2-to-1 multiplexer                             : 25
+ 16-bit 4-to-1 multiplexer                             : 2
+ 2-bit 2-to-1 multiplexer                              : 1
  6-bit 2-to-1 multiplexer                              : 1
+# Logic shifters                                       : 3
+ 16-bit shifter arithmetic right                       : 1
+ 16-bit shifter logical left                           : 1
+ 16-bit shifter logical right                          : 1
 # FSMs                                                 : 1
-# Xors                                                 : 1
+# Xors                                                 : 2
+ 1-bit xor2                                            : 1
  16-bit xor2                                           : 1
 
 =========================================================================
@@ -235,7 +274,6 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1293 - FF/Latch <M_alufn_reg_q_5> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 Analyzing FSM <MFsm> for best encoding.
 Optimizing FSM <FSM_0> on signal <M_state_q[1:3]> with user encoding.
 -------------------
@@ -254,10 +292,10 @@ Optimizing unit <alu_1> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 3.
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 7.
 FlipFlop M_state_q_FSM_FFd1 has been replicated 2 time(s)
 FlipFlop M_state_q_FSM_FFd2 has been replicated 2 time(s)
-FlipFlop M_state_q_FSM_FFd3 has been replicated 2 time(s)
+FlipFlop M_state_q_FSM_FFd3 has been replicated 3 time(s)
 
 Final Macro Processing ...
 
@@ -269,8 +307,8 @@ Unit <mojo_top_0> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 50
- Flip-Flops                                            : 50
+# Registers                                            : 52
+ Flip-Flops                                            : 52
 
 =========================================================================
 
@@ -293,19 +331,20 @@ Top Level Output File Name         : mojo_top_0.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 182
-#      GND                         : 2
-#      INV                         : 1
+# BELS                             : 382
+#      GND                         : 3
+#      INV                         : 2
 #      LUT3                        : 6
-#      LUT4                        : 72
-#      LUT5                        : 53
-#      LUT6                        : 16
-#      MUXCY                       : 15
-#      VCC                         : 1
+#      LUT4                        : 79
+#      LUT5                        : 22
+#      LUT6                        : 230
+#      MUXCY                       : 21
+#      MUXF7                       : 1
+#      VCC                         : 2
 #      XORCY                       : 16
-# FlipFlops/Latches                : 50
-#      FDR                         : 14
-#      FDRE                        : 32
+# FlipFlops/Latches                : 52
+#      FDR                         : 10
+#      FDRE                        : 38
 #      FDS                         : 4
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
@@ -313,6 +352,8 @@ Primitive and Black Box Usage:
 #      IBUF                        : 22
 #      OBUF                        : 44
 #      OBUFT                       : 6
+# DSPs                             : 1
+#      DSP48A1                     : 1
 
 Device utilization summary:
 ---------------------------
@@ -321,16 +362,16 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              50  out of  11440     0%  
- Number of Slice LUTs:                  148  out of   5720     2%  
-    Number used as Logic:               148  out of   5720     2%  
+ Number of Slice Registers:              52  out of  11440     0%  
+ Number of Slice LUTs:                  339  out of   5720     5%  
+    Number used as Logic:               339  out of   5720     5%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    155
-   Number with an unused Flip Flop:     105  out of    155    67%  
-   Number with an unused LUT:             7  out of    155     4%  
-   Number of fully used LUT-FF pairs:    43  out of    155    27%  
-   Number of unique control sets:         4
+ Number of LUT Flip Flop pairs used:    347
+   Number with an unused Flip Flop:     295  out of    347    85%  
+   Number with an unused LUT:             8  out of    347     2%  
+   Number of fully used LUT-FF pairs:    44  out of    347    12%  
+   Number of unique control sets:         5
 
 IO Utilization: 
  Number of IOs:                          87
@@ -338,6 +379,7 @@ IO Utilization:
 
 Specific Feature Utilization:
  Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+ Number of DSP48A1s:                      1  out of     16     6%  
 
 ---------------------------
 Partition Resource Summary:
@@ -360,7 +402,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 50    |
+clk                                | BUFGP                  | 52    |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -371,9 +413,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 2.998ns (Maximum Frequency: 333.556MHz)
+   Minimum period: 3.523ns (Maximum Frequency: 283.849MHz)
    Minimum input arrival time before clock: 3.567ns
-   Maximum output required time after clock: 10.130ns
+   Maximum output required time after clock: 15.676ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -382,30 +424,29 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 2.998ns (frequency: 333.556MHz)
-  Total number of paths / destination ports: 224 / 127
+  Clock period: 3.523ns (frequency: 283.849MHz)
+  Total number of paths / destination ports: 234 / 137
 -------------------------------------------------------------------------
-Delay:               2.998ns (Levels of Logic = 2)
+Delay:               3.523ns (Levels of Logic = 1)
   Source:            M_state_q_FSM_FFd3_1 (FF)
-  Destination:       M_state_q_FSM_FFd3 (FF)
+  Destination:       M_in2_reg_q_0 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: M_state_q_FSM_FFd3_1 to M_state_q_FSM_FFd3
+  Data Path: M_state_q_FSM_FFd3_1 to M_in2_reg_q_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q             17   0.525   1.209  M_state_q_FSM_FFd3_1 (M_state_q_FSM_FFd3_1)
-     LUT3:I2->O            1   0.254   0.682  M_state_q_FSM_FFd3-In_SW0 (N34)
-     LUT6:I5->O            3   0.254   0.000  M_state_q_FSM_FFd3-In (M_state_q_FSM_FFd3-In)
-     FDR:D                     0.074          M_state_q_FSM_FFd3
+     FDR:C->Q             19   0.525   1.260  M_state_q_FSM_FFd3_1 (M_state_q_FSM_FFd3_1)
+     INV:I->O             16   0.255   1.181  _n0098<2>1_cepot_INV_0 (_n0098<2>1_cepot)
+     FDRE:CE                   0.302          M_in2_reg_q_0
     ----------------------------------------
-    Total                      2.998ns (1.107ns logic, 1.891ns route)
-                                       (36.9% logic, 63.1% route)
+    Total                      3.523ns (1.082ns logic, 2.441ns route)
+                                       (30.7% logic, 69.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 65 / 50
+  Total number of paths / destination ports: 70 / 52
 -------------------------------------------------------------------------
 Offset:              3.567ns (Levels of Logic = 3)
   Source:            io_button<3> (PAD)
@@ -417,8 +458,8 @@ Offset:              3.567ns (Levels of Logic = 3)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             3   1.328   0.994  io_button_3_IBUF (io_button_3_IBUF)
-     LUT3:I0->O            1   0.235   0.682  M_state_q_FSM_FFd3-In_SW0 (N34)
-     LUT6:I5->O            3   0.254   0.000  M_state_q_FSM_FFd3-In (M_state_q_FSM_FFd3-In)
+     LUT3:I0->O            1   0.235   0.682  M_state_q_FSM_FFd3-In_SW0 (N2)
+     LUT6:I5->O            4   0.254   0.000  M_state_q_FSM_FFd3-In (M_state_q_FSM_FFd3-In)
      FDR:D                     0.074          M_state_q_FSM_FFd3
     ----------------------------------------
     Total                      3.567ns (1.891ns logic, 1.676ns route)
@@ -426,45 +467,31 @@ Offset:              3.567ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 3843 / 21
+  Total number of paths / destination ports: 13321 / 21
 -------------------------------------------------------------------------
-Offset:              10.130ns (Levels of Logic = 22)
-  Source:            M_state_q_FSM_FFd1 (FF)
-  Destination:       io_led<15> (PAD)
+Offset:              15.676ns (Levels of Logic = 9)
+  Source:            M_state_q_FSM_FFd2 (FF)
+  Destination:       io_led<6> (PAD)
   Source Clock:      clk rising
 
-  Data Path: M_state_q_FSM_FFd1 to io_led<15>
+  Data Path: M_state_q_FSM_FFd2 to io_led<6>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q             58   0.525   2.111  M_state_q_FSM_FFd1 (M_state_q_FSM_FFd1)
-     LUT3:I0->O           32   0.235   1.748  _n0122<2>1 (io_led_19_OBUF)
-     begin scope: 'alu:io_led_19_OBUF'
-     begin scope: 'alu/adder:io_led_19_OBUF'
-     LUT6:I3->O            1   0.235   0.000  Mmux_answer_rs_lut<0> (Mmux_answer_rs_lut<0>)
-     MUXCY:S->O            1   0.215   0.000  Mmux_answer_rs_cy<0> (Mmux_answer_rs_cy<0>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<1> (Mmux_answer_rs_cy<1>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<2> (Mmux_answer_rs_cy<2>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<3> (Mmux_answer_rs_cy<3>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<4> (Mmux_answer_rs_cy<4>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<5> (Mmux_answer_rs_cy<5>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<6> (Mmux_answer_rs_cy<6>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<7> (Mmux_answer_rs_cy<7>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<8> (Mmux_answer_rs_cy<8>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<9> (Mmux_answer_rs_cy<9>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<10> (Mmux_answer_rs_cy<10>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<11> (Mmux_answer_rs_cy<11>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<12> (Mmux_answer_rs_cy<12>)
-     MUXCY:CI->O           1   0.023   0.000  Mmux_answer_rs_cy<13> (Mmux_answer_rs_cy<13>)
-     MUXCY:CI->O           0   0.023   0.000  Mmux_answer_rs_cy<14> (Mmux_answer_rs_cy<14>)
-     XORCY:CI->O           1   0.206   0.682  Mmux_answer_rs_xor<15> (answer<15>)
-     end scope: 'alu/adder:answer<15>'
-     end scope: 'alu:M_adder_answer<15>'
-     LUT5:I4->O            1   0.254   0.681  _n0124<8> (io_led_15_OBUF)
-     OBUF:I->O                 2.912          io_led_15_OBUF (io_led<15>)
+     FDR:C->Q            129   0.525   2.574  M_state_q_FSM_FFd2 (M_state_q_FSM_FFd2)
+     LUT4:I0->O           38   0.254   1.620  Mmux_M_alu_alufn61 (M_alu_alufn<5>)
+     begin scope: 'alu:alufn<5>'
+     LUT6:I5->O            8   0.254   1.220  Mmux_M_shft_firstNumber131 (M_shft_firstNumber<6>)
+     LUT6:I2->O            2   0.254   1.181  Sh371 (Sh37)
+     LUT6:I0->O            2   0.254   0.954  Sh1711 (Sh171)
+     end scope: 'alu:Sh171'
+     LUT6:I3->O            1   0.235   1.112  _n0108<18>1 (_n0108<18>)
+     LUT6:I1->O            1   0.254   1.137  _n0108<18>2 (_n0108<18>1)
+     LUT6:I0->O            1   0.254   0.681  _n0108<18>8 (io_led_5_OBUF)
+     OBUF:I->O                 2.912          io_led_5_OBUF (io_led<5>)
     ----------------------------------------
-    Total                     10.130ns (4.908ns logic, 5.222ns route)
-                                       (48.4% logic, 51.6% route)
+    Total                     15.676ns (5.196ns logic, 10.480ns route)
+                                       (33.1% logic, 66.9% route)
 
 =========================================================================
 
@@ -476,20 +503,20 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    2.998|         |         |         |
+clk            |    3.523|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 4.95 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 6.99 secs
  
 --> 
 
-Total memory usage is 4508008 kilobytes
+Total memory usage is 4511592 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   21 (   0 filtered)
-Number of infos    :    7 (   0 filtered)
+Number of warnings :   17 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
 

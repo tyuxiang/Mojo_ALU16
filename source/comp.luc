@@ -8,6 +8,10 @@ module comp (
 
   always {
     answer = hx;
+    if(alufn == b00){
+      answer = 16x{0};
+      answer[0] = ~(n ^ v);
+    }
     if(alufn == b01){
       answer = 16x{0};
       answer[0] = z;
@@ -16,7 +20,7 @@ module comp (
       answer = 16x{0};
       answer[0] = (n ^ v);
     }
-    if(alufn == b01){
+    if(alufn == b11){
       answer = 16x{0};
       answer[0] = z|(n^v);
     }

@@ -24,7 +24,7 @@ module comp_6 (
       answer = 16'h0000;
       answer[0+0-:1] = (n ^ v);
     end
-    if (alufn == 2'h1) begin
+    if (alufn == 2'h3) begin
       answer = 16'h0000;
       answer[0+0-:1] = z | (n ^ v);
     end

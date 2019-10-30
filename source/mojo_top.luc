@@ -72,7 +72,7 @@ module mojo_top (
           state.d = state.FUNCTION;
         }
       state.FUNCTION:
-        alufn_reg.d[4:0] = io_dip[0][4:0];
+        alufn_reg.d[5:0] = io_dip[0][5:0];
         io_led[2][4] = 1;
         if(io_button[3]){
           state.d = state.SOLVE;

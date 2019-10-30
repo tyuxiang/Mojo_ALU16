@@ -9,7 +9,7 @@ module nv (
 
   always {
     n = s31;
-    if(alufn == 1){
+    if(alufn == b1){
       v = (-b31&a31&(~s31)) | ((~(-b31))&(~a31)&s31);
     }
     else{

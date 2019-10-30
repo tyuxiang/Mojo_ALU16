@@ -16,5 +16,8 @@ module bool (
     if(alufn == b0110){
       answer[15:0] = firstNumber[15:0] ^ secondNumber[15:0];
     }
+    if(alufn == b1010){
+      answer[15:0] = firstNumber[15:0];
+    }
   }
 }

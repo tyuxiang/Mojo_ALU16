@@ -24,5 +24,8 @@ module bool_4 (
     if (alufn == 4'h6) begin
       answer[0+15-:16] = firstNumber[0+15-:16] ^ secondNumber[0+15-:16];
     end
+    if (alufn == 4'ha) begin
+      answer[0+15-:16] = firstNumber[0+15-:16];
+    end
   end
 endmodule

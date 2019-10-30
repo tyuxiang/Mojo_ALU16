@@ -101,7 +101,7 @@ module mojo_top_0 (
         end
       end
       FUNCTION_state: begin
-        M_alufn_reg_d[0+4-:5] = io_dip[0+0+4-:5];
+        M_alufn_reg_d[0+5-:6] = io_dip[0+0+5-:6];
         io_led[16+4+0-:1] = 1'h1;
         if (io_button[3+0-:1]) begin
           M_state_d = SOLVE_state;

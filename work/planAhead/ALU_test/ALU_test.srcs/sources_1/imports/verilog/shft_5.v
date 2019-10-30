@@ -6,7 +6,7 @@
 
 module shft_5 (
     input [15:0] firstNumber,
-    input [4:0] secondNumber,
+    input [3:0] secondNumber,
     input [1:0] alufn,
     output reg [15:0] answer
   );
@@ -15,14 +15,14 @@ module shft_5 (
   
   always @* begin
     answer = 4'bxxxx;
-    if (alufn == 1'h0) begin
-      answer = firstNumber << secondNumber;
+    if (alufn == 2'h0) begin
+      answer = firstNumber << (secondNumber);
     end
-    if (alufn == 1'h1) begin
-      answer = firstNumber >> secondNumber;
+    if (alufn == 2'h1) begin
+      answer = firstNumber >> (secondNumber);
     end
-    if (alufn == 4'hb) begin
-      answer = firstNumber >>> secondNumber;
+    if (alufn == 2'h3) begin
+      answer = $signed(firstNumber) >>> (secondNumber);
     end
   end
 endmodule

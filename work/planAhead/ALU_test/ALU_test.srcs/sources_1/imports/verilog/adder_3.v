@@ -7,7 +7,7 @@
 module adder_3 (
     input [15:0] firstNumber,
     input [15:0] secondNumber,
-    input alufn,
+    input [1:0] alufn,
     output reg [15:0] answer,
     output reg z
   );
@@ -21,11 +21,14 @@ module adder_3 (
     end else begin
       z = 1'h0;
     end
-    if (alufn == 1'h0) begin
+    if (alufn == 2'h0) begin
       answer = firstNumber + secondNumber;
     end
-    if (alufn == 1'h1) begin
+    if (alufn == 2'h1) begin
       answer = firstNumber - secondNumber;
+    end
+    if (alufn == 2'h2) begin
+      answer = firstNumber * secondNumber;
     end
   end
 endmodule

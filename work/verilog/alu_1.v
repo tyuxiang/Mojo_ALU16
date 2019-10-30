@@ -17,7 +17,7 @@ module alu_1 (
   wire [1-1:0] M_adder_z;
   reg [16-1:0] M_adder_firstNumber;
   reg [16-1:0] M_adder_secondNumber;
-  reg [1-1:0] M_adder_alufn;
+  reg [2-1:0] M_adder_alufn;
   adder_3 adder (
     .firstNumber(M_adder_firstNumber),
     .secondNumber(M_adder_secondNumber),
@@ -39,7 +39,7 @@ module alu_1 (
   
   wire [16-1:0] M_shft_answer;
   reg [16-1:0] M_shft_firstNumber;
-  reg [5-1:0] M_shft_secondNumber;
+  reg [4-1:0] M_shft_secondNumber;
   reg [2-1:0] M_shft_alufn;
   shft_5 shft (
     .firstNumber(M_shft_firstNumber),
@@ -95,25 +95,25 @@ module alu_1 (
     M_nv_b31 = 4'bxxxx;
     M_nv_s31 = 4'bxxxx;
     M_nv_alufn = 4'bxxxx;
-    if (alufn[4+1-:2] == 1'h0) begin
+    if (alufn[5+0-:1] == 1'h0 & alufn[4+0-:1] == 1'h0) begin
       M_adder_firstNumber = firstNumber;
       M_adder_secondNumber = secondNumber;
-      M_adder_alufn = alufn[0+0-:1];
+      M_adder_alufn = alufn[0+1-:2];
       answer = M_adder_answer;
     end
-    if (alufn[4+1-:2] == 1'h1) begin
+    if (alufn[5+0-:1] == 1'h0 & alufn[4+0-:1] == 1'h1) begin
       M_bool_firstNumber = firstNumber;
       M_bool_secondNumber = secondNumber;
       M_bool_alufn = alufn[0+3-:4];
       answer = M_bool_answer;
     end
-    if (alufn[4+1-:2] == 4'ha) begin
+    if (alufn[5+0-:1] == 1'h1 & alufn[4+0-:1] == 1'h0) begin
       M_shft_firstNumber = firstNumber;
-      M_shft_secondNumber = secondNumber[0+4-:5];
+      M_shft_secondNumber = secondNumber[0+3-:4];
       M_shft_alufn = alufn[0+1-:2];
       answer = M_shft_answer;
     end
-    if (alufn[4+1-:2] == 4'hb) begin
+    if (alufn[5+0-:1] == 1'h1 & alufn[4+0-:1] == 1'h1) begin
       M_adder_firstNumber = firstNumber;
       M_adder_secondNumber = secondNumber;
       M_adder_alufn = alufn[0+0-:1];
