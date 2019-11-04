@@ -1,18 +1,24 @@
 module shft (
-    input firstNumber[16],  // input of 1st number
-    input secondNumber[4], // inoput of 2nd number
+    input firstNumber[16],  // input firstNumber
+    input secondNumber[4],  // input that determines shift by how many bits 
     input alufn[2],         // input of alufn
     output answer[16]       // output of answer
   ) {
 
   always {
     answer = hx;
+    
+    //bit shift left
     if(alufn == b00){
       answer = firstNumber << (secondNumber);
     }
+    
+    //bit shift right
     if(alufn == b01){
       answer = firstNumber >> (secondNumber);
     }
+    
+    //signed bit shift right
     if(alufn == b11){
       answer = $signed(firstNumber) >>> (secondNumber);
     }

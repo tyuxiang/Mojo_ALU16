@@ -2,12 +2,12 @@ module new_alu (
     input firstNumber[16],  // input of 1st number
     input secondNumber[16], // inoput of 2nd number
     input alufn[6],         // input of alufn
-    output answer[16],     // output of answer
-    output n,
-    output v, 
-    output z     
+    output answer[16],      // output of answer
+    output n,               // output of n from adder
+    output v,               // output of v from adder
+    output z                // output of z from adder
   ) {
-  
+    //initialize all the different modules
     adder adder;
     bool bool;
     shft shft;
@@ -71,7 +71,7 @@ module new_alu (
     if(alufn[5] == b1 & alufn[4] == b1){
       adder.firstNumber = firstNumber;
       adder.secondNumber = secondNumber;
-      adder.alufn = alufn[1:0];
+      adder.alufn = b01;
       nv.alufn = alufn[1:0];
       nv.firstNumber = firstNumber;
       nv.secondNumber = secondNumber;

@@ -127,7 +127,7 @@ module mojo_top_0 (
   localparam FORTY_state = 6'd41;
   localparam FORTYONE_state = 6'd42;
   localparam FORTYTWO_state = 6'd43;
-  localparam FORTYTHREE_state = 6'd44;
+  localparam INVALID_state = 6'd44;
   localparam ERROR_state = 6'd45;
   
   reg [5:0] M_state_d, M_state_q = START_state;
@@ -429,124 +429,137 @@ module mojo_top_0 (
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
           M_state_d = SEVENTEEN_state;
-          if (M_alu_answer != 16'h0000) begin
+          if (M_alu_answer != 16'h0001) begin
+            M_state_d = ERROR_state;
+          end
+        end
+      end
+      SEVENTEEN_state: begin
+        M_alu_firstNumber = 16'h0002;
+        M_alu_secondNumber = 16'h0001;
+        M_alu_alufn = 6'h31;
+        io_led[8+7-:8] = M_alu_answer[8+7-:8];
+        io_led[0+7-:8] = M_alu_answer[0+7-:8];
+        if (M_edge_detector_out) begin
+          M_state_d = EIGHTEEN_state;
+          if (M_alu_answer != 16'h0001) begin
             M_state_d = ERROR_state;
           end
         end
       end
       EIGHTEEN_state: begin
         M_alu_firstNumber = 16'h0001;
-        M_alu_secondNumber = 16'hf003;
-        M_alu_alufn = 6'h01;
+        M_alu_secondNumber = 16'h0002;
+        M_alu_alufn = 6'h31;
         io_led[8+7-:8] = M_alu_answer[8+7-:8];
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
           M_state_d = NINETEEN_state;
-          if (M_alu_answer != 16'hf004) begin
+          if (M_alu_answer != 16'h0000) begin
             M_state_d = ERROR_state;
           end
         end
       end
       NINETEEN_state: begin
-        M_alu_firstNumber = 16'h0001;
-        M_alu_secondNumber = 16'hf003;
-        M_alu_alufn = 5'h01;
+        M_alu_firstNumber = 16'h0003;
+        M_alu_secondNumber = 16'h0003;
+        M_alu_alufn = 6'h33;
         io_led[8+7-:8] = M_alu_answer[8+7-:8];
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
           M_state_d = TWENTY_state;
-          if (M_alu_answer != 16'hf004) begin
+          if (M_alu_answer != 16'h0001) begin
             M_state_d = ERROR_state;
           end
         end
       end
       TWENTY_state: begin
         M_alu_firstNumber = 16'h0001;
-        M_alu_secondNumber = 16'hf003;
-        M_alu_alufn = 5'h01;
+        M_alu_secondNumber = 16'h0002;
+        M_alu_alufn = 6'h33;
         io_led[8+7-:8] = M_alu_answer[8+7-:8];
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
           M_state_d = TWENTYONE_state;
-          if (M_alu_answer != 16'hf004) begin
+          if (M_alu_answer != 16'h0000) begin
             M_state_d = ERROR_state;
           end
         end
       end
       TWENTYONE_state: begin
         M_alu_firstNumber = 16'h0001;
-        M_alu_secondNumber = 16'hf003;
-        M_alu_alufn = 5'h01;
+        M_alu_secondNumber = 16'h0001;
+        M_alu_alufn = 6'h35;
         io_led[8+7-:8] = M_alu_answer[8+7-:8];
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
           M_state_d = TWENTYTWO_state;
-          if (M_alu_answer != 16'hf004) begin
+          if (M_alu_answer != 16'h0000) begin
             M_state_d = ERROR_state;
           end
         end
       end
       TWENTYTWO_state: begin
-        M_alu_firstNumber = 16'h0001;
-        M_alu_secondNumber = 16'hf003;
-        M_alu_alufn = 5'h01;
+        M_alu_firstNumber = 16'h0002;
+        M_alu_secondNumber = 16'h0001;
+        M_alu_alufn = 6'h35;
         io_led[8+7-:8] = M_alu_answer[8+7-:8];
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
           M_state_d = TWENTYTHREE_state;
-          if (M_alu_answer != 16'hf004) begin
+          if (M_alu_answer != 16'h0000) begin
             M_state_d = ERROR_state;
           end
         end
       end
       TWENTYTHREE_state: begin
         M_alu_firstNumber = 16'h0001;
-        M_alu_secondNumber = 16'hf003;
-        M_alu_alufn = 5'h01;
+        M_alu_secondNumber = 16'h0002;
+        M_alu_alufn = 6'h35;
         io_led[8+7-:8] = M_alu_answer[8+7-:8];
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
           M_state_d = TWENTYFOUR_state;
-          if (M_alu_answer != 16'hf004) begin
+          if (M_alu_answer != 16'h0001) begin
             M_state_d = ERROR_state;
           end
         end
       end
       TWENTYFOUR_state: begin
         M_alu_firstNumber = 16'h0001;
-        M_alu_secondNumber = 16'hf003;
-        M_alu_alufn = 5'h01;
+        M_alu_secondNumber = 16'h0001;
+        M_alu_alufn = 6'h37;
         io_led[8+7-:8] = M_alu_answer[8+7-:8];
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
           M_state_d = TWENTYFIVE_state;
-          if (M_alu_answer != 16'hf004) begin
+          if (M_alu_answer != 16'h0001) begin
             M_state_d = ERROR_state;
           end
         end
       end
       TWENTYFIVE_state: begin
-        M_alu_firstNumber = 16'h0001;
-        M_alu_secondNumber = 16'hf003;
-        M_alu_alufn = 5'h01;
+        M_alu_firstNumber = 16'h0002;
+        M_alu_secondNumber = 16'h0001;
+        M_alu_alufn = 6'h37;
         io_led[8+7-:8] = M_alu_answer[8+7-:8];
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
           M_state_d = TWENTYSIX_state;
-          if (M_alu_answer != 16'hf004) begin
+          if (M_alu_answer != 16'h0000) begin
             M_state_d = ERROR_state;
           end
         end
       end
       TWENTYSIX_state: begin
         M_alu_firstNumber = 16'h0001;
-        M_alu_secondNumber = 16'hf003;
-        M_alu_alufn = 5'h01;
+        M_alu_secondNumber = 16'h0002;
+        M_alu_alufn = 6'h37;
         io_led[8+7-:8] = M_alu_answer[8+7-:8];
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
           M_state_d = TWENTYSEVEN_state;
-          if (M_alu_answer != 16'hf004) begin
+          if (M_alu_answer != 16'h0001) begin
             M_state_d = ERROR_state;
           end
         end
@@ -572,7 +585,7 @@ module mojo_top_0 (
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
           M_state_d = TWENTYNINE_state;
-          if (M_alu_answer != 16'hf0f0) begin
+          if (M_alu_answer != 16'h5050) begin
             M_state_d = ERROR_state;
           end
         end
@@ -689,7 +702,7 @@ module mojo_top_0 (
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
           M_state_d = THIRTYEIGHT_state;
-          if (M_alu_answer != 16'haaaa) begin
+          if (M_alu_answer != 16'haaa8) begin
             M_state_d = ERROR_state;
           end
         end
@@ -753,6 +766,19 @@ module mojo_top_0 (
         io_led[8+7-:8] = M_alu_answer[8+7-:8];
         io_led[0+7-:8] = M_alu_answer[0+7-:8];
         if (M_edge_detector_out) begin
+          M_state_d = INVALID_state;
+          if (M_alu_answer != 16'h0000) begin
+            M_state_d = ERROR_state;
+          end
+        end
+      end
+      INVALID_state: begin
+        M_alu_firstNumber = 16'hffff;
+        M_alu_secondNumber = 16'h0010;
+        M_alu_alufn = 6'h21;
+        io_led[8+7-:8] = M_alu_answer[8+7-:8];
+        io_led[0+7-:8] = M_alu_answer[0+7-:8];
+        if (M_edge_detector_out) begin
           M_state_d = START_state;
           if (M_alu_answer != 16'h0000) begin
             M_state_d = ERROR_state;
@@ -761,9 +787,6 @@ module mojo_top_0 (
       end
       ERROR_state: begin
         M_seg_values = 16'hcabb;
-        if (io_button[0+0-:1]) begin
-          M_state_d = START_state;
-        end
       end
     endcase
   end

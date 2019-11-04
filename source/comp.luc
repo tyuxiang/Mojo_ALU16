@@ -8,21 +8,29 @@ module comp (
 
   always {
     answer = hx;
+    
+    //more than
     if(alufn == b00){
       answer = 16x{0};
-      answer[0] = ~(n ^ v);
+      answer[0] = ~(n ^ v);   //answer= XNOR(n, v)
     }
+    
+    //equal to
     if(alufn == b01){
       answer = 16x{0};
-      answer[0] = z;
+      answer[0] = z;          //answer= z
     }
+    
+    //less than
     if(alufn == b10){
       answer = 16x{0};
-      answer[0] = (n ^ v);
+      answer[0] = (n ^ v);    //answer= XOR(n, v)
     }
+    
+    //less than equal to
     if(alufn == b11){
       answer = 16x{0};
-      answer[0] = z|(n^v);
+      answer[0] = z|(n^v);    //answer= OR(z, XOR(n, v))
     }
   }
 }

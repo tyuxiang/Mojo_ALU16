@@ -7,15 +7,23 @@ module adder (
 
   always {
     answer = hx;
+    
+    //addition
     if(alufn == b00){
       answer = $signed(firstNumber) + $signed(secondNumber);
     }
+    
+    //subtraction
     if(alufn == b01){
       answer = $signed(firstNumber) - $signed(secondNumber);
     }
+    
+    //multiplication
     if(alufn == b10){
       answer = $signed(firstNumber) * $signed(secondNumber);
     }
+    
+    //division
     if(alufn == b11){
       answer = $signed(firstNumber) / $signed(secondNumber);
     }

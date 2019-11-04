@@ -31,11 +31,11 @@ module mojo_top (
     .rst(rst){
       mult_seven_seg seg;                 // Initialize multi_seven_seg
       mult_dec_ctr dec_ctr;               // Initialize multi_dec_ctr
-      counter ctr (#SIZE(1), #DIV(25));    // Initialize counter to count every 2^25(~33.5 million) clock cycle, on MOJO is 50 million clock cycle per second 
+      counter ctr (#SIZE(1), #DIV(23));    // Initialize counter to count every 2^25(~33.5 million) clock cycle, on MOJO is 50 million clock cycle per second 
       fsm state = {START, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, 
       FOURTEEN, FIFTEEN, SIXTEEN, SEVENTEEN, EIGHTEEN, NINETEEN, TWENTY, TWENTYONE, TWENTYTWO, TWENTYTHREE, TWENTYFOUR, 
         TWENTYFIVE, TWENTYSIX, TWENTYSEVEN, TWENTYEIGHT, TWENTYNINE, THIRTY, THIRTYONE, THIRTYTWO, THIRTYTHREE, THIRTYFOUR, 
-        THIRTYFIVE, THIRTYSIX, THIRTYSEVEN, THIRTYEIGHT, THIRTYNINE, FORTY, FORTYONE, FORTYTWO, FORTYTHREE, ERROR}; // Initializate fsm
+        THIRTYFIVE, THIRTYSIX, THIRTYSEVEN, THIRTYEIGHT, THIRTYNINE, FORTY, FORTYONE, FORTYTWO, INVALID, ERROR}; // Initializate fsm
     }
   }
   
@@ -79,9 +79,16 @@ module mojo_top (
         if(io_dip[2][7]){
           state.d = state.ZERO;
         }
+        //test cases: incase of overflow least significant 16bits shown
+        //in each test case, we will assign 2 numbers to the alu and the alufn to the alu
+        //we will then test the output from the alu. If it is wrong, it will go into the Error state
+        //only for the adder component(test case 0-15) will we test the output of z,v and n as well
         
-      state.ZERO:
-        alu.firstNumber = h0001;
+        //addition (test case 0-3)
+        //test case 0: 0x0001+0x0002=0x0003, Positive + Positive, No overflow 
+        //z=0, v=0, n=0  
+      state.ZERO:    
+        alu.firstNumber = h0001;    
         alu.secondNumber = h0002;
         alu.alufn = b000000;
         io_led[2][0] = alu.z;
@@ -96,7 +103,8 @@ module mojo_top (
           }
         }
      
-      //plus
+      //test case 1: 0x7FFF+0x7FFF=0xFFFE, Positive + Positive, Overflow
+      //z=0, v=1, n=1  
       state.ONE:
         alu.firstNumber = h7FFF;
         alu.secondNumber = h7FFF;
@@ -113,6 +121,8 @@ module mojo_top (
           }
         }
      
+      //test case 2: 0x0003+0xFFFF=0x0002, Positive + Negative,No Overflow
+      //z=0, v=0, n=0    
       state.TWO:
         alu.firstNumber = h0003;
         alu.secondNumber = hFFFF;
@@ -128,7 +138,9 @@ module mojo_top (
             state.d = state.ERROR;
           }
         }
-        
+
+      //test case 3: 0x8000+0x8000=0x0000, Negative + Negative, Overflow 
+      //z=1, v=1, n=0               
       state.THREE:
         alu.firstNumber = h8000;
         alu.secondNumber = h8000;
@@ -145,7 +157,9 @@ module mojo_top (
           }
         }
       
-      //minus
+      //subtract (test case 4-7)
+      //test case 4: 0x0003-0x0002=0x0001, Positive-Positive, No Overflow 
+      //z=0, v=0, n=0 
       state.FOUR:
         alu.firstNumber = h0003;
         alu.secondNumber = h0002;
@@ -161,7 +175,9 @@ module mojo_top (
             state.d = state.ERROR;
           }
         }
-      
+        
+      //test case 5: 0x0001-0xFFFF=0x0002, Positive - Negative, No Overflow 
+      //z=0, v=0, n=0 
       state.FIVE:
         alu.firstNumber = h0001;
         alu.secondNumber = hFFFF;
@@ -178,6 +194,8 @@ module mojo_top (
           }
         }
       
+      //test case 6: 0x7FFF-0xFFFF=0x8000, Negative - Negative, Overflow 
+      //z=0, v=1, n=1 
       state.SIX:
         alu.firstNumber = h7FFF;
         alu.secondNumber = hFFFF;
@@ -194,6 +212,8 @@ module mojo_top (
           }
         }
         
+      //test case 7: 0xF004-0xF005=0xFFFF, Negative - Negative, No Overflow 
+      //z=0, v=0, n=1  
       state.SEVEN:
         alu.firstNumber = hF004;
         alu.secondNumber = hF005;
@@ -210,7 +230,9 @@ module mojo_top (
           }
         }
         
-      //multiply
+      //multiply (test case 8-12)
+      //test case 8: 0x0003*0x0002=0x0006 Positive x Positive, No Overflow 
+      //z=0, v=0, n=0 
       state.EIGHT:
         alu.firstNumber = h0003;
         alu.secondNumber = h0002;
@@ -226,7 +248,9 @@ module mojo_top (
             state.d = state.ERROR;
           }
         }
-       
+      
+      //test case 9: 0x7FFF*0x7FFF=0x0001 Positive x Positive, Overflow 
+      //z=0, v=1, n=0    
       state.NINE:
         alu.firstNumber = h7FFF;
         alu.secondNumber = h7FFF;
@@ -242,7 +266,9 @@ module mojo_top (
             state.d = state.ERROR;
           }
         }
-        
+      
+      //test case 10: 0x0001*0xFFFF=0xFFFF Positive x Negative, Overflow 
+      //z=0, v=1, n=1      
       state.TEN:
         alu.firstNumber = h0001;
         alu.secondNumber = hFFFF;
@@ -258,7 +284,9 @@ module mojo_top (
             state.d = state.ERROR;
           }
         }
-        
+      
+      //test case 11: 0x0000*0x0000=0x0000 ,0x0, No Overflow 
+      //z=1, v=0, n=0      
       state.ELEVEN:
         alu.firstNumber = h0000;
         alu.secondNumber = h0000;
@@ -274,7 +302,9 @@ module mojo_top (
             state.d = state.ERROR;
           }
         }
-        
+      
+      //test case 12: 0xFFFF*0xFFFA=0x0006 Negative x Negative, Overflow 
+      //z=0, v=1, n=0      
       state.TWELVE:
         alu.firstNumber = hFFFF;
         alu.secondNumber = hFFFA;
@@ -291,7 +321,9 @@ module mojo_top (
           }
         }
         
-      //divide
+      //divide (test case 13-15)
+      //test case 13: 0x0004/0x0002=0x0002 Positive / Positive, No Overflow 
+      //z=0, v=0, n=0  
       state.THIRTEEN:
         alu.firstNumber = h0004;
         alu.secondNumber = h0002;
@@ -307,7 +339,9 @@ module mojo_top (
             state.d = state.ERROR;
           }
         }
-        
+       
+      //test case 14: 0x0004/0xFFFE=0xFFFE Positive / Negative, No Overflow 
+      //z=0, v=0, n=1      
       state.FOURTEEN:
         alu.firstNumber = h0004;
         alu.secondNumber = hFFFE;
@@ -323,7 +357,9 @@ module mojo_top (
             state.d = state.ERROR;
           }
         }
-        
+      
+      //test case 15: 0xFFFC/0xFFFE=0x0002 Negative / Negative, No Overflow 
+      //z=0, v=0, n=0     
       state.FIFTEEN:
         alu.firstNumber = hFFFC;
         alu.secondNumber = hFFFE;
@@ -341,6 +377,9 @@ module mojo_top (
         }
       
       //comp
+        
+      //more than or equals (>=)
+      //test case 16: 0x0001>=0x0001=0x0001, true 
       state.SIXTEEN:
         alu.firstNumber = h0001;
         alu.secondNumber = h0001;
@@ -349,129 +388,156 @@ module mojo_top (
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
           state.d = state.SEVENTEEN;
-          if(alu.answer != h0000){
+          if(alu.answer != h0001){
             state.d = state.ERROR;
           }
         }
-      
+      //test case 17: 0x0002>=0x0001=0x0001, true 
+      state.SEVENTEEN:
+        alu.firstNumber = h0002;
+        alu.secondNumber = h0001;
+        alu.alufn = b110001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.EIGHTEEN;
+          if(alu.answer != h0001){
+            state.d = state.ERROR;
+          }
+        }  
+        
+      //test case 18: 0x0001>=0x0002=0x0000, false   
       state.EIGHTEEN:
         alu.firstNumber = h0001;
-        alu.secondNumber = hF003;
-        alu.alufn = b000001;
+        alu.secondNumber = h0002;
+        alu.alufn = b110001;
         io_led[1] = alu.answer[15:8];
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
           state.d = state.NINETEEN;
-          if(alu.answer != hF004){
+          if(alu.answer != h0000){
             state.d = state.ERROR;
           }
-        }
+        }  
         
+      //equal to (==)
+      //test case 19: 0x0003==0x0003=0x0001, true 
       state.NINETEEN:
-        alu.firstNumber = h0001;
-        alu.secondNumber = hF003;
-        alu.alufn = b00001;
+        alu.firstNumber = h0003;
+        alu.secondNumber = h0003;
+        alu.alufn = b110011;
         io_led[1] = alu.answer[15:8];
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
           state.d = state.TWENTY;
-          if(alu.answer != hF004){
+          if(alu.answer != h0001){
             state.d = state.ERROR;
           }
-        }
-
+        }  
+      //test case 20: 0x0001==0x0002=0x0000, false 
       state.TWENTY:
         alu.firstNumber = h0001;
-        alu.secondNumber = hF003;
-        alu.alufn = b00001;
+        alu.secondNumber = h0002;
+        alu.alufn = b110011;
         io_led[1] = alu.answer[15:8];
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
           state.d = state.TWENTYONE;
-          if(alu.answer != hF004){
+          if(alu.answer != h0000){
             state.d = state.ERROR;
           }
-        }
-
+        }  
+      
+      //less than (<)  
+      //test case 21: 0x0001<0x0001=0x0000, false 
       state.TWENTYONE:
         alu.firstNumber = h0001;
-        alu.secondNumber = hF003;
-        alu.alufn = b00001;
+        alu.secondNumber = h0001;
+        alu.alufn = b110101;
         io_led[1] = alu.answer[15:8];
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
           state.d = state.TWENTYTWO;
-          if(alu.answer != hF004){
+          if(alu.answer != h0000){
             state.d = state.ERROR;
           }
-        }
-
+        }  
+        
+     //test case 22: 0x0002<0x0001=0x0000, false 
       state.TWENTYTWO:
-        alu.firstNumber = h0001;
-        alu.secondNumber = hF003;
-        alu.alufn = b00001;
+        alu.firstNumber = h0002;
+        alu.secondNumber = h0001;
+        alu.alufn = b110101;
         io_led[1] = alu.answer[15:8];
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
           state.d = state.TWENTYTHREE;
-          if(alu.answer != hF004){
+          if(alu.answer != h0000){
             state.d = state.ERROR;
           }
-        }
-
+        }  
+  
+      //test case 23: 0x0001<0x0002=0x0001, true  
       state.TWENTYTHREE:
         alu.firstNumber = h0001;
-        alu.secondNumber = hF003;
-        alu.alufn = b00001;
+        alu.secondNumber = h0002;
+        alu.alufn = b110101;
         io_led[1] = alu.answer[15:8];
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
           state.d = state.TWENTYFOUR;
-          if(alu.answer != hF004){
+          if(alu.answer != h0001){
             state.d = state.ERROR;
           }
-        }
+        }  
 
+      //less than equal to (<=)  
+      //test case 24: 0x0001<=0x0001=0x0001, true   
       state.TWENTYFOUR:
         alu.firstNumber = h0001;
-        alu.secondNumber = hF003;
-        alu.alufn = b00001;
+        alu.secondNumber = h0001;
+        alu.alufn = b110111;
         io_led[1] = alu.answer[15:8];
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
           state.d = state.TWENTYFIVE;
-          if(alu.answer != hF004){
+          if(alu.answer != h0001){
             state.d = state.ERROR;
           }
-        }
+        }  
 
+      //test case 25: 0x0002<=0x0001=0x0000, false     
       state.TWENTYFIVE:
-        alu.firstNumber = h0001;
-        alu.secondNumber = hF003;
-        alu.alufn = b00001;
+        alu.firstNumber = h0002;
+        alu.secondNumber = h0001;
+        alu.alufn = b110111;
         io_led[1] = alu.answer[15:8];
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
           state.d = state.TWENTYSIX;
-          if(alu.answer != hF004){
+          if(alu.answer != h0000){
             state.d = state.ERROR;
           }
-        }
+        }  
 
+      //test case 26: 0x0001<=0x0002=0x0001, true  
       state.TWENTYSIX:
         alu.firstNumber = h0001;
-        alu.secondNumber = hF003;
-        alu.alufn = b00001;
+        alu.secondNumber = h0002;
+        alu.alufn = b110111;
         io_led[1] = alu.answer[15:8];
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
           state.d = state.TWENTYSEVEN;
-          if(alu.answer != hF004){
+          if(alu.answer != h0001){
             state.d = state.ERROR;
           }
-        }
+        }  
         
-        // STOP HERE
+      //boolean function
+        
+      //AND  
+      //test case 27: AND(0101010101010101, 1010101010101010) = 0000000000000000 
       state.TWENTYSEVEN:
         alu.firstNumber = b0101010101010101;
         alu.secondNumber = b1010101010101010;
@@ -484,7 +550,8 @@ module mojo_top (
             state.d = state.ERROR;
           }
         }
-
+        
+      //test case 28: AND(0101010101010101, 1111000011110000) = 1111000011110000
       state.TWENTYEIGHT:
         alu.firstNumber = b0101010101010101;
         alu.secondNumber = b1111000011110000;
@@ -493,11 +560,13 @@ module mojo_top (
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
           state.d = state.TWENTYNINE;
-          if(alu.answer != b1111000011110000){
+          if(alu.answer != b0101000001010000){
             state.d = state.ERROR;
           }
         }
 
+      //OR() 
+      //test case 29: OR(0101010101010101, 1010101010101010) = 1111111111111111
       state.TWENTYNINE:
         alu.firstNumber = b0101010101010101;
         alu.secondNumber = b1010101010101010;
@@ -511,6 +580,7 @@ module mojo_top (
           }
         }
 
+      //test case 30: OR(0101010101010101, 1111000011110000) = 1111010111110101
       state.THIRTY:
         alu.firstNumber = b0101010101010101;
         alu.secondNumber = b1111000011110000;
@@ -524,6 +594,8 @@ module mojo_top (
           }
         }
 
+      // XOR()        
+      //test case 31: XOR(0101010101010101, 1010101010101010) = 1111111111111111
       state.THIRTYONE:
         alu.firstNumber = b0101010101010101;
         alu.secondNumber = b1010101010101010;
@@ -537,6 +609,7 @@ module mojo_top (
           }
         }
 
+      //test case 32: XOR(0101010101010101, 1111000011110000) = 1010010110100101
       state.THIRTYTWO:
         alu.firstNumber = b0101010101010101;
         alu.secondNumber = b1111000011110000;
@@ -550,6 +623,8 @@ module mojo_top (
           }
         }
 
+      //"A" (LDR)
+      //test case 33: answer = firstNumber = 0101010101010101
       state.THIRTYTHREE:
         alu.firstNumber = b0101010101010101;
         alu.secondNumber = b1111000011110000;
@@ -563,6 +638,7 @@ module mojo_top (
           }
         }
 
+      //test case 34: answer = firstNumber = 0101010101010101
       state.THIRTYFOUR:
         alu.firstNumber = b0101010101010101;
         alu.secondNumber = b0101010101010101;
@@ -575,7 +651,10 @@ module mojo_top (
             state.d = state.ERROR;
           }
         }
-
+        
+      //Shift function  
+      //Shift left
+      //test case 35: SHL(1111111111111111, 1111) = 1000000000000000
       state.THIRTYFIVE:
         alu.firstNumber = b1111111111111111;
         alu.secondNumber = b1111;
@@ -589,6 +668,7 @@ module mojo_top (
           }
         }
 
+      //test case 36: SHL(1111111111111110, 1111) = 0000000000000000
       state.THIRTYSIX:
         alu.firstNumber = b1111111111111110;
         alu.secondNumber = b1111;
@@ -602,6 +682,7 @@ module mojo_top (
           }
         }
 
+      //test case 37: SHL(1010101010101010, 10) = 1010101010101000
       state.THIRTYSEVEN:
         alu.firstNumber = b1010101010101010;
         alu.secondNumber = b10;
@@ -610,11 +691,13 @@ module mojo_top (
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
           state.d = state.THIRTYEIGHT;
-          if(alu.answer != b1010101010101010){
+          if(alu.answer != b1010101010101000){
             state.d = state.ERROR;
           }
         }
 
+      //Shift right
+      //test case 38: SHR(1111111111111111, 1111) = 0000000000000001
       state.THIRTYEIGHT:
         alu.firstNumber = b1111111111111111;
         alu.secondNumber = b1111;
@@ -628,6 +711,7 @@ module mojo_top (
           }
         }
 
+      //test case 39: SHR(1111111111111111, 11111) = 0000000000000000
       state.THIRTYNINE:
         alu.firstNumber = b0111111111111111;
         alu.secondNumber = b1111;
@@ -641,6 +725,7 @@ module mojo_top (
           }
         }
 
+      //test case 40: SHR(1010101010101010, 10) = 0010101010101010
       state.FORTY:
         alu.firstNumber = b1010101010101010;
         alu.secondNumber = b10;
@@ -654,6 +739,8 @@ module mojo_top (
           }
         }
 
+      //Shift right with sign
+      //test case 41: SRA(1010101010101010, 1111) = 1111111111111111
       state.FORTYONE:
         alu.firstNumber = b1010101010101010;
         alu.secondNumber = b1111;
@@ -667,10 +754,27 @@ module mojo_top (
           }
         }
 
+      //test case 42: SRA(0101010101010101, 1111) = 0000000000000000
       state.FORTYTWO:
         alu.firstNumber = b0101010101010101;
         alu.secondNumber = b1111;
         alu.alufn = b100011;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.INVALID;
+          if(alu.answer != b0000000000000000){
+            state.d = state.ERROR;
+          }
+        }
+        
+      //test case 43: shift left by 16 units(invalid as our alu can only shift left by 15 units max)
+      //our alu only takes in the first 4 LSB hence, it does not shift left at all when h0010 is used to call shift left
+      //that is why the answer from alu will differ from actually shifting left by 16 units
+      state.INVALID:
+        alu.firstNumber = hFFFF;
+        alu.secondNumber = h0010;
+        alu.alufn = b100001;
         io_led[1] = alu.answer[15:8];
         io_led[0] = alu.answer[7:0];
         if(edge_detector.out){
@@ -680,11 +784,9 @@ module mojo_top (
           }
         }
       
+      //ERROR state: throws error when ALU answer is not the same as test case answers
       state.ERROR:
         seg.values = {4b1100,4b1010,4b1011,4b1011};
-        if(io_button[0]){
-          state.d = state.START;
-        }
         
   }
 }

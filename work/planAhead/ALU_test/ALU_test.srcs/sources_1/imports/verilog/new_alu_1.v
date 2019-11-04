@@ -141,7 +141,7 @@ module new_alu_1 (
     if (alufn[5+0-:1] == 1'h1 & alufn[4+0-:1] == 1'h1) begin
       M_adder_firstNumber = firstNumber;
       M_adder_secondNumber = secondNumber;
-      M_adder_alufn = alufn[0+1-:2];
+      M_adder_alufn = 2'h1;
       M_nv_alufn = alufn[0+1-:2];
       M_nv_firstNumber = firstNumber;
       M_nv_secondNumber = secondNumber;
