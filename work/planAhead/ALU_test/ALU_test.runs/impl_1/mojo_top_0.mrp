@@ -8,22 +8,22 @@ Target Device  : xc6slx9
 Target Package : tqg144
 Target Speed   : -2
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Mon Nov 04 21:04:49 2019
+Mapped Date    : Mon Nov 04 21:27:28 2019
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    7
 Slice Logic Utilization:
-  Number of Slice Registers:                    75 out of  11,440    1%
-    Number used as Flip Flops:                  75
+  Number of Slice Registers:                    77 out of  11,440    1%
+    Number used as Flip Flops:                  77
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                      1,347 out of   5,720   23%
-    Number used as logic:                    1,344 out of   5,720   23%
+  Number of Slice LUTs:                      1,349 out of   5,720   23%
+    Number used as logic:                    1,346 out of   5,720   23%
       Number using O6 output only:           1,068
-      Number using O5 output only:              39
+      Number using O5 output only:              41
       Number using O5 and O6:                  237
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   1,440    0%
@@ -33,15 +33,15 @@ Slice Logic Utilization:
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   438 out of   1,430   30%
-  Number of MUXCYs used:                       564 out of   2,860   19%
-  Number of LUT Flip Flop pairs used:        1,357
-    Number with an unused Flip Flop:         1,288 out of   1,357   94%
-    Number with an unused LUT:                  10 out of   1,357    1%
-    Number of fully used LUT-FF pairs:          59 out of   1,357    4%
+  Number of occupied Slices:                   424 out of   1,430   29%
+  Number of MUXCYs used:                       568 out of   2,860   19%
+  Number of LUT Flip Flop pairs used:        1,353
+    Number with an unused Flip Flop:         1,283 out of   1,353   94%
+    Number with an unused LUT:                   4 out of   1,353    1%
+    Number of fully used LUT-FF pairs:          66 out of   1,353    4%
     Number of unique control sets:               8
     Number of slice register sites lost
-      to control set restrictions:              37 out of  11,440    1%
+      to control set restrictions:              35 out of  11,440    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -78,7 +78,7 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                5.15
+Average Fanout of Non-Clock Nets:                5.14
 
 Peak Memory Usage:  4532 MB
 Total REAL time to MAP completion:  22 secs 
@@ -136,11 +136,11 @@ INFO:Map:284 - Map is running with the multi-threading option on. Map currently
 INFO:LIT:243 - Logical network avr_rx_busy_IBUF has no load.
 INFO:LIT:395 - The above info message is repeated 33 more times for the
    following (max. 5 shown):
+   io_dip(23)_IBUF,
    io_dip(22)_IBUF,
    io_dip(21)_IBUF,
    io_dip(20)_IBUF,
-   io_dip(19)_IBUF,
-   io_dip(18)_IBUF
+   io_dip(19)_IBUF
    To see the details of these info messages, please use the -detail switch.
 INFO:MapLib:562 - No environment variables are currently set.
 INFO:LIT:244 - All of the single ended outputs in this design are using slew
@@ -242,11 +242,11 @@ Section 6 - IOB Properties
 | avr_tx                             | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
 | cclk                               | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
 | clk                                | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
-| io_button(0)                       | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | io_button(1)                       | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | io_button(2)                       | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | io_button(3)                       | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | io_button(4)                       | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
+| io_button[0]                       | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | io_dip(0)                          | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | io_dip(1)                          | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | io_dip(2)                          | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
@@ -270,7 +270,7 @@ Section 6 - IOB Properties
 | io_dip(20)                         | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | io_dip(21)                         | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | io_dip(22)                         | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
-| io_dip[23]                         | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
+| io_dip(23)                         | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | io_led[0]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | io_led[1]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | io_led[2]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |

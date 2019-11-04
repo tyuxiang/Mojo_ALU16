@@ -1,18 +1,24 @@
 module nv (
-    input firstNumber[16],
-    input secondNumber[16],
-    input sum[16],
-    input a31,
-    input b31,
-    input s31,
-    input alufn[2],
-    output v,
-    output n,
-    output z
+    input firstNumber[16],    // input of 1st number
+    input secondNumber[16],   // input of 2nd number
+    input sum[16],            // input of adder.answer
+    input a31,                // input of MSB of 1st number
+    input b31,                // input of MSB of 2nd number
+    input s31,                // input of MSB of adder.answer
+    input alufn[2],           // input of alufn[1:0]
+    output v,                 // output v
+    output n,                 // output n
+    output z                  // output z
   ) {
 
   always {
+    //n is the same as the MSB of sum
     n = s31;
+    
+    //calculating v (use formula in lab3 for subtract and addition)
+    //if subtract, flip the MSB of 2nd firstNumber
+    //if multiply, to calculate v, we need to check if sum/1st number is the same as 2nd number
+    //division will never overflow
     if(alufn == b01){
       v = ((~b31)&a31&(~s31)) | (b31&(~a31)&s31);
     }
@@ -30,6 +36,8 @@ module nv (
     else{
       v = 0;
     }
+    
+    //calculate z (check if sum is all 0)
     if(sum == h0000){
       z = 1;
     }

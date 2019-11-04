@@ -7,16 +7,17 @@ module new_alu (
     output v,               // output of v from adder
     output z                // output of z from adder
   ) {
-    //initialize all the different modules
+    //initialize all the different modules (ALU functions)
     adder adder;
     bool bool;
     shft shft;
     comp comp;
-    nv nv;
+    nv nv;         //computes v,n,z from adder.answer
   
   
   always {
-    answer = hx;                // not have any answer
+    //sets all values to be ignored by default
+    answer = hx;                
     v=bx;
     n=bx;
     z=bx;
@@ -40,10 +41,14 @@ module new_alu (
     nv.b31 = hx;
     nv.s31 = hx;
     nv.alufn = hx;
+    
+    //Mux4 with control signals ALUFN[5:4], that chooses output based on operation
+    
+    //ALUFN[5:4]==00, ADDER
     if(alufn[5] == b0 & alufn[4] == b0){
       adder.firstNumber = firstNumber;
       adder.secondNumber = secondNumber;
-      adder.alufn = alufn[1:0];
+      adder.alufn = alufn[1:0];    //ALUFN[1:0] determines whether to add(00), subtract(01), multiply(10) or divide(11)
       answer = adder.answer;
       nv.alufn = alufn[1:0];
       nv.firstNumber = firstNumber;
@@ -56,33 +61,39 @@ module new_alu (
       v=nv.v;
       n=nv.n;
     }
+    
+    //ALUFN[5:4]==01, BOOLEAN
     if(alufn[5] == b0 & alufn[4] == b1){
       bool.firstNumber = firstNumber;
       bool.secondNumber = secondNumber;
-      bool.alufn = alufn[3:0];
-      answer = bool.answer;
+      bool.alufn = alufn[3:0];     //ALUFN[3:0] determines which boolean function 
+      answer = bool.answer;        //AND(1000), OR(1110), XOR(0110), "A"(1010)
     }
+    
+    //ALUFN[5:4]==10, SHIFT 
     if(alufn[5] == b1 & alufn[4] == b0){
       shft.firstNumber = firstNumber;
       shft.secondNumber = secondNumber[3:0];
-      shft.alufn = alufn[1:0];
-      answer = shft.answer;
+      shft.alufn = alufn[1:0];     //ALUFN[1:0] determines direction of shift and whether with sign
+      answer = shft.answer;        //SHL(00), SHR(01), SRA(11)
     }
+    
+    //ALUFN[5:4]==11, COMPARE
     if(alufn[5] == b1 & alufn[4] == b1){
       adder.firstNumber = firstNumber;
       adder.secondNumber = secondNumber;
-      adder.alufn = b01;
-      nv.alufn = alufn[1:0];
-      nv.firstNumber = firstNumber;
+      adder.alufn = b01;              //subtracting second number from first number through adder function
+      nv.alufn = alufn[1:0];          //ALUFN[1:0] determines how v, n are computed through nv module
+      nv.firstNumber = firstNumber;    
       nv.secondNumber = secondNumber;
       nv.sum = adder.answer;
       nv.s31 = adder.answer[15];
       nv.a31 = firstNumber[15];
-      nv.b31 = secondNumber[15];
+      nv.b31 = secondNumber[15];      
       comp.z = nv.z;
       comp.v = nv.v;
       comp.n = nv.n;
-      comp.alufn = alufn[2:1];
+      comp.alufn = alufn[2:1];        //ALUFN[2:1] determines whether to CMPMT(00), CMPEQ(01), CMPLT(10), CMPLE(11)
       answer = comp.answer;
     }
   }

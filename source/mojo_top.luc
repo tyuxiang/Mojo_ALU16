@@ -25,13 +25,13 @@ module mojo_top (
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
     
-    edge_detector edge_detector (#RISE(1), #FALL(0));
-    reset_conditioner reset_cond;
+    edge_detector edge_detector (#RISE(1), #FALL(0)); //initialize edge_detector to detect edges
+    reset_conditioner reset_cond;                     //initialize reset button
     
     .rst(rst){
       mult_seven_seg seg;                 // Initialize multi_seven_seg
       mult_dec_ctr dec_ctr;               // Initialize multi_dec_ctr
-      counter ctr (#SIZE(1), #DIV(23));    // Initialize counter to count every 2^25(~33.5 million) clock cycle, on MOJO is 50 million clock cycle per second 
+      counter ctr (#SIZE(1), #DIV(25));   // Initialize counter to count every 2^25(~33.5 million) clock cycle, on MOJO is 50 million clock cycle per second 
       fsm state = {START, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, 
       FOURTEEN, FIFTEEN, SIXTEEN, SEVENTEEN, EIGHTEEN, NINETEEN, TWENTY, TWENTYONE, TWENTYTWO, TWENTYTHREE, TWENTYFOUR, 
         TWENTYFIVE, TWENTYSIX, TWENTYSEVEN, TWENTYEIGHT, TWENTYNINE, THIRTY, THIRTYONE, THIRTYTWO, THIRTYTHREE, THIRTYFOUR, 

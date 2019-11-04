@@ -138,8 +138,8 @@ Elaborating module <counter_6>.
 
 Synthesizing Unit <mojo_top_0>.
     Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/mojo_top_0.v".
-WARNING:Xst:647 - Input <io_button> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <io_dip<22:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <io_button<4:1>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <io_dip> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <cclk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <spi_ss> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <spi_mosi> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -184,21 +184,9 @@ WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved
     Found 1-bit tristate buffer for signal <M_seg_values<2>> created at line 135
     Found 1-bit tristate buffer for signal <M_seg_values<1>> created at line 135
     Found 1-bit tristate buffer for signal <M_seg_values<0>> created at line 135
-    Found 1-bit tristate buffer for signal <io_seg<7>> created at line 135
-    Found 1-bit tristate buffer for signal <io_seg<6>> created at line 135
-    Found 1-bit tristate buffer for signal <io_seg<5>> created at line 135
-    Found 1-bit tristate buffer for signal <io_seg<4>> created at line 135
-    Found 1-bit tristate buffer for signal <io_seg<3>> created at line 135
-    Found 1-bit tristate buffer for signal <io_seg<2>> created at line 135
-    Found 1-bit tristate buffer for signal <io_seg<1>> created at line 135
-    Found 1-bit tristate buffer for signal <io_seg<0>> created at line 135
-    Found 1-bit tristate buffer for signal <io_sel<3>> created at line 135
-    Found 1-bit tristate buffer for signal <io_sel<2>> created at line 135
-    Found 1-bit tristate buffer for signal <io_sel<1>> created at line 135
-    Found 1-bit tristate buffer for signal <io_sel<0>> created at line 135
     Summary:
 	inferred  21 Multiplexer(s).
-	inferred  35 Tristate(s).
+	inferred  23 Tristate(s).
 	inferred   1 Finite State Machine(s).
 Unit <mojo_top_0> synthesized.
 
@@ -435,11 +423,11 @@ Unit <dec_ctr_15> synthesized.
 
 Synthesizing Unit <counter_6>.
     Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/counter_6.v".
-    Found 24-bit register for signal <M_ctr_q>.
-    Found 24-bit adder for signal <M_ctr_d> created at line 35.
+    Found 26-bit register for signal <M_ctr_q>.
+    Found 26-bit adder for signal <M_ctr_d> created at line 35.
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred  24 D-type flip-flop(s).
+	inferred  26 D-type flip-flop(s).
 Unit <counter_6> synthesized.
 
 =========================================================================
@@ -460,9 +448,9 @@ Macro Statistics
  21-bit adder                                          : 4
  22-bit adder                                          : 4
  23-bit adder                                          : 4
- 24-bit adder                                          : 5
+ 24-bit adder                                          : 4
  25-bit adder                                          : 4
- 26-bit adder                                          : 4
+ 26-bit adder                                          : 5
  27-bit adder                                          : 4
  28-bit adder                                          : 4
  29-bit adder                                          : 4
@@ -473,7 +461,7 @@ Macro Statistics
 # Registers                                            : 8
  1-bit register                                        : 1
  18-bit register                                       : 1
- 24-bit register                                       : 1
+ 26-bit register                                       : 1
  4-bit register                                        : 5
 # Comparators                                          : 35
  16-bit comparator greater                             : 1
@@ -526,8 +514,8 @@ Macro Statistics
  16-bit shifter logical left                           : 1
  16-bit shifter logical right                          : 1
  31-bit shifter logical right                          : 1
-# Tristates                                            : 35
- 1-bit tristate buffer                                 : 35
+# Tristates                                            : 23
+ 1-bit tristate buffer                                 : 23
 # FSMs                                                 : 1
 # Xors                                                 : 3
  1-bit xor2                                            : 2
@@ -583,7 +571,7 @@ Macro Statistics
  4-bit adder                                           : 1
 # Counters                                             : 6
  18-bit up counter                                     : 1
- 24-bit up counter                                     : 1
+ 26-bit up counter                                     : 1
  4-bit up counter                                      : 4
 # Registers                                            : 5
  Flip-Flops                                            : 5
@@ -748,8 +736,8 @@ Unit <mojo_top_0> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 75
- Flip-Flops                                            : 75
+# Registers                                            : 77
+ Flip-Flops                                            : 77
 
 =========================================================================
 
@@ -772,30 +760,30 @@ Top Level Output File Name         : mojo_top_0.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 2344
+# BELS                             : 2349
 #      GND                         : 9
-#      INV                         : 20
-#      LUT1                        : 41
+#      INV                         : 19
+#      LUT1                        : 43
 #      LUT2                        : 50
 #      LUT3                        : 149
 #      LUT4                        : 287
 #      LUT5                        : 291
 #      LUT6                        : 708
-#      MUXCY                       : 466
+#      MUXCY                       : 468
 #      MUXF7                       : 17
 #      VCC                         : 8
-#      XORCY                       : 298
-# FlipFlops/Latches                : 75
+#      XORCY                       : 300
+# FlipFlops/Latches                : 77
 #      FD                          : 1
-#      FDR                         : 54
+#      FDR                         : 56
 #      FDRE                        : 16
 #      FDS                         : 4
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 52
 #      IBUF                        : 2
-#      OBUF                        : 32
-#      OBUFT                       : 18
+#      OBUF                        : 44
+#      OBUFT                       : 6
 # DSPs                             : 1
 #      DSP48A1                     : 1
 
@@ -806,15 +794,15 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              75  out of  11440     0%  
- Number of Slice LUTs:                 1546  out of   5720    27%  
-    Number used as Logic:              1546  out of   5720    27%  
+ Number of Slice Registers:              77  out of  11440     0%  
+ Number of Slice LUTs:                 1547  out of   5720    27%  
+    Number used as Logic:              1547  out of   5720    27%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   1568
-   Number with an unused Flip Flop:    1493  out of   1568    95%  
-   Number with an unused LUT:            22  out of   1568     1%  
-   Number of fully used LUT-FF pairs:    53  out of   1568     3%  
+ Number of LUT Flip Flop pairs used:   1569
+   Number with an unused Flip Flop:    1492  out of   1569    95%  
+   Number with an unused LUT:            22  out of   1569     1%  
+   Number of fully used LUT-FF pairs:    55  out of   1569     3%  
    Number of unique control sets:         9
 
 IO Utilization: 
@@ -846,7 +834,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 75    |
+clk                                | BUFGP                  | 77    |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -858,9 +846,9 @@ Timing Summary:
 Speed Grade: -2
 
    Minimum period: 112.237ns (Maximum Frequency: 8.910MHz)
-   Minimum input arrival time before clock: 8.324ns
+   Minimum input arrival time before clock: 8.298ns
    Maximum output required time after clock: 113.309ns
-   Maximum combinational path delay: 8.965ns
+   Maximum combinational path delay: 8.939ns
 
 Timing Details:
 ---------------
@@ -869,7 +857,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
   Clock period: 112.237ns (frequency: 8.910MHz)
-  Total number of paths / destination ports: 16749214654535514000000000000000000000000000 / 160
+  Total number of paths / destination ports: 16749214654535514000000000000000000000000000 / 164
 -------------------------------------------------------------------------
 Delay:               112.237ns (Levels of Logic = 252)
   Source:            M_state_q_FSM_FFd6_3 (FF)
@@ -882,10 +870,10 @@ Delay:               112.237ns (Levels of Logic = 252)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDR:C->Q             17   0.525   1.639  M_state_q_FSM_FFd6_3 (M_state_q_FSM_FFd6_3)
-     LUT6:I1->O           12   0.254   1.345  M_state_q__n0536<36>1_1 (M_state_q__n0536<36>1)
-     begin scope: 'alu:M_state_q__n0536<36>1'
-     begin scope: 'alu/adder:M_state_q__n0536<36>1'
-     begin scope: 'alu/adder/firstNumber[15]_secondNumber[15]_div_10:M_state_q__n0536<36>1'
+     LUT6:I1->O           12   0.254   1.345  M_state_q__n0526<36>1_1 (M_state_q__n0526<36>1)
+     begin scope: 'alu:M_state_q__n0526<36>1'
+     begin scope: 'alu/adder:M_state_q__n0526<36>1'
+     begin scope: 'alu/adder/firstNumber[15]_secondNumber[15]_div_10:M_state_q__n0526<36>1'
      LUT5:I1->O            2   0.254   1.181  Mmux_b[15]_b[15]_mux_3_OUT131_1 (Mmux_b[15]_b[15]_mux_3_OUT131)
      LUT6:I0->O            5   0.254   0.841  BUS_0004_INV_487_o321_SW0 (N55)
      LUT6:I5->O            1   0.254   1.112  BUS_0004_INV_487_o3_SW2 (N220)
@@ -1134,8 +1122,8 @@ Delay:               112.237ns (Levels of Logic = 252)
      MUXCY:CI->O          30   0.023   1.487  Mcompar_sum[15]_secondNumber[15]_not_equal_5_o_cy<5> (sum[15]_secondNumber[15]_not_equal_5_o)
      end scope: 'alu/nv:sum[15]_secondNumber[15]_not_equal_5_o'
      end scope: 'alu:sum[15]_secondNumber[15]_not_equal_5_o'
-     LUT6:I5->O            1   0.254   0.790  M_alu_answer[15]_M_alu_n[0]_OR_129_o1_SW0 (N88)
-     LUT6:I4->O            4   0.250   0.804  M_alu_answer[15]_M_alu_n[0]_OR_129_o1 (M_alu_answer[15]_M_alu_n[0]_OR_129_o)
+     LUT6:I5->O            1   0.254   0.790  M_alu_answer[15]_M_alu_n[0]_OR_131_o1_SW0 (N88)
+     LUT6:I4->O            4   0.250   0.804  M_alu_answer[15]_M_alu_n[0]_OR_131_o1 (M_alu_answer[15]_M_alu_n[0]_OR_131_o)
      LUT6:I5->O            2   0.254   0.726  M_state_q_FSM_FFd3-In15 (M_state_q_FSM_FFd3-In15)
      LUT5:I4->O            1   0.254   0.682  M_state_q_FSM_FFd3-In17 (M_state_q_FSM_FFd3-In1)
      LUT6:I5->O            4   0.254   0.000  M_state_q_FSM_FFd4-In14 (M_state_q_FSM_FFd4-In)
@@ -1148,27 +1136,27 @@ Delay:               112.237ns (Levels of Logic = 252)
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
   Total number of paths / destination ports: 118 / 51
 -------------------------------------------------------------------------
-Offset:              8.324ns (Levels of Logic = 7)
-  Source:            io_dip<23> (PAD)
+Offset:              8.298ns (Levels of Logic = 7)
+  Source:            io_button<0> (PAD)
   Destination:       M_state_q_FSM_FFd2 (FF)
   Destination Clock: clk rising
 
-  Data Path: io_dip<23> to M_state_q_FSM_FFd2
+  Data Path: io_button<0> to M_state_q_FSM_FFd2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            18   1.328   1.343  io_dip_23_IBUF (io_dip_23_IBUF)
-     begin scope: 'edge_detector:io_dip_23_IBUF'
+     IBUF:I->O            17   1.328   1.317  io_button_0_IBUF (io_button_0_IBUF)
+     begin scope: 'edge_detector:io_button_0_IBUF'
      LUT3:I1->O           12   0.250   1.499  out1 (out)
      end scope: 'edge_detector:out'
      LUT5:I0->O            1   0.254   1.137  M_state_q_FSM_FFd2-In6_SW0 (N332)
-     LUT6:I0->O            1   0.254   0.790  M_alu_answer[15]_M_alu_n[0]_OR_144_o4_SW2 (N339)
+     LUT6:I0->O            1   0.254   0.790  M_alu_answer[15]_M_alu_n[0]_OR_146_o4_SW2 (N339)
      LUT6:I4->O            1   0.250   0.910  M_state_q_FSM_FFd2-In7_SW0 (N52)
      LUT6:I3->O            6   0.235   0.000  M_state_q_FSM_FFd2-In7 (M_state_q_FSM_FFd2-In)
      FDR:D                     0.074          M_state_q_FSM_FFd2
     ----------------------------------------
-    Total                      8.324ns (2.645ns logic, 5.679ns route)
-                                       (31.8% logic, 68.2% route)
+    Total                      8.298ns (2.645ns logic, 5.653ns route)
+                                       (31.9% logic, 68.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
@@ -1184,10 +1172,10 @@ Offset:              113.309ns (Levels of Logic = 250)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDR:C->Q             17   0.525   1.639  M_state_q_FSM_FFd6_3 (M_state_q_FSM_FFd6_3)
-     LUT6:I1->O           12   0.254   1.345  M_state_q__n0536<36>1_1 (M_state_q__n0536<36>1)
-     begin scope: 'alu:M_state_q__n0536<36>1'
-     begin scope: 'alu/adder:M_state_q__n0536<36>1'
-     begin scope: 'alu/adder/firstNumber[15]_secondNumber[15]_div_10:M_state_q__n0536<36>1'
+     LUT6:I1->O           12   0.254   1.345  M_state_q__n0526<36>1_1 (M_state_q__n0526<36>1)
+     begin scope: 'alu:M_state_q__n0526<36>1'
+     begin scope: 'alu/adder:M_state_q__n0526<36>1'
+     begin scope: 'alu/adder/firstNumber[15]_secondNumber[15]_div_10:M_state_q__n0526<36>1'
      LUT5:I1->O            2   0.254   1.181  Mmux_b[15]_b[15]_mux_3_OUT131_1 (Mmux_b[15]_b[15]_mux_3_OUT131)
      LUT6:I0->O            5   0.254   0.841  BUS_0004_INV_487_o321_SW0 (N55)
      LUT6:I5->O            1   0.254   1.112  BUS_0004_INV_487_o3_SW2 (N220)
@@ -1445,24 +1433,24 @@ Offset:              113.309ns (Levels of Logic = 250)
 
 =========================================================================
 Timing constraint: Default path analysis
-  Total number of paths / destination ports: 37 / 12
+  Total number of paths / destination ports: 25 / 7
 -------------------------------------------------------------------------
-Delay:               8.965ns (Levels of Logic = 5)
-  Source:            io_dip<23> (PAD)
+Delay:               8.939ns (Levels of Logic = 5)
+  Source:            io_button<0> (PAD)
   Destination:       io_seg<6> (PAD)
 
-  Data Path: io_dip<23> to io_seg<6>
+  Data Path: io_button<0> to io_seg<6>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            18   1.328   1.235  io_dip_23_IBUF (io_dip_23_IBUF)
+     IBUF:I->O            17   1.328   1.209  io_button_0_IBUF (io_button_0_IBUF)
      LUT6:I5->O            1   0.254   0.682  Sh451 (Sh451)
      LUT5:I4->O            7   0.254   1.365  Sh452 (Sh45)
-     LUT6:I0->O            1   0.254   0.681  GND_1_o_inv_0_OUT<3>1 (io_seg_3_OBUFT)
-     OBUFT:I->O                2.912          io_seg_3_OBUFT (io_seg<3>)
+     LUT6:I0->O            1   0.254   0.681  io_seg<3>1 (io_seg_3_OBUF)
+     OBUF:I->O                 2.912          io_seg_3_OBUF (io_seg<3>)
     ----------------------------------------
-    Total                      8.965ns (5.002ns logic, 3.963ns route)
-                                       (55.8% logic, 44.2% route)
+    Total                      8.939ns (5.002ns logic, 3.937ns route)
+                                       (56.0% logic, 44.0% route)
 
 =========================================================================
 
@@ -1480,12 +1468,12 @@ clk            |  112.237|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 21.00 secs
-Total CPU time to Xst completion: 21.42 secs
+Total REAL time to Xst completion: 22.00 secs
+Total CPU time to Xst completion: 22.10 secs
  
 --> 
 
-Total memory usage is 4525096 kilobytes
+Total memory usage is 4525352 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   19 (   0 filtered)

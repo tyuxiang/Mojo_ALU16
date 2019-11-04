@@ -95,56 +95,56 @@ Asterisk (*) preceding a constraint indicates it was not met.
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
 Running timing-driven placement...
-Total REAL time at the beginning of Placer: 5 secs 
-Total CPU  time at the beginning of Placer: 5 secs 
+Total REAL time at the beginning of Placer: 4 secs 
+Total CPU  time at the beginning of Placer: 4 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:56d86b28) REAL time: 5 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:577209c1) REAL time: 5 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:56d86b28) REAL time: 5 secs 
+Phase 2.7  Design Feasibility Check (Checksum:577209c1) REAL time: 5 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:56d86b28) REAL time: 5 secs 
+Phase 3.31  Local Placement Optimization (Checksum:577209c1) REAL time: 5 secs 
 
 Phase 4.2  Initial Placement for Architecture Specific Features
 
 Phase 4.2  Initial Placement for Architecture Specific Features
-(Checksum:22d61d08) REAL time: 8 secs 
+(Checksum:6dcfaa21) REAL time: 7 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:22d61d08) REAL time: 8 secs 
+Phase 5.36  Local Placement Optimization (Checksum:6dcfaa21) REAL time: 7 secs 
 
 Phase 6.30  Global Clock Region Assignment
-Phase 6.30  Global Clock Region Assignment (Checksum:22d61d08) REAL time: 8 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:6dcfaa21) REAL time: 7 secs 
 
 Phase 7.3  Local Placement Optimization
-Phase 7.3  Local Placement Optimization (Checksum:22d61d08) REAL time: 8 secs 
+Phase 7.3  Local Placement Optimization (Checksum:6dcfaa21) REAL time: 7 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:22d61d08) REAL time: 8 secs 
+Phase 8.5  Local Placement Optimization (Checksum:6dcfaa21) REAL time: 7 secs 
 
 Phase 9.8  Global Placement
 ..........
-...........................................................
+.......................
 ............................................................................................................................................................................................................
-............................................................................................................................................................................................
-.................................
-Phase 9.8  Global Placement (Checksum:84b45a4) REAL time: 14 secs 
+...............................................................................................................................................................................................................
+............................................
+Phase 9.8  Global Placement (Checksum:e6066757) REAL time: 14 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:84b45a4) REAL time: 14 secs 
+Phase 10.5  Local Placement Optimization (Checksum:e6066757) REAL time: 14 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:9f652ab0) REAL time: 21 secs 
+Phase 11.18  Placement Optimization (Checksum:8e0bc96c) REAL time: 21 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:9f652ab0) REAL time: 21 secs 
+Phase 12.5  Local Placement Optimization (Checksum:8e0bc96c) REAL time: 21 secs 
 
 Phase 13.34  Placement Validation
-Phase 13.34  Placement Validation (Checksum:9c1c5ad2) REAL time: 21 secs 
+Phase 13.34  Placement Validation (Checksum:895496f1) REAL time: 21 secs 
 
-Total REAL time to Placer completion: 21 secs 
+Total REAL time to Placer completion: 22 secs 
 Total CPU  time to Placer completion: 25 secs 
 Running post-placement packing...
 Writing output files...
@@ -153,15 +153,15 @@ Design Summary:
 Number of errors:      0
 Number of warnings:    7
 Slice Logic Utilization:
-  Number of Slice Registers:                    75 out of  11,440    1%
-    Number used as Flip Flops:                  75
+  Number of Slice Registers:                    77 out of  11,440    1%
+    Number used as Flip Flops:                  77
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                      1,347 out of   5,720   23%
-    Number used as logic:                    1,344 out of   5,720   23%
+  Number of Slice LUTs:                      1,349 out of   5,720   23%
+    Number used as logic:                    1,346 out of   5,720   23%
       Number using O6 output only:           1,068
-      Number using O5 output only:              39
+      Number using O5 output only:              41
       Number using O5 and O6:                  237
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   1,440    0%
@@ -171,15 +171,15 @@ Slice Logic Utilization:
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   438 out of   1,430   30%
-  Number of MUXCYs used:                       564 out of   2,860   19%
-  Number of LUT Flip Flop pairs used:        1,357
-    Number with an unused Flip Flop:         1,288 out of   1,357   94%
-    Number with an unused LUT:                  10 out of   1,357    1%
-    Number of fully used LUT-FF pairs:          59 out of   1,357    4%
+  Number of occupied Slices:                   424 out of   1,430   29%
+  Number of MUXCYs used:                       568 out of   2,860   19%
+  Number of LUT Flip Flop pairs used:        1,353
+    Number with an unused Flip Flop:         1,283 out of   1,353   94%
+    Number with an unused LUT:                   4 out of   1,353    1%
+    Number of fully used LUT-FF pairs:          66 out of   1,353    4%
     Number of unique control sets:               8
     Number of slice register sites lost
-      to control set restrictions:              37 out of  11,440    1%
+      to control set restrictions:              35 out of  11,440    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -216,7 +216,7 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                5.15
+Average Fanout of Non-Clock Nets:                5.14
 
 Peak Memory Usage:  4532 MB
 Total REAL time to MAP completion:  22 secs 
@@ -246,15 +246,15 @@ Device speed data version:  "PRODUCTION 1.23 2013-10-13".
 Device Utilization Summary:
 
 Slice Logic Utilization:
-  Number of Slice Registers:                    75 out of  11,440    1%
-    Number used as Flip Flops:                  75
+  Number of Slice Registers:                    77 out of  11,440    1%
+    Number used as Flip Flops:                  77
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                      1,347 out of   5,720   23%
-    Number used as logic:                    1,344 out of   5,720   23%
+  Number of Slice LUTs:                      1,349 out of   5,720   23%
+    Number used as logic:                    1,346 out of   5,720   23%
       Number using O6 output only:           1,068
-      Number using O5 output only:              39
+      Number using O5 output only:              41
       Number using O5 and O6:                  237
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   1,440    0%
@@ -264,12 +264,12 @@ Slice Logic Utilization:
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   438 out of   1,430   30%
-  Number of MUXCYs used:                       564 out of   2,860   19%
-  Number of LUT Flip Flop pairs used:        1,357
-    Number with an unused Flip Flop:         1,288 out of   1,357   94%
-    Number with an unused LUT:                  10 out of   1,357    1%
-    Number of fully used LUT-FF pairs:          59 out of   1,357    4%
+  Number of occupied Slices:                   424 out of   1,430   29%
+  Number of MUXCYs used:                       568 out of   2,860   19%
+  Number of LUT Flip Flop pairs used:        1,353
+    Number with an unused Flip Flop:         1,283 out of   1,353   94%
+    Number with an unused LUT:                   4 out of   1,353    1%
+    Number of fully used LUT-FF pairs:          66 out of   1,353    4%
     Number of slice register sites lost
       to control set restrictions:               0 out of  11,440    0%
 
@@ -313,7 +313,6 @@ Overall effort level (-ol):   Standard
 Router effort level (-rl):    High 
 
 PAR will use up to 2 processors
-WARNING:Par:288 - The signal io_button(0)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_button(1)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_button(2)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_button(3)_IBUF has no load.  PAR will not attempt to route this signal.
@@ -340,6 +339,7 @@ WARNING:Par:288 - The signal io_dip(21)_IBUF has no load.  PAR will not attempt 
 WARNING:Par:288 - The signal io_dip(14)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(22)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(15)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(23)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(16)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(17)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(18)_IBUF has no load.  PAR will not attempt to route this signal.
@@ -350,27 +350,27 @@ WARNING:Par:288 - The signal spi_mosi_IBUF has no load.  PAR will not attempt to
 Starting Multi-threaded Router
 
 
-Phase  1  : 7589 unrouted;      REAL time: 3 secs 
+Phase  1  : 7584 unrouted;      REAL time: 3 secs 
 
-Phase  2  : 7142 unrouted;      REAL time: 3 secs 
+Phase  2  : 7134 unrouted;      REAL time: 3 secs 
 
-Phase  3  : 2020 unrouted;      REAL time: 5 secs 
+Phase  3  : 2209 unrouted;      REAL time: 5 secs 
 
-Phase  4  : 2701 unrouted; (Setup:2111386, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
+Phase  4  : 2893 unrouted; (Setup:2091278, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
 
-Phase  5  : 0 unrouted; (Setup:2133393, Hold:0, Component Switching Limit:0)     REAL time: 18 secs 
+Phase  5  : 0 unrouted; (Setup:2168864, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  6  : 0 unrouted; (Setup:2133393, Hold:0, Component Switching Limit:0)     REAL time: 18 secs 
+Phase  6  : 0 unrouted; (Setup:2168864, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  7  : 0 unrouted; (Setup:2133393, Hold:0, Component Switching Limit:0)     REAL time: 18 secs 
+Phase  7  : 0 unrouted; (Setup:2168864, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  8  : 0 unrouted; (Setup:2133393, Hold:0, Component Switching Limit:0)     REAL time: 18 secs 
+Phase  8  : 0 unrouted; (Setup:2168864, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  9  : 0 unrouted; (Setup:2133393, Hold:0, Component Switching Limit:0)     REAL time: 18 secs 
+Phase  9  : 0 unrouted; (Setup:2168864, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase 10  : 0 unrouted; (Setup:2116271, Hold:0, Component Switching Limit:0)     REAL time: 18 secs 
-Total REAL time to Router completion: 18 secs 
-Total CPU time to Router completion (all processors): 22 secs 
+Phase 10  : 0 unrouted; (Setup:2151732, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
+Total REAL time to Router completion: 19 secs 
+Total CPU time to Router completion (all processors): 23 secs 
 
 Generating "PAR" statistics.
 
@@ -381,7 +381,7 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|           clk_BUFGP | BUFGMUX_X2Y11| No   |   30 |  0.115     |  1.507      |
+|           clk_BUFGP | BUFGMUX_X2Y11| No   |   30 |  0.082     |  1.482      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -392,7 +392,7 @@ the minimum and maximum path delays which includes logic delays.
 * The fanout is the number of component pins not the individual BEL loads,
 for example SLICE loads not FF loads.
 
-Timing Score: 2116271 (Setup: 2116271, Hold: 0, Component Switching Limit: 0)
+Timing Score: 2151732 (Setup: 2151732, Hold: 0, Component Switching Limit: 0)
 
 WARNING:Par:468 - Your design did not meet timing.  The following are some suggestions to assist you to meet timing in your design.
 
@@ -419,8 +419,8 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-* TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH | SETUP       |   -70.961ns|    90.961ns|      30|     2116271
-   50%                                      | HOLD        |     0.431ns|            |       0|           0
+* TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH | SETUP       |   -72.487ns|    92.487ns|      30|     2151732
+   50%                                      | HOLD        |     0.404ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -433,10 +433,10 @@ All signals are completely routed.
 
 WARNING:Par:283 - There are 34 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 19 secs 
-Total CPU time to PAR completion (all processors): 22 secs 
+Total REAL time to PAR completion: 20 secs 
+Total CPU time to PAR completion (all processors): 23 secs 
 
-Peak Memory Usage:  4509 MB
+Peak Memory Usage:  4511 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.
@@ -459,7 +459,7 @@ Loading device for application Rf_Device from file '6slx9.nph' in environment
 D:\Programs\ISE\14.7\ISE_DS\ISE\.
    "mojo_top_0" is an NCD, version 3.2, device xc6slx9, package tqg144, speed -2
 
-Analysis completed Mon Nov 04 21:05:37 2019
+Analysis completed Mon Nov 04 21:28:17 2019
 --------------------------------------------------------------------------------
 
 Generating Report ...

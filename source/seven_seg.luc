@@ -1,20 +1,20 @@
 module seven_seg (
-    input char[4],
-    output segs[7]
+    input char[4],          //input number
+    output segs[7]          //output seven seg value
   ) {
 
   always {
     case (char) {
-      0: segs = 7b0111111;
-      1: segs = 7b0000110;
-      2: segs = 7b1011011;
-      3: segs = 7b1001111;
-      4: segs = 7b1100110;
-      5: segs = 7b1101101;
-      6: segs = 7b1111101;
-      7: segs = 7b0000111;
-      8: segs = 7b1111111;
-      9: segs = 7b1100111;
+      0: segs = 7b0111111;  // to show 0
+      1: segs = 7b0000110;  // to show 1
+      2: segs = 7b1011011;  // to show 2
+      3: segs = 7b1001111;  // to show 3
+      4: segs = 7b1100110;  // to show 4
+      5: segs = 7b1101101;  // to show 5
+      6: segs = 7b1111101;  // to show 6
+      7: segs = 7b0000111;  // to show 7
+      8: segs = 7b1111111;  // to show 8
+      9: segs = 7b1100111;  // to show 9
       10: segs = 7b1111001; // to show character E
       11: segs = 7b1010000; // to show character r
       12: segs = 7b0000000; // to show nothing

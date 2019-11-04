@@ -148,9 +148,9 @@ module mojo_top_0 (
     M_edge_detector_in = 1'bz;
     M_dec_ctr_inc = 1'h0;
     M_seg_values = 16'bzzzzzzzzzzzzzzzz;
-    io_seg = 8'bzzzzzzzz;
-    io_sel = 4'bzzzz;
-    if (io_dip[16+7+0-:1]) begin
+    io_seg = ~M_seg_seg;
+    io_sel = ~M_seg_sel;
+    if (io_button[0+0-:1]) begin
       M_edge_detector_in = M_ctr_value;
       M_seg_values = M_dec_ctr_digits;
       M_dec_ctr_inc = M_edge_detector_out;
@@ -161,7 +161,7 @@ module mojo_top_0 (
     case (M_state_q)
       START_state: begin
         io_led[16+7+0-:1] = 1'h1;
-        if (io_dip[16+7+0-:1]) begin
+        if (io_button[0+0-:1]) begin
           M_state_d = ZERO_state;
         end
       end

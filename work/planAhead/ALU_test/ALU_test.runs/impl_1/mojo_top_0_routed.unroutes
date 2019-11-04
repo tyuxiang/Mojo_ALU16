@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Mon Nov 04 21:05:32 2019
+Mon Nov 04 21:28:12 2019
 
 All signals are completely routed.
 
@@ -11,7 +11,6 @@ WARNING:ParHelpers:361 - There are 34 loadless signals in this design. This desi
    avr_rx_busy_IBUF
    avr_tx_IBUF
    cclk_IBUF
-   io_button(0)_IBUF
    io_button(1)_IBUF
    io_button(2)_IBUF
    io_button(3)_IBUF
@@ -32,6 +31,7 @@ WARNING:ParHelpers:361 - There are 34 loadless signals in this design. This desi
    io_dip(20)_IBUF
    io_dip(21)_IBUF
    io_dip(22)_IBUF
+   io_dip(23)_IBUF
    io_dip(3)_IBUF
    io_dip(4)_IBUF
    io_dip(5)_IBUF

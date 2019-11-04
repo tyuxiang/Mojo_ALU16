@@ -7,15 +7,23 @@ module bool (
 
   always {
     answer = hx;
+    
+    //AND
     if(alufn == b1000){
       answer[15:0] = firstNumber[15:0] & secondNumber[15:0];
     }
+    
+    //OR
     if(alufn == b1110){
       answer[15:0] = firstNumber[15:0] | secondNumber[15:0];
     }
+    
+    //XOR
     if(alufn == b0110){
       answer[15:0] = firstNumber[15:0] ^ secondNumber[15:0];
     }
+    
+    //"A" (answer=firstNumber)
     if(alufn == b1010){
       answer[15:0] = firstNumber[15:0];
     }
