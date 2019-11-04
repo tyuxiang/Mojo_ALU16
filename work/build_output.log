@@ -23,7 +23,7 @@ source {D:\Programs\Alchitry\Alchitry-labs\Workspace\ALU_test\work\project.tcl}
 # if {[file exists "$projDir/$projName"]} { file delete -force "$projDir/$projName" }
 # create_project $projName "$projDir/$projName" -part $device
 # set_property design_mode RTL [get_filesets sources_1]
-# set verilogSources [list "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/mojo_top_0.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/alu_1.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/reset_conditioner_2.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/adder_3.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/bool_4.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/shft_5.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/comp_6.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/nv_7.v" ]
+# set verilogSources [list "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/mojo_top_0.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/new_alu_1.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/edge_detector_2.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/reset_conditioner_3.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/mult_seven_seg_4.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/mult_dec_ctr_5.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/counter_6.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/adder_7.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/bool_8.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/shft_9.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/comp_10.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/nv_11.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/counter_12.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/seven_seg_13.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/decoder_14.v" "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/verilog/dec_ctr_15.v" ]
 # import_files -fileset [get_filesets sources_1] -force -norecurse $verilogSources
 # set ucfSources [list "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/constraint/custom.ucf" "D:/Programs/Alchitry/Alchitry-labs/library/components/mojo.ucf" "D:/Programs/Alchitry/Alchitry-labs/library/components/io_shield.ucf" ]
 # import_files -fileset [get_filesets constrs_1] -force -norecurse $ucfSources
@@ -33,10 +33,10 @@ source {D:\Programs\Alchitry\Alchitry-labs\Workspace\ALU_test\work\project.tcl}
 # set_property steps.par.args.mt on [get_runs impl_1]
 # update_compile_order -fileset sources_1
 # launch_runs -runs synth_1
-[Wed Oct 30 10:11:14 2019] Launched synth_1...
+[Mon Nov 04 15:24:39 2019] Launched synth_1...
 Run output will be captured here: D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.runs/synth_1/runme.log
 # wait_on_run synth_1
-[Wed Oct 30 10:11:14 2019] Waiting for synth_1 to finish...
+[Mon Nov 04 15:24:39 2019] Waiting for synth_1 to finish...
 
 *** Running xst
     with args -ifn "mojo_top_0.xst" -ofn "mojo_top_0.srp" -intstyle ise
@@ -46,20 +46,36 @@ Reading design: mojo_top_0.prj
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/shft_5.v" into library work
-Parsing module <shft_5>.
-Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/nv_7.v" into library work
-Parsing module <nv_7>.
-Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/comp_6.v" into library work
-Parsing module <comp_6>.
-Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/bool_4.v" into library work
-Parsing module <bool_4>.
-Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/adder_3.v" into library work
-Parsing module <adder_3>.
-Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/reset_conditioner_2.v" into library work
-Parsing module <reset_conditioner_2>.
-Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" into library work
-Parsing module <alu_1>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/shft_9.v" into library work
+Parsing module <shft_9>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/seven_seg_13.v" into library work
+Parsing module <seven_seg_13>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/nv_11.v" into library work
+Parsing module <nv_11>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/dec_ctr_15.v" into library work
+Parsing module <dec_ctr_15>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/decoder_14.v" into library work
+Parsing module <decoder_14>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/counter_12.v" into library work
+Parsing module <counter_12>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/comp_10.v" into library work
+Parsing module <comp_10>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/bool_8.v" into library work
+Parsing module <bool_8>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/adder_7.v" into library work
+Parsing module <adder_7>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/reset_conditioner_3.v" into library work
+Parsing module <reset_conditioner_3>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/new_alu_1.v" into library work
+Parsing module <new_alu_1>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/mult_seven_seg_4.v" into library work
+Parsing module <mult_seven_seg_4>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/mult_dec_ctr_5.v" into library work
+Parsing module <mult_dec_ctr_5>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/edge_detector_2.v" into library work
+Parsing module <edge_detector_2>.
+Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/counter_6.v" into library work
+Parsing module <counter_6>.
 Analyzing Verilog file "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/mojo_top_0.v" into library work
 Parsing module <mojo_top_0>.
 
@@ -69,29 +85,45 @@ Parsing module <mojo_top_0>.
 
 Elaborating module <mojo_top_0>.
 
-Elaborating module <alu_1>.
+Elaborating module <new_alu_1>.
 
-Elaborating module <adder_3>.
+Elaborating module <adder_7>.
 
-Elaborating module <bool_4>.
+Elaborating module <bool_8>.
 
-Elaborating module <shft_5>.
+Elaborating module <shft_9>.
 
-Elaborating module <comp_6>.
+Elaborating module <comp_10>.
 
-Elaborating module <nv_7>.
-WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 83: Result of 4-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 89: Result of 4-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 90: Result of 4-bit expression is truncated to fit in 1-bit target.
-WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 91: Result of 4-bit expression is truncated to fit in 1-bit target.
-WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 92: Result of 4-bit expression is truncated to fit in 1-bit target.
-WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 93: Result of 4-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 94: Result of 4-bit expression is truncated to fit in 1-bit target.
-WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 95: Result of 4-bit expression is truncated to fit in 1-bit target.
-WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 96: Result of 4-bit expression is truncated to fit in 1-bit target.
-WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v" Line 97: Result of 4-bit expression is truncated to fit in 1-bit target.
+Elaborating module <nv_11>.
+WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/new_alu_1.v" Line 95: Result of 4-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/new_alu_1.v" Line 101: Result of 4-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/new_alu_1.v" Line 102: Result of 4-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/new_alu_1.v" Line 103: Result of 4-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/new_alu_1.v" Line 104: Result of 4-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/new_alu_1.v" Line 105: Result of 4-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/new_alu_1.v" Line 109: Result of 4-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/new_alu_1.v" Line 110: Result of 4-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/new_alu_1.v" Line 111: Result of 4-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/new_alu_1.v" Line 112: Result of 4-bit expression is truncated to fit in 2-bit target.
 
-Elaborating module <reset_conditioner_2>.
+Elaborating module <edge_detector_2>.
+
+Elaborating module <reset_conditioner_3>.
+
+Elaborating module <mult_seven_seg_4>.
+
+Elaborating module <counter_12>.
+
+Elaborating module <seven_seg_13>.
+
+Elaborating module <decoder_14>.
+
+Elaborating module <mult_dec_ctr_5>.
+
+Elaborating module <dec_ctr_15>.
+
+Elaborating module <counter_6>.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -99,72 +131,180 @@ Elaborating module <reset_conditioner_2>.
 
 Synthesizing Unit <mojo_top_0>.
     Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/mojo_top_0.v".
-WARNING:Xst:647 - Input <io_dip<23:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <io_button<4:1>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <io_dip<22:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <cclk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <spi_ss> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <spi_mosi> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <spi_sck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <avr_tx> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 16-bit register for signal <M_in2_reg_q>.
-    Found 6-bit register for signal <M_alufn_reg_q>.
-    Found 3-bit register for signal <M_state_q>.
-    Found 16-bit register for signal <M_in1_reg_q>.
+    Found 6-bit register for signal <M_state_q>.
+INFO:Xst:1799 - State 010100 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 010101 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 010110 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 010111 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 011000 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 011001 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 011010 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 011011 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 011100 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 011101 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 011110 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 011111 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 100000 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 100001 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 100010 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 100011 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 100100 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 100101 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 100110 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 100111 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 101000 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 101001 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 101010 is never reached in FSM <M_state_q>.
+INFO:Xst:1799 - State 101011 is never reached in FSM <M_state_q>.
     Found finite state machine <FSM_0> for signal <M_state_q>.
     -----------------------------------------------------------------------
-    | States             | 5                                              |
-    | Transitions        | 10                                             |
-    | Inputs             | 5                                              |
-    | Outputs            | 3                                              |
+    | States             | 44                                             |
+    | Transitions        | 56                                             |
+    | Inputs             | 26                                             |
+    | Outputs            | 42                                             |
     | Clock              | clk (rising_edge)                              |
     | Reset              | M_reset_cond_out (positive)                    |
     | Reset type         | synchronous                                    |
-    | Reset State        | 000                                            |
-    | Power Up State     | 000                                            |
+    | Reset State        | 000000                                         |
+    | Power Up State     | 000000                                         |
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 1-bit tristate buffer for signal <spi_miso> created at line 61
-    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 61
-    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 61
-    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 61
-    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 61
-    Found 1-bit tristate buffer for signal <avr_rx> created at line 61
+    Found 1-bit tristate buffer for signal <spi_miso> created at line 135
+    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 135
+    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 135
+    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 135
+    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 135
+    Found 1-bit tristate buffer for signal <avr_rx> created at line 135
+    Found 1-bit tristate buffer for signal <M_edge_detector_in> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<15>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<14>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<13>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<12>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<11>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<10>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<9>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<8>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<7>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<6>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<5>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<4>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<3>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<2>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<1>> created at line 135
+    Found 1-bit tristate buffer for signal <M_seg_values<0>> created at line 135
+    Found 1-bit tristate buffer for signal <io_seg<7>> created at line 135
+    Found 1-bit tristate buffer for signal <io_seg<6>> created at line 135
+    Found 1-bit tristate buffer for signal <io_seg<5>> created at line 135
+    Found 1-bit tristate buffer for signal <io_seg<4>> created at line 135
+    Found 1-bit tristate buffer for signal <io_seg<3>> created at line 135
+    Found 1-bit tristate buffer for signal <io_seg<2>> created at line 135
+    Found 1-bit tristate buffer for signal <io_seg<1>> created at line 135
+    Found 1-bit tristate buffer for signal <io_seg<0>> created at line 135
+    Found 1-bit tristate buffer for signal <io_sel<3>> created at line 135
+    Found 1-bit tristate buffer for signal <io_sel<2>> created at line 135
+    Found 1-bit tristate buffer for signal <io_sel<1>> created at line 135
+    Found 1-bit tristate buffer for signal <io_sel<0>> created at line 135
     Summary:
-	inferred  38 D-type flip-flop(s).
-	inferred   3 Multiplexer(s).
-	inferred   6 Tristate(s).
+	inferred  21 Multiplexer(s).
+	inferred  35 Tristate(s).
 	inferred   1 Finite State Machine(s).
 Unit <mojo_top_0> synthesized.
 
-Synthesizing Unit <alu_1>.
-    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/alu_1.v".
+Synthesizing Unit <new_alu_1>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/new_alu_1.v".
     Summary:
 	inferred  12 Multiplexer(s).
-Unit <alu_1> synthesized.
+Unit <new_alu_1> synthesized.
 
-Synthesizing Unit <adder_3>.
-    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/adder_3.v".
-    Found 16-bit subtractor for signal <firstNumber[15]_secondNumber[15]_sub_6_OUT> created at line 28.
-    Found 16-bit adder for signal <firstNumber[15]_secondNumber[15]_add_2_OUT> created at line 25.
-    Found 16x16-bit multiplier for signal <n0018> created at line 31.
+Synthesizing Unit <adder_7>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/adder_7.v".
+    Found 16-bit subtractor for signal <firstNumber[15]_secondNumber[15]_sub_5_OUT> created at line 22.
+    Found 16-bit adder for signal <firstNumber[15]_secondNumber[15]_add_1_OUT> created at line 19.
+    Found 16x16-bit multiplier for signal <n0019> created at line 25.
     Found 16-bit 4-to-1 multiplexer for signal <answer> created at line 11.
-    Found 16-bit comparator equal for signal <z> created at line 19
     Summary:
 	inferred   1 Multiplier(s).
 	inferred   1 Adder/Subtractor(s).
-	inferred   1 Comparator(s).
 	inferred   2 Multiplexer(s).
-Unit <adder_3> synthesized.
+Unit <adder_7> synthesized.
 
-Synthesizing Unit <bool_4>.
-    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/bool_4.v".
+Synthesizing Unit <div_16s_16s>.
+    Related source file is "".
+    Found 16-bit subtractor for signal <a[15]_unary_minus_1_OUT> created at line 0.
+    Found 16-bit subtractor for signal <b[15]_unary_minus_3_OUT> created at line 0.
+    Found 32-bit adder for signal <n1002> created at line 0.
+    Found 32-bit adder for signal <GND_5_o_b[15]_add_5_OUT> created at line 0.
+    Found 31-bit adder for signal <n1006> created at line 0.
+    Found 31-bit adder for signal <GND_5_o_b[15]_add_7_OUT> created at line 0.
+    Found 30-bit adder for signal <n1010> created at line 0.
+    Found 30-bit adder for signal <GND_5_o_b[15]_add_9_OUT> created at line 0.
+    Found 29-bit adder for signal <n1014> created at line 0.
+    Found 29-bit adder for signal <GND_5_o_b[15]_add_11_OUT> created at line 0.
+    Found 28-bit adder for signal <n1018> created at line 0.
+    Found 28-bit adder for signal <GND_5_o_b[15]_add_13_OUT> created at line 0.
+    Found 27-bit adder for signal <n1022> created at line 0.
+    Found 27-bit adder for signal <GND_5_o_b[15]_add_15_OUT> created at line 0.
+    Found 26-bit adder for signal <n1026> created at line 0.
+    Found 26-bit adder for signal <GND_5_o_b[15]_add_17_OUT> created at line 0.
+    Found 25-bit adder for signal <n1030> created at line 0.
+    Found 25-bit adder for signal <GND_5_o_b[15]_add_19_OUT> created at line 0.
+    Found 24-bit adder for signal <n1034> created at line 0.
+    Found 24-bit adder for signal <GND_5_o_b[15]_add_21_OUT> created at line 0.
+    Found 23-bit adder for signal <n1038> created at line 0.
+    Found 23-bit adder for signal <GND_5_o_b[15]_add_23_OUT> created at line 0.
+    Found 22-bit adder for signal <n1042> created at line 0.
+    Found 22-bit adder for signal <GND_5_o_b[15]_add_25_OUT> created at line 0.
+    Found 21-bit adder for signal <n1046> created at line 0.
+    Found 21-bit adder for signal <GND_5_o_b[15]_add_27_OUT> created at line 0.
+    Found 20-bit adder for signal <n1050> created at line 0.
+    Found 20-bit adder for signal <GND_5_o_b[15]_add_29_OUT> created at line 0.
+    Found 19-bit adder for signal <n1054> created at line 0.
+    Found 19-bit adder for signal <GND_5_o_b[15]_add_31_OUT> created at line 0.
+    Found 18-bit adder for signal <n1058> created at line 0.
+    Found 18-bit adder for signal <GND_5_o_b[15]_add_33_OUT> created at line 0.
+    Found 17-bit adder for signal <n1062> created at line 0.
+    Found 17-bit adder for signal <GND_5_o_b[15]_add_35_OUT> created at line 0.
+    Found 17-bit adder for signal <GND_5_o_BUS_0001_add_38_OUT[16:0]> created at line 0.
+    Found 32-bit comparator greater for signal <BUS_0001_INV_490_o> created at line 0
+    Found 31-bit comparator greater for signal <BUS_0002_INV_489_o> created at line 0
+    Found 30-bit comparator greater for signal <BUS_0003_INV_488_o> created at line 0
+    Found 29-bit comparator greater for signal <BUS_0004_INV_487_o> created at line 0
+    Found 28-bit comparator greater for signal <BUS_0005_INV_486_o> created at line 0
+    Found 27-bit comparator greater for signal <BUS_0006_INV_485_o> created at line 0
+    Found 26-bit comparator greater for signal <BUS_0007_INV_484_o> created at line 0
+    Found 25-bit comparator greater for signal <BUS_0008_INV_483_o> created at line 0
+    Found 24-bit comparator greater for signal <BUS_0009_INV_482_o> created at line 0
+    Found 23-bit comparator greater for signal <BUS_0010_INV_481_o> created at line 0
+    Found 22-bit comparator greater for signal <BUS_0011_INV_480_o> created at line 0
+    Found 21-bit comparator greater for signal <BUS_0012_INV_479_o> created at line 0
+    Found 20-bit comparator greater for signal <BUS_0013_INV_478_o> created at line 0
+    Found 19-bit comparator greater for signal <BUS_0014_INV_477_o> created at line 0
+    Found 18-bit comparator greater for signal <BUS_0015_INV_476_o> created at line 0
+    Found 17-bit comparator greater for signal <BUS_0016_INV_475_o> created at line 0
+    Found 16-bit comparator greater for signal <BUS_0017_INV_474_o> created at line 0
+    Summary:
+	inferred  35 Adder/Subtractor(s).
+	inferred  17 Comparator(s).
+	inferred 244 Multiplexer(s).
+Unit <div_16s_16s> synthesized.
+
+Synthesizing Unit <bool_8>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/bool_8.v".
     Summary:
 	inferred  10 Multiplexer(s).
-Unit <bool_4> synthesized.
+Unit <bool_8> synthesized.
 
-Synthesizing Unit <shft_5>.
-    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/shft_5.v".
+Synthesizing Unit <shft_9>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/shft_9.v".
     Found 16-bit shifter logical left for signal <firstNumber[15]_secondNumber[3]_shift_left_1_OUT> created at line 19
     Found 16-bit shifter logical right for signal <firstNumber[15]_secondNumber[3]_shift_right_4_OUT> created at line 22
     Found 16-bit shifter arithmetic right for signal <firstNumber[15]_secondNumber[3]_shift_right_7_OUT> created at line 25
@@ -172,60 +312,241 @@ Synthesizing Unit <shft_5>.
     Summary:
 	inferred   1 Multiplexer(s).
 	inferred   3 Combinational logic shifter(s).
-Unit <shft_5> synthesized.
+Unit <shft_9> synthesized.
 
-Synthesizing Unit <comp_6>.
-    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/comp_6.v".
+Synthesizing Unit <comp_10>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/comp_10.v".
     Found 16-bit 4-to-1 multiplexer for signal <answer> created at line 12.
     Summary:
 	inferred   1 Multiplexer(s).
-Unit <comp_6> synthesized.
+Unit <comp_10> synthesized.
 
-Synthesizing Unit <nv_7>.
-    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/nv_7.v".
-    Found 1-bit subtractor for signal <b31_unary_minus_2_OUT<0>> created at line 21.
+Synthesizing Unit <nv_11>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/nv_11.v".
+    Found 1-bit 4-to-1 multiplexer for signal <v> created at line 15.
+    Found 16-bit comparator not equal for signal <n0018> created at line 31
     Summary:
-	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
 	inferred   1 Multiplexer(s).
-Unit <nv_7> synthesized.
+Unit <nv_11> synthesized.
 
-Synthesizing Unit <reset_conditioner_2>.
-    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/reset_conditioner_2.v".
+Synthesizing Unit <div_16u_16u>.
+    Related source file is "".
+    Found 32-bit adder for signal <n0956> created at line 0.
+    Found 32-bit adder for signal <GND_11_o_b[15]_add_1_OUT> created at line 0.
+    Found 31-bit adder for signal <n0960> created at line 0.
+    Found 31-bit adder for signal <GND_11_o_b[15]_add_3_OUT> created at line 0.
+    Found 30-bit adder for signal <n0964> created at line 0.
+    Found 30-bit adder for signal <GND_11_o_b[15]_add_5_OUT> created at line 0.
+    Found 29-bit adder for signal <n0968> created at line 0.
+    Found 29-bit adder for signal <GND_11_o_b[15]_add_7_OUT> created at line 0.
+    Found 28-bit adder for signal <n0972> created at line 0.
+    Found 28-bit adder for signal <GND_11_o_b[15]_add_9_OUT> created at line 0.
+    Found 27-bit adder for signal <n0976> created at line 0.
+    Found 27-bit adder for signal <GND_11_o_b[15]_add_11_OUT> created at line 0.
+    Found 26-bit adder for signal <n0980> created at line 0.
+    Found 26-bit adder for signal <GND_11_o_b[15]_add_13_OUT> created at line 0.
+    Found 25-bit adder for signal <n0984> created at line 0.
+    Found 25-bit adder for signal <GND_11_o_b[15]_add_15_OUT> created at line 0.
+    Found 24-bit adder for signal <n0988> created at line 0.
+    Found 24-bit adder for signal <GND_11_o_b[15]_add_17_OUT> created at line 0.
+    Found 23-bit adder for signal <n0992> created at line 0.
+    Found 23-bit adder for signal <GND_11_o_b[15]_add_19_OUT> created at line 0.
+    Found 22-bit adder for signal <n0996> created at line 0.
+    Found 22-bit adder for signal <GND_11_o_b[15]_add_21_OUT> created at line 0.
+    Found 21-bit adder for signal <n1000> created at line 0.
+    Found 21-bit adder for signal <GND_11_o_b[15]_add_23_OUT> created at line 0.
+    Found 20-bit adder for signal <n1004> created at line 0.
+    Found 20-bit adder for signal <GND_11_o_b[15]_add_25_OUT> created at line 0.
+    Found 19-bit adder for signal <n1008> created at line 0.
+    Found 19-bit adder for signal <GND_11_o_b[15]_add_27_OUT> created at line 0.
+    Found 18-bit adder for signal <n1012> created at line 0.
+    Found 18-bit adder for signal <GND_11_o_b[15]_add_29_OUT> created at line 0.
+    Found 17-bit adder for signal <n1016> created at line 0.
+    Found 17-bit adder for signal <GND_11_o_b[15]_add_31_OUT> created at line 0.
+    Found 32-bit comparator lessequal for signal <BUS_0001> created at line 0
+    Found 31-bit comparator lessequal for signal <BUS_0002> created at line 0
+    Found 30-bit comparator lessequal for signal <BUS_0003> created at line 0
+    Found 29-bit comparator lessequal for signal <BUS_0004> created at line 0
+    Found 28-bit comparator lessequal for signal <BUS_0005> created at line 0
+    Found 27-bit comparator lessequal for signal <BUS_0006> created at line 0
+    Found 26-bit comparator lessequal for signal <BUS_0007> created at line 0
+    Found 25-bit comparator lessequal for signal <BUS_0008> created at line 0
+    Found 24-bit comparator lessequal for signal <BUS_0009> created at line 0
+    Found 23-bit comparator lessequal for signal <BUS_0010> created at line 0
+    Found 22-bit comparator lessequal for signal <BUS_0011> created at line 0
+    Found 21-bit comparator lessequal for signal <BUS_0012> created at line 0
+    Found 20-bit comparator lessequal for signal <BUS_0013> created at line 0
+    Found 19-bit comparator lessequal for signal <BUS_0014> created at line 0
+    Found 18-bit comparator lessequal for signal <BUS_0015> created at line 0
+    Found 17-bit comparator lessequal for signal <BUS_0016> created at line 0
+    Found 16-bit comparator lessequal for signal <BUS_0017> created at line 0
+    Summary:
+	inferred  32 Adder/Subtractor(s).
+	inferred  17 Comparator(s).
+	inferred 241 Multiplexer(s).
+Unit <div_16u_16u> synthesized.
+
+Synthesizing Unit <edge_detector_2>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/edge_detector_2.v".
+    Found 1-bit register for signal <M_last_q>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <edge_detector_2> synthesized.
+
+Synthesizing Unit <reset_conditioner_3>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/reset_conditioner_3.v".
     Found 4-bit register for signal <M_stage_q>.
     Summary:
 	inferred   4 D-type flip-flop(s).
-Unit <reset_conditioner_2> synthesized.
+Unit <reset_conditioner_3> synthesized.
+
+Synthesizing Unit <mult_seven_seg_4>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/mult_seven_seg_4.v".
+    Found 4-bit adder for signal <M_ctr_value[1]_GND_14_o_add_0_OUT> created at line 48.
+    Found 31-bit shifter logical right for signal <n0010> created at line 48
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Combinational logic shifter(s).
+Unit <mult_seven_seg_4> synthesized.
+
+Synthesizing Unit <counter_12>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/counter_12.v".
+    Found 18-bit register for signal <M_ctr_q>.
+    Found 18-bit adder for signal <M_ctr_q[17]_GND_15_o_add_0_OUT> created at line 35.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  18 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <counter_12> synthesized.
+
+Synthesizing Unit <seven_seg_13>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/seven_seg_13.v".
+    Found 16x7-bit Read Only RAM for signal <segs>
+    Summary:
+	inferred   1 RAM(s).
+Unit <seven_seg_13> synthesized.
+
+Synthesizing Unit <decoder_14>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/decoder_14.v".
+    Summary:
+	no macro.
+Unit <decoder_14> synthesized.
+
+Synthesizing Unit <mult_dec_ctr_5>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/mult_dec_ctr_5.v".
+INFO:Xst:3210 - "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/mult_dec_ctr_5.v" line 28: Output port <ovf> of the instance <dctr_gen_0[3].dctr> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <mult_dec_ctr_5> synthesized.
+
+Synthesizing Unit <dec_ctr_15>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/dec_ctr_15.v".
+    Found 4-bit register for signal <M_val_q>.
+    Found 4-bit adder for signal <M_val_q[3]_GND_19_o_add_2_OUT> created at line 28.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   4 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <dec_ctr_15> synthesized.
+
+Synthesizing Unit <counter_6>.
+    Related source file is "D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/sources_1/imports/verilog/counter_6.v".
+    Found 26-bit register for signal <M_ctr_q>.
+    Found 26-bit adder for signal <M_ctr_d> created at line 35.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  26 D-type flip-flop(s).
+Unit <counter_6> synthesized.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
+# RAMs                                                 : 1
+ 16x7-bit single-port Read Only RAM                    : 1
 # Multipliers                                          : 1
  16x16-bit multiplier                                  : 1
-# Adders/Subtractors                                   : 2
- 1-bit subtractor                                      : 1
+# Adders/Subtractors                                   : 75
  16-bit addsub                                         : 1
-# Registers                                            : 4
- 16-bit register                                       : 2
- 4-bit register                                        : 1
- 6-bit register                                        : 1
-# Comparators                                          : 1
- 16-bit comparator equal                               : 1
-# Multiplexers                                         : 30
- 1-bit 2-to-1 multiplexer                              : 1
- 16-bit 2-to-1 multiplexer                             : 25
+ 16-bit subtractor                                     : 2
+ 17-bit adder                                          : 5
+ 18-bit adder                                          : 5
+ 19-bit adder                                          : 4
+ 20-bit adder                                          : 4
+ 21-bit adder                                          : 4
+ 22-bit adder                                          : 4
+ 23-bit adder                                          : 4
+ 24-bit adder                                          : 4
+ 25-bit adder                                          : 4
+ 26-bit adder                                          : 5
+ 27-bit adder                                          : 4
+ 28-bit adder                                          : 4
+ 29-bit adder                                          : 4
+ 30-bit adder                                          : 4
+ 31-bit adder                                          : 4
+ 32-bit adder                                          : 4
+ 4-bit adder                                           : 5
+# Registers                                            : 8
+ 1-bit register                                        : 1
+ 18-bit register                                       : 1
+ 26-bit register                                       : 1
+ 4-bit register                                        : 5
+# Comparators                                          : 35
+ 16-bit comparator greater                             : 1
+ 16-bit comparator lessequal                           : 1
+ 16-bit comparator not equal                           : 1
+ 17-bit comparator greater                             : 1
+ 17-bit comparator lessequal                           : 1
+ 18-bit comparator greater                             : 1
+ 18-bit comparator lessequal                           : 1
+ 19-bit comparator greater                             : 1
+ 19-bit comparator lessequal                           : 1
+ 20-bit comparator greater                             : 1
+ 20-bit comparator lessequal                           : 1
+ 21-bit comparator greater                             : 1
+ 21-bit comparator lessequal                           : 1
+ 22-bit comparator greater                             : 1
+ 22-bit comparator lessequal                           : 1
+ 23-bit comparator greater                             : 1
+ 23-bit comparator lessequal                           : 1
+ 24-bit comparator greater                             : 1
+ 24-bit comparator lessequal                           : 1
+ 25-bit comparator greater                             : 1
+ 25-bit comparator lessequal                           : 1
+ 26-bit comparator greater                             : 1
+ 26-bit comparator lessequal                           : 1
+ 27-bit comparator greater                             : 1
+ 27-bit comparator lessequal                           : 1
+ 28-bit comparator greater                             : 1
+ 28-bit comparator lessequal                           : 1
+ 29-bit comparator greater                             : 1
+ 29-bit comparator lessequal                           : 1
+ 30-bit comparator greater                             : 1
+ 30-bit comparator lessequal                           : 1
+ 31-bit comparator greater                             : 1
+ 31-bit comparator lessequal                           : 1
+ 32-bit comparator greater                             : 1
+ 32-bit comparator lessequal                           : 1
+# Multiplexers                                         : 538
+ 1-bit 2-to-1 multiplexer                              : 498
+ 1-bit 4-to-1 multiplexer                              : 1
+ 16-bit 2-to-1 multiplexer                             : 28
  16-bit 4-to-1 multiplexer                             : 2
- 2-bit 2-to-1 multiplexer                              : 1
- 6-bit 2-to-1 multiplexer                              : 1
-# Logic shifters                                       : 3
+ 17-bit 2-to-1 multiplexer                             : 1
+ 18-bit 2-to-1 multiplexer                             : 1
+ 24-bit 2-to-1 multiplexer                             : 3
+ 4-bit 2-to-1 multiplexer                              : 4
+# Logic shifters                                       : 4
  16-bit shifter arithmetic right                       : 1
  16-bit shifter logical left                           : 1
  16-bit shifter logical right                          : 1
-# Tristates                                            : 6
- 1-bit tristate buffer                                 : 6
+ 31-bit shifter logical right                          : 1
+# Tristates                                            : 35
+ 1-bit tristate buffer                                 : 35
 # FSMs                                                 : 1
-# Xors                                                 : 2
- 1-bit xor2                                            : 1
+# Xors                                                 : 3
+ 1-bit xor2                                            : 2
  16-bit xor2                                           : 1
 
 =========================================================================
@@ -236,30 +557,103 @@ INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmet
 =========================================================================
 
 
+Synthesizing (advanced) Unit <counter_12>.
+The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
+Unit <counter_12> synthesized (advanced).
+
+Synthesizing (advanced) Unit <counter_6>.
+The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
+Unit <counter_6> synthesized (advanced).
+
+Synthesizing (advanced) Unit <dec_ctr_15>.
+The following registers are absorbed into counter <M_val_q>: 1 register on signal <M_val_q>.
+Unit <dec_ctr_15> synthesized (advanced).
+
+Synthesizing (advanced) Unit <seven_seg_13>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_segs> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 7-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <char>          |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <segs>          |          |
+    -----------------------------------------------------------------------
+Unit <seven_seg_13> synthesized (advanced).
+
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
+# RAMs                                                 : 1
+ 16x7-bit single-port distributed Read Only RAM        : 1
 # Multipliers                                          : 1
  16x16-bit multiplier                                  : 1
-# Adders/Subtractors                                   : 1
+# Adders/Subtractors                                   : 37
+ 16-bit adder carry in                                 : 32
  16-bit addsub                                         : 1
-# Registers                                            : 42
- Flip-Flops                                            : 42
-# Comparators                                          : 1
- 16-bit comparator equal                               : 1
-# Multiplexers                                         : 29
- 16-bit 2-to-1 multiplexer                             : 25
+ 16-bit subtractor                                     : 2
+ 17-bit adder                                          : 1
+ 4-bit adder                                           : 1
+# Counters                                             : 6
+ 18-bit up counter                                     : 1
+ 26-bit up counter                                     : 1
+ 4-bit up counter                                      : 4
+# Registers                                            : 5
+ Flip-Flops                                            : 5
+# Comparators                                          : 35
+ 16-bit comparator greater                             : 1
+ 16-bit comparator lessequal                           : 1
+ 16-bit comparator not equal                           : 1
+ 17-bit comparator greater                             : 1
+ 17-bit comparator lessequal                           : 1
+ 18-bit comparator greater                             : 1
+ 18-bit comparator lessequal                           : 1
+ 19-bit comparator greater                             : 1
+ 19-bit comparator lessequal                           : 1
+ 20-bit comparator greater                             : 1
+ 20-bit comparator lessequal                           : 1
+ 21-bit comparator greater                             : 1
+ 21-bit comparator lessequal                           : 1
+ 22-bit comparator greater                             : 1
+ 22-bit comparator lessequal                           : 1
+ 23-bit comparator greater                             : 1
+ 23-bit comparator lessequal                           : 1
+ 24-bit comparator greater                             : 1
+ 24-bit comparator lessequal                           : 1
+ 25-bit comparator greater                             : 1
+ 25-bit comparator lessequal                           : 1
+ 26-bit comparator greater                             : 1
+ 26-bit comparator lessequal                           : 1
+ 27-bit comparator greater                             : 1
+ 27-bit comparator lessequal                           : 1
+ 28-bit comparator greater                             : 1
+ 28-bit comparator lessequal                           : 1
+ 29-bit comparator greater                             : 1
+ 29-bit comparator lessequal                           : 1
+ 30-bit comparator greater                             : 1
+ 30-bit comparator lessequal                           : 1
+ 31-bit comparator greater                             : 1
+ 31-bit comparator lessequal                           : 1
+ 32-bit comparator greater                             : 1
+ 32-bit comparator lessequal                           : 1
+# Multiplexers                                         : 533
+ 1-bit 2-to-1 multiplexer                              : 498
+ 1-bit 4-to-1 multiplexer                              : 1
+ 16-bit 2-to-1 multiplexer                             : 28
  16-bit 4-to-1 multiplexer                             : 2
- 2-bit 2-to-1 multiplexer                              : 1
- 6-bit 2-to-1 multiplexer                              : 1
-# Logic shifters                                       : 3
+ 17-bit 2-to-1 multiplexer                             : 1
+ 24-bit 2-to-1 multiplexer                             : 3
+# Logic shifters                                       : 4
  16-bit shifter arithmetic right                       : 1
  16-bit shifter logical left                           : 1
  16-bit shifter logical right                          : 1
+ 31-bit shifter logical right                          : 1
 # FSMs                                                 : 1
-# Xors                                                 : 2
- 1-bit xor2                                            : 1
+# Xors                                                 : 3
+ 1-bit xor2                                            : 2
  16-bit xor2                                           : 1
 
 =========================================================================
@@ -268,27 +662,99 @@ Macro Statistics
 *                         Low Level Synthesis                           *
 =========================================================================
 Analyzing FSM <MFsm> for best encoding.
-Optimizing FSM <FSM_0> on signal <M_state_q[1:3]> with user encoding.
--------------------
- State | Encoding
--------------------
- 000   | 000
- 001   | 001
- 010   | 010
- 011   | 011
- 100   | 100
--------------------
+Optimizing FSM <FSM_0> on signal <M_state_q[1:20]> with one-hot encoding.
+--------------------------------
+ State  | Encoding
+--------------------------------
+ 000000 | 00000000000000000001
+ 000001 | 00000000000000000010
+ 000010 | 00000000000000000100
+ 101101 | 00000000000000001000
+ 000011 | 00000000000000010000
+ 000100 | 00000000000000100000
+ 000101 | 00000000000001000000
+ 000110 | 00000000000010000000
+ 000111 | 00000000000100000000
+ 001000 | 00000000001000000000
+ 001001 | 00000000010000000000
+ 001010 | 00000000100000000000
+ 001011 | 00000001000000000000
+ 001100 | 00000010000000000000
+ 001101 | 00000100000000000000
+ 001110 | 00001000000000000000
+ 001111 | 00010000000000000000
+ 010000 | 00100000000000000000
+ 010001 | 01000000000000000000
+ 010010 | 10000000000000000000
+ 010100 | unreached
+ 010101 | unreached
+ 010110 | unreached
+ 010111 | unreached
+ 011000 | unreached
+ 011001 | unreached
+ 011010 | unreached
+ 011011 | unreached
+ 011100 | unreached
+ 011101 | unreached
+ 011110 | unreached
+ 011111 | unreached
+ 100000 | unreached
+ 100001 | unreached
+ 100010 | unreached
+ 100011 | unreached
+ 100100 | unreached
+ 100101 | unreached
+ 100110 | unreached
+ 100111 | unreached
+ 101000 | unreached
+ 101001 | unreached
+ 101010 | unreached
+ 101011 | unreached
+--------------------------------
+WARNING:Xst:2042 - Unit mojo_top_0: 17 internal tristates are replaced by logic (pull-up yes): M_edge_detector_in, M_seg_values<0>, M_seg_values<10>, M_seg_values<11>, M_seg_values<12>, M_seg_values<13>, M_seg_values<14>, M_seg_values<15>, M_seg_values<1>, M_seg_values<2>, M_seg_values<3>, M_seg_values<4>, M_seg_values<5>, M_seg_values<6>, M_seg_values<7>, M_seg_values<8>, M_seg_values<9>.
 
 Optimizing unit <mojo_top_0> ...
 
-Optimizing unit <alu_1> ...
+Optimizing unit <new_alu_1> ...
+
+Optimizing unit <nv_11> ...
+
+Optimizing unit <div_16u_16u> ...
+
+Optimizing unit <div_16s_16s> ...
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_0> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_0> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_1> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_1> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_2> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_2> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_3> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_3> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_4> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_4> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_5> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_5> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_6> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_6> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_7> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_7> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_8> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_8> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_10> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_10> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_9> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_9> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_11> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_11> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_12> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_12> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_13> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_13> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_14> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_14> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_15> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_15> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_16> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_16> 
+INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_17> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ctr/M_ctr_q_17> 
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 7.
-FlipFlop M_state_q_FSM_FFd1 has been replicated 2 time(s)
-FlipFlop M_state_q_FSM_FFd2 has been replicated 2 time(s)
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 22.
+FlipFlop M_state_q_FSM_FFd11 has been replicated 5 time(s)
+FlipFlop M_state_q_FSM_FFd12 has been replicated 5 time(s)
+FlipFlop M_state_q_FSM_FFd13 has been replicated 3 time(s)
+FlipFlop M_state_q_FSM_FFd15 has been replicated 2 time(s)
+FlipFlop M_state_q_FSM_FFd16 has been replicated 3 time(s)
+FlipFlop M_state_q_FSM_FFd18 has been replicated 5 time(s)
+FlipFlop M_state_q_FSM_FFd2 has been replicated 3 time(s)
 FlipFlop M_state_q_FSM_FFd3 has been replicated 3 time(s)
+FlipFlop M_state_q_FSM_FFd4 has been replicated 4 time(s)
+FlipFlop M_state_q_FSM_FFd6 has been replicated 4 time(s)
+FlipFlop M_state_q_FSM_FFd9 has been replicated 5 time(s)
 
 Final Macro Processing ...
 
@@ -300,8 +766,8 @@ Unit <mojo_top_0> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 52
- Flip-Flops                                            : 52
+# Registers                                            : 109
+ Flip-Flops                                            : 109
 
 =========================================================================
 
@@ -325,7 +791,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 52    |
+clk                                | BUFGP                  | 109   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -336,14 +802,14 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 3.523ns (Maximum Frequency: 283.849MHz)
-   Minimum input arrival time before clock: 3.567ns
-   Maximum output required time after clock: 15.676ns
-   Maximum combinational path delay: No path found
+   Minimum period: 113.588ns (Maximum Frequency: 8.804MHz)
+   Minimum input arrival time before clock: 8.333ns
+   Maximum output required time after clock: 115.131ns
+   Maximum combinational path delay: 9.150ns
 
 =========================================================================
-[Wed Oct 30 10:11:24 2019] synth_1 finished
-wait_on_run: Time (s): elapsed = 00:00:10 . Memory (MB): peak = 132.105 ; gain = 0.000
+[Mon Nov 04 15:25:00 2019] synth_1 finished
+wait_on_run: Time (s): elapsed = 00:00:20 . Memory (MB): peak = 132.219 ; gain = 0.000
 # launch_runs -runs impl_1
 Release 14.7 - ngc2edif P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
@@ -352,21 +818,64 @@ WARNING:NetListWriters:298 - No output is written to mojo_top_0.xncf, ignored.
 Processing design ...
    Preping design's networks ...
    Preping design's macros ...
-WARNING:NetListWriters:304 - Port bus M_alu_secondNumber<15 : 0> on block
-   adder_3 is not reconstructed, because there are some missing bus pins.
-WARNING:NetListWriters:304 - Port bus M_shft_firstNumber<11 : 9> on block alu_1
-   is not reconstructed, because there are some missing bus pins.
-WARNING:NetListWriters:304 - Port bus alufn<5 : 1> on block alu_1 is not
+WARNING:NetListWriters:304 - Port bus firstNumber<14 : 9> on block adder_7 is
+   not reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus M_adder_firstNumber<15 : 0> on block
+   adder_7 is not reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus M_adder_secondNumber<15 : 0> on block
+   adder_7 is not reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus secondNumber<14 : 11> on block adder_7 is
+   not reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus n0019<15 : 2> on block adder_7 is not
    reconstructed, because there are some missing bus pins.
-WARNING:NetListWriters:306 - Signal bus M_shft_firstNumber<13 : 2> on block
-   alu_1 is not reconstructed, because there are some missing bus signals.
-WARNING:NetListWriters:306 - Signal bus M_shft_firstNumber<11 : 9> on block
-   mojo_top_0 is not reconstructed, because there are some missing bus signals.
-WARNING:NetListWriters:306 - Signal bus _n0108<23 : 8> on block mojo_top_0 is
+WARNING:NetListWriters:304 - Port bus M_nv_sum<3 : 0> on block adder_7 is not
+   reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus _n0530<28 : 19> on block adder_7 is not
+   reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus n0021<14 : 2> on block adder_7 is not
+   reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:306 - Signal bus n0019<3 : 0> on block adder_7 is not
+   reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus GND_5_o_BUS_0001_add_38_OUT[16:0]<15 :
+   0> on block adder_7 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:304 - Port bus b<14 : 9> on block div_16u_16u is not
+   reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus M_adder_firstNumber<15 : 0> on block
+   div_16u_16u is not reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus Mmux_answer1_split<15 : 1> on block
+   div_16u_16u is not reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus n0019<11 : 2> on block div_16u_16u is not
+   reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus n0021<11 : 2> on block div_16u_16u is not
+   reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:306 - Signal bus n0950<15 : 1> on block div_16u_16u is
    not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   Madd_GND_11_o_b[15]_add_9_OUT_Madd_Madd_cy<14 : 12> on block div_16u_16u is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   Madd_GND_11_o_b[15]_add_11_OUT_Madd_Madd_cy<14 : 11> on block div_16u_16u is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:304 - Port bus firstNumber<14 : 9> on block nv_11 is not
+   reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus secondNumber<14 : 11> on block nv_11 is
+   not reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus Mmux_answer1_split<15 : 1> on block nv_11
+   is not reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus n0019<11 : 2> on block nv_11 is not
+   reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:304 - Port bus n0021<11 : 2> on block nv_11 is not
+   reconstructed, because there are some missing bus pins.
+WARNING:NetListWriters:306 - Signal bus _n0530<33 : 0> on block mojo_top_0 is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus Mmux_answer1_split<15 : 0> on block
+   mojo_top_0 is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus M_adder_secondNumber<12 : 10> on block
+   mojo_top_0 is not reconstructed, because there are some missing bus signals.
   finished :Prep
 Writing EDIF netlist file mojo_top_0.edif ...
-ngc2edif: Total memory usage is 4314516 kilobytes
+ngc2edif: Total memory usage is 4317588 kilobytes
 
 Parsing EDIF File [./Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.data/cache/mojo_top_0_ngc_zx.edif]
 Finished Parsing EDIF File [./Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.data/cache/mojo_top_0_ngc_zx.edif]
@@ -385,11 +894,10 @@ Parsing UCF File [D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/pla
 Finished Parsing UCF File [D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/constrs_1/imports/Alchitry-labs/library/components/mojo.ucf]
 Parsing UCF File [D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/constrs_1/imports/Alchitry-labs/library/components/io_shield.ucf]
 Finished Parsing UCF File [D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.srcs/constrs_1/imports/Alchitry-labs/library/components/io_shield.ucf]
-[Wed Oct 30 10:11:34 2019] Launched impl_1...
+[Mon Nov 04 15:25:05 2019] Launched impl_1...
 Run output will be captured here: D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.runs/impl_1/runme.log
-launch_runs: Time (s): elapsed = 00:00:10 . Memory (MB): peak = 286.852 ; gain = 154.746
 # wait_on_run impl_1
-[Wed Oct 30 10:11:34 2019] Waiting for impl_1 to finish...
+[Mon Nov 04 15:25:05 2019] Waiting for impl_1 to finish...
 
 *** Running ngdbuild
     with args -intstyle ise -p xc6slx9tqg144-2 -dd _ngo -uc "mojo_top_0.ucf" "mojo_top_0.edf"
@@ -426,8 +934,8 @@ NGDBUILD Design Results Summary:
   Number of warnings:   0
 
 Writing NGD file "mojo_top_0.ngd" ...
-Total REAL time to NGDBUILD completion:  14 sec
-Total CPU time to NGDBUILD completion:   6 sec
+Total REAL time to NGDBUILD completion:  8 sec
+Total CPU time to NGDBUILD completion:   3 sec
 
 Writing NGDBUILD log file "mojo_top_0.bld"...
 
@@ -441,106 +949,137 @@ INFO:Map:284 - Map is running with the multi-threading option on. Map currently
    supports the use of up to 2 processors. Based on the the user options and
    machine load, Map will use 2 processors during this run.
 Mapping design into LUTs...
-WARNING:MapLib:701 - Signal spi_channel[2] connected to top level port
-   spi_channel(2) has been removed.
 WARNING:MapLib:701 - Signal spi_channel[3] connected to top level port
    spi_channel(3) has been removed.
-WARNING:MapLib:701 - Signal avr_rx connected to top level port avr_rx has been
-   removed.
+WARNING:MapLib:701 - Signal spi_channel[2] connected to top level port
+   spi_channel(2) has been removed.
+WARNING:MapLib:701 - Signal spi_channel[1] connected to top level port
+   spi_channel(1) has been removed.
 WARNING:MapLib:701 - Signal spi_channel[0] connected to top level port
    spi_channel(0) has been removed.
 WARNING:MapLib:701 - Signal spi_miso connected to top level port spi_miso has
    been removed.
-WARNING:MapLib:701 - Signal spi_channel[1] connected to top level port
-   spi_channel(1) has been removed.
+WARNING:MapLib:701 - Signal avr_rx connected to top level port avr_rx has been
+   removed.
 Running directed packing...
 Running delay-based LUT packing...
 Updating timing models...
+WARNING:Pack:1653 - At least one timing constraint is impossible to meet because component delays alone exceed the constraint. A timing
+   constraint summary below shows the failing constraints (preceded with an Asterisk (*)). Please use the Timing Analyzer (GUI) or TRCE
+   (command line) with the Mapped NCD and PCF files to identify which constraints and paths are failing because of the component delays
+   alone. If the failing path(s) is mapped to Xilinx components as expected, consider relaxing the constraint. If it is not mapped to
+   components as expected, re-evaluate your HDL and how synthesis is optimizing the path. To allow the tools to bypass this error, set the
+   environment variable XIL_TIMING_ALLOW_IMPOSSIBLE to 1.
+
+
+   For more information about the Timing Analyzer, consult the Xilinx Timing Analyzer Reference manual; for more information on TRCE,
+   consult the Xilinx Command Line Tools User Guide "TRACE" chapter.
+INFO:Timing:3284 - This timing report was generated using estimated delay 
+   information.  For accurate numbers, please refer to the post Place and Route 
+   timing report.
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+----------------------------------------------------------------------------------------------------------
+  Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
+                                            |             |    Slack   | Achievable | Errors |    Score   
+----------------------------------------------------------------------------------------------------------
+* TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH | SETUP       |   -12.559ns|    32.559ns|      63|      763178
+   50%                                      | HOLD        |     0.060ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+
+
+1 constraint not met.
+
+
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
 Running timing-driven placement...
-Total REAL time at the beginning of Placer: 7 secs 
-Total CPU  time at the beginning of Placer: 7 secs 
+Total REAL time at the beginning of Placer: 4 secs 
+Total CPU  time at the beginning of Placer: 4 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:60c7759d) REAL time: 8 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:53070f5e) REAL time: 5 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:60c7759d) REAL time: 8 secs 
+Phase 2.7  Design Feasibility Check (Checksum:53070f5e) REAL time: 5 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:60c7759d) REAL time: 8 secs 
+Phase 3.31  Local Placement Optimization (Checksum:53070f5e) REAL time: 5 secs 
 
 Phase 4.2  Initial Placement for Architecture Specific Features
 
 Phase 4.2  Initial Placement for Architecture Specific Features
-(Checksum:11daa3d) REAL time: 9 secs 
+(Checksum:d0550ffe) REAL time: 7 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:11daa3d) REAL time: 9 secs 
+Phase 5.36  Local Placement Optimization (Checksum:d0550ffe) REAL time: 7 secs 
 
 Phase 6.30  Global Clock Region Assignment
-Phase 6.30  Global Clock Region Assignment (Checksum:11daa3d) REAL time: 9 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:d0550ffe) REAL time: 7 secs 
 
 Phase 7.3  Local Placement Optimization
-Phase 7.3  Local Placement Optimization (Checksum:11daa3d) REAL time: 9 secs 
+Phase 7.3  Local Placement Optimization (Checksum:d0550ffe) REAL time: 7 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:11daa3d) REAL time: 9 secs 
+Phase 8.5  Local Placement Optimization (Checksum:d0550ffe) REAL time: 7 secs 
 
 Phase 9.8  Global Placement
-.................
-......
-Phase 9.8  Global Placement (Checksum:456d4b0b) REAL time: 10 secs 
+............
+....................................................
+......................................................................................................................................................................................................................
+..............................................
+.........................................
+Phase 9.8  Global Placement (Checksum:6cd3f172) REAL time: 13 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:456d4b0b) REAL time: 10 secs 
+Phase 10.5  Local Placement Optimization (Checksum:6cd3f172) REAL time: 13 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:ea8b4423) REAL time: 10 secs 
+Phase 11.18  Placement Optimization (Checksum:45e7bde3) REAL time: 20 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:ea8b4423) REAL time: 10 secs 
+Phase 12.5  Local Placement Optimization (Checksum:45e7bde3) REAL time: 20 secs 
 
 Phase 13.34  Placement Validation
-Phase 13.34  Placement Validation (Checksum:ea8b4423) REAL time: 10 secs 
+Phase 13.34  Placement Validation (Checksum:3e499e69) REAL time: 20 secs 
 
-Total REAL time to Placer completion: 10 secs 
-Total CPU  time to Placer completion: 10 secs 
+Total REAL time to Placer completion: 20 secs 
+Total CPU  time to Placer completion: 24 secs 
 Running post-placement packing...
 Writing output files...
 
 Design Summary:
 Number of errors:      0
-Number of warnings:    6
+Number of warnings:    7
 Slice Logic Utilization:
-  Number of Slice Registers:                    52 out of  11,440    1%
-    Number used as Flip Flops:                  52
+  Number of Slice Registers:                   109 out of  11,440    1%
+    Number used as Flip Flops:                 109
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        318 out of   5,720    5%
-    Number used as logic:                      316 out of   5,720    5%
-      Number using O6 output only:             294
-      Number using O5 output only:               0
-      Number using O5 and O6:                   22
+  Number of Slice LUTs:                      1,196 out of   5,720   20%
+    Number used as logic:                    1,193 out of   5,720   20%
+      Number using O6 output only:             973
+      Number using O5 output only:              43
+      Number using O5 and O6:                  177
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   1,440    0%
-    Number used exclusively as route-thrus:      2
-      Number with same-slice register load:      1
-      Number with same-slice carry load:         1
+    Number used exclusively as route-thrus:      3
+      Number with same-slice register load:      0
+      Number with same-slice carry load:         3
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   133 out of   1,430    9%
-  Number of MUXCYs used:                        24 out of   2,860    1%
-  Number of LUT Flip Flop pairs used:          326
-    Number with an unused Flip Flop:           275 out of     326   84%
-    Number with an unused LUT:                   8 out of     326    2%
-    Number of fully used LUT-FF pairs:          43 out of     326   13%
-    Number of unique control sets:               5
+  Number of occupied Slices:                   337 out of   1,430   23%
+  Number of MUXCYs used:                       568 out of   2,860   19%
+  Number of LUT Flip Flop pairs used:        1,197
+    Number with an unused Flip Flop:         1,093 out of   1,197   91%
+    Number with an unused LUT:                   1 out of   1,197    1%
+    Number of fully used LUT-FF pairs:         103 out of   1,197    8%
+    Number of unique control sets:               8
     Number of slice register sites lost
-      to control set restrictions:              12 out of  11,440    1%
+      to control set restrictions:              35 out of  11,440    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -577,11 +1116,11 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                4.78
+Average Fanout of Non-Clock Nets:                5.18
 
-Peak Memory Usage:  4493 MB
-Total REAL time to MAP completion:  11 secs 
-Total CPU time to MAP completion (all processors):   11 secs 
+Peak Memory Usage:  4529 MB
+Total REAL time to MAP completion:  21 secs 
+Total CPU time to MAP completion (all processors):   24 secs 
 
 Mapping completed.
 See MAP report file "mojo_top_0.mrp" for details.
@@ -607,30 +1146,30 @@ Device speed data version:  "PRODUCTION 1.23 2013-10-13".
 Device Utilization Summary:
 
 Slice Logic Utilization:
-  Number of Slice Registers:                    52 out of  11,440    1%
-    Number used as Flip Flops:                  52
+  Number of Slice Registers:                   109 out of  11,440    1%
+    Number used as Flip Flops:                 109
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        318 out of   5,720    5%
-    Number used as logic:                      316 out of   5,720    5%
-      Number using O6 output only:             294
-      Number using O5 output only:               0
-      Number using O5 and O6:                   22
+  Number of Slice LUTs:                      1,196 out of   5,720   20%
+    Number used as logic:                    1,193 out of   5,720   20%
+      Number using O6 output only:             973
+      Number using O5 output only:              43
+      Number using O5 and O6:                  177
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   1,440    0%
-    Number used exclusively as route-thrus:      2
-      Number with same-slice register load:      1
-      Number with same-slice carry load:         1
+    Number used exclusively as route-thrus:      3
+      Number with same-slice register load:      0
+      Number with same-slice carry load:         3
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   133 out of   1,430    9%
-  Number of MUXCYs used:                        24 out of   2,860    1%
-  Number of LUT Flip Flop pairs used:          326
-    Number with an unused Flip Flop:           275 out of     326   84%
-    Number with an unused LUT:                   8 out of     326    2%
-    Number of fully used LUT-FF pairs:          43 out of     326   13%
+  Number of occupied Slices:                   337 out of   1,430   23%
+  Number of MUXCYs used:                       568 out of   2,860   19%
+  Number of LUT Flip Flop pairs used:        1,197
+    Number with an unused Flip Flop:         1,093 out of   1,197   91%
+    Number with an unused LUT:                   1 out of   1,197    1%
+    Number of fully used LUT-FF pairs:         103 out of   1,197    8%
     Number of slice register sites lost
       to control set restrictions:               0 out of  11,440    0%
 
@@ -674,13 +1213,32 @@ Overall effort level (-ol):   Standard
 Router effort level (-rl):    High 
 
 PAR will use up to 2 processors
+WARNING:Par:288 - The signal io_button(1)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_button(2)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_button(3)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_button(4)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal cclk_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(0)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(1)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(2)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(3)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(4)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(5)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(6)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(7)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(8)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(9)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal spi_sck_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal avr_rx_busy_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(10)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(11)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(12)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(20)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(13)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(21)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(14)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(22)_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal io_dip(23)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(15)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(16)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(17)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(18)_IBUF has no load.  PAR will not attempt to route this signal.
@@ -691,29 +1249,27 @@ WARNING:Par:288 - The signal spi_mosi_IBUF has no load.  PAR will not attempt to
 Starting Multi-threaded Router
 
 
-Phase  1  : 2027 unrouted;      REAL time: 6 secs 
+Phase  1  : 6766 unrouted;      REAL time: 3 secs 
 
-Phase  2  : 1886 unrouted;      REAL time: 6 secs 
+Phase  2  : 6365 unrouted;      REAL time: 3 secs 
 
-Phase  3  : 1319 unrouted;      REAL time: 7 secs 
+Phase  3  : 2028 unrouted;      REAL time: 5 secs 
 
-Phase  4  : 1319 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 7 secs 
+Phase  4  : 3002 unrouted; (Setup:5092015, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
 
-Updating file: mojo_top_0_routed.ncd with current fully routed design.
+Phase  5  : 0 unrouted; (Setup:5227633, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
+Phase  6  : 0 unrouted; (Setup:5227633, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
+Phase  7  : 0 unrouted; (Setup:5227633, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
+Phase  8  : 0 unrouted; (Setup:5227633, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
+Phase  9  : 0 unrouted; (Setup:5227633, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
-
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
-Total REAL time to Router completion: 8 secs 
-Total CPU time to Router completion (all processors): 9 secs 
+Phase 10  : 0 unrouted; (Setup:5182244, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
+Total REAL time to Router completion: 19 secs 
+Total CPU time to Router completion (all processors): 27 secs 
 
 Generating "PAR" statistics.
 
@@ -724,7 +1280,7 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|           clk_BUFGP | BUFGMUX_X2Y11| No   |   15 |  0.039     |  1.504      |
+|           clk_BUFGP | BUFGMUX_X2Y11| No   |   53 |  0.093     |  1.494      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -735,7 +1291,25 @@ the minimum and maximum path delays which includes logic delays.
 * The fanout is the number of component pins not the individual BEL loads,
 for example SLICE loads not FF loads.
 
-Timing Score: 0 (Setup: 0, Hold: 0, Component Switching Limit: 0)
+Timing Score: 5182244 (Setup: 5182244, Hold: 0, Component Switching Limit: 0)
+
+WARNING:Par:468 - Your design did not meet timing.  The following are some suggestions to assist you to meet timing in your design.
+
+   Review the timing report using Timing Analyzer (In ISE select "Post-Place &
+   Route Static Timing Report"). Go to the failing constraint(s) and evaluate the failing paths for each constraint.
+
+   Try the Design Goal and Strategies for Timing Performance(In ISE select Project -> Design Goals & Strategies) to ensure the best options
+   are set in the tools for timing closure.
+
+   Increase the PAR Effort Level setting to "high"
+
+   Use the Xilinx "SmartXplorer" script to try special combinations of
+   options known to produce very good results.
+
+   Visit the Xilinx technical support web at http://support.xilinx.com and go to
+   either "Troubleshoot->Tech Tips->Timing & Constraints" or "
+   TechXclusives->Timing Closure" for tips and suggestions for meeting timing
+   in your design.
 
 Asterisk (*) preceding a constraint indicates it was not met.
    This may be due to a setup or hold violation.
@@ -744,31 +1318,31 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH | SETUP       |    14.680ns|     5.320ns|       0|           0
-   50%                                      | HOLD        |     0.414ns|            |       0|           0
+* TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH | SETUP       |   -72.533ns|    92.533ns|      80|     5182244
+   50%                                      | HOLD        |     0.405ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
-All constraints were met.
+1 constraint not met.
 
 
 Generating Pad Report.
 
 All signals are completely routed.
 
-WARNING:Par:283 - There are 14 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+WARNING:Par:283 - There are 33 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 9 secs 
-Total CPU time to PAR completion (all processors): 9 secs 
+Total REAL time to PAR completion: 20 secs 
+Total CPU time to PAR completion (all processors): 27 secs 
 
-Peak Memory Usage:  4464 MB
+Peak Memory Usage:  4508 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.
-Timing: Completed - No errors found.
+Timing: Completed - 80 errors found.
 
 Number of error messages: 0
-Number of warning messages: 16
+Number of warning messages: 36
 Number of info messages: 0
 
 Writing design to file mojo_top_0_routed.ncd
@@ -784,13 +1358,13 @@ Loading device for application Rf_Device from file '6slx9.nph' in environment
 D:\Programs\ISE\14.7\ISE_DS\ISE\.
    "mojo_top_0" is an NCD, version 3.2, device xc6slx9, package tqg144, speed -2
 
-Analysis completed Wed Oct 30 10:12:22 2019
+Analysis completed Mon Nov 04 15:26:02 2019
 --------------------------------------------------------------------------------
 
 Generating Report ...
 
 Number of warnings: 0
-Total time: 5 secs 
+Total time: 4 secs 
 
 *** Running xdl
     with args -secure -ncd2xdl -nopips "mojo_top_0_routed.ncd" "mojo_top_0_routed.xdl"
@@ -802,13 +1376,13 @@ WARNING:XDL:213 - The resulting xdl output will not have LUT equation strings or
 Loading device for application Rf_Device from file '6slx9.nph' in environment D:\Programs\ISE\14.7\ISE_DS\ISE\.
    "mojo_top_0" is an NCD, version 3.2, device xc6slx9, package tqg144, speed -2
 Successfully converted design 'mojo_top_0_routed.ncd' to 'mojo_top_0_routed.xdl'.
-[Wed Oct 30 10:12:29 2019] impl_1 finished
-wait_on_run: Time (s): elapsed = 00:00:55 . Memory (MB): peak = 286.852 ; gain = 0.000
+[Mon Nov 04 15:26:10 2019] impl_1 finished
+wait_on_run: Time (s): elapsed = 00:01:05 . Memory (MB): peak = 289.594 ; gain = 0.000
 # launch_runs impl_1 -to_step Bitgen
-[Wed Oct 30 10:12:29 2019] Launched impl_1...
+[Mon Nov 04 15:26:10 2019] Launched impl_1...
 Run output will be captured here: D:/Programs/Alchitry/Alchitry-labs/Workspace/ALU_test/work/planAhead/ALU_test/ALU_test.runs/impl_1/runme.log
 # wait_on_run impl_1
-[Wed Oct 30 10:12:29 2019] Waiting for impl_1 to finish...
+[Mon Nov 04 15:26:10 2019] Waiting for impl_1 to finish...
 
 *** Running ngdbuild
     with args -intstyle ise -p xc6slx9tqg144-2 -dd _ngo -uc "mojo_top_0.ucf" "mojo_top_0.edf"
@@ -845,8 +1419,8 @@ NGDBUILD Design Results Summary:
   Number of warnings:   0
 
 Writing NGD file "mojo_top_0.ngd" ...
-Total REAL time to NGDBUILD completion:  14 sec
-Total CPU time to NGDBUILD completion:   6 sec
+Total REAL time to NGDBUILD completion:  8 sec
+Total CPU time to NGDBUILD completion:   3 sec
 
 Writing NGDBUILD log file "mojo_top_0.bld"...
 
@@ -860,106 +1434,137 @@ INFO:Map:284 - Map is running with the multi-threading option on. Map currently
    supports the use of up to 2 processors. Based on the the user options and
    machine load, Map will use 2 processors during this run.
 Mapping design into LUTs...
-WARNING:MapLib:701 - Signal spi_channel[2] connected to top level port
-   spi_channel(2) has been removed.
 WARNING:MapLib:701 - Signal spi_channel[3] connected to top level port
    spi_channel(3) has been removed.
-WARNING:MapLib:701 - Signal avr_rx connected to top level port avr_rx has been
-   removed.
+WARNING:MapLib:701 - Signal spi_channel[2] connected to top level port
+   spi_channel(2) has been removed.
+WARNING:MapLib:701 - Signal spi_channel[1] connected to top level port
+   spi_channel(1) has been removed.
 WARNING:MapLib:701 - Signal spi_channel[0] connected to top level port
    spi_channel(0) has been removed.
 WARNING:MapLib:701 - Signal spi_miso connected to top level port spi_miso has
    been removed.
-WARNING:MapLib:701 - Signal spi_channel[1] connected to top level port
-   spi_channel(1) has been removed.
+WARNING:MapLib:701 - Signal avr_rx connected to top level port avr_rx has been
+   removed.
 Running directed packing...
 Running delay-based LUT packing...
 Updating timing models...
+WARNING:Pack:1653 - At least one timing constraint is impossible to meet because component delays alone exceed the constraint. A timing
+   constraint summary below shows the failing constraints (preceded with an Asterisk (*)). Please use the Timing Analyzer (GUI) or TRCE
+   (command line) with the Mapped NCD and PCF files to identify which constraints and paths are failing because of the component delays
+   alone. If the failing path(s) is mapped to Xilinx components as expected, consider relaxing the constraint. If it is not mapped to
+   components as expected, re-evaluate your HDL and how synthesis is optimizing the path. To allow the tools to bypass this error, set the
+   environment variable XIL_TIMING_ALLOW_IMPOSSIBLE to 1.
+
+
+   For more information about the Timing Analyzer, consult the Xilinx Timing Analyzer Reference manual; for more information on TRCE,
+   consult the Xilinx Command Line Tools User Guide "TRACE" chapter.
+INFO:Timing:3284 - This timing report was generated using estimated delay 
+   information.  For accurate numbers, please refer to the post Place and Route 
+   timing report.
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+----------------------------------------------------------------------------------------------------------
+  Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
+                                            |             |    Slack   | Achievable | Errors |    Score   
+----------------------------------------------------------------------------------------------------------
+* TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH | SETUP       |   -12.559ns|    32.559ns|      63|      763178
+   50%                                      | HOLD        |     0.060ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+
+
+1 constraint not met.
+
+
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
 Running timing-driven placement...
-Total REAL time at the beginning of Placer: 7 secs 
-Total CPU  time at the beginning of Placer: 7 secs 
+Total REAL time at the beginning of Placer: 4 secs 
+Total CPU  time at the beginning of Placer: 4 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:60c7759d) REAL time: 8 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:53070f5e) REAL time: 5 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:60c7759d) REAL time: 8 secs 
+Phase 2.7  Design Feasibility Check (Checksum:53070f5e) REAL time: 5 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:60c7759d) REAL time: 8 secs 
+Phase 3.31  Local Placement Optimization (Checksum:53070f5e) REAL time: 5 secs 
 
 Phase 4.2  Initial Placement for Architecture Specific Features
 
 Phase 4.2  Initial Placement for Architecture Specific Features
-(Checksum:11daa3d) REAL time: 9 secs 
+(Checksum:d0550ffe) REAL time: 7 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:11daa3d) REAL time: 9 secs 
+Phase 5.36  Local Placement Optimization (Checksum:d0550ffe) REAL time: 7 secs 
 
 Phase 6.30  Global Clock Region Assignment
-Phase 6.30  Global Clock Region Assignment (Checksum:11daa3d) REAL time: 9 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:d0550ffe) REAL time: 7 secs 
 
 Phase 7.3  Local Placement Optimization
-Phase 7.3  Local Placement Optimization (Checksum:11daa3d) REAL time: 9 secs 
+Phase 7.3  Local Placement Optimization (Checksum:d0550ffe) REAL time: 7 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:11daa3d) REAL time: 9 secs 
+Phase 8.5  Local Placement Optimization (Checksum:d0550ffe) REAL time: 7 secs 
 
 Phase 9.8  Global Placement
-.................
-......
-Phase 9.8  Global Placement (Checksum:456d4b0b) REAL time: 10 secs 
+............
+....................................................
+......................................................................................................................................................................................................................
+..............................................
+.........................................
+Phase 9.8  Global Placement (Checksum:6cd3f172) REAL time: 13 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:456d4b0b) REAL time: 10 secs 
+Phase 10.5  Local Placement Optimization (Checksum:6cd3f172) REAL time: 13 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:ea8b4423) REAL time: 10 secs 
+Phase 11.18  Placement Optimization (Checksum:45e7bde3) REAL time: 20 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:ea8b4423) REAL time: 10 secs 
+Phase 12.5  Local Placement Optimization (Checksum:45e7bde3) REAL time: 20 secs 
 
 Phase 13.34  Placement Validation
-Phase 13.34  Placement Validation (Checksum:ea8b4423) REAL time: 10 secs 
+Phase 13.34  Placement Validation (Checksum:3e499e69) REAL time: 20 secs 
 
-Total REAL time to Placer completion: 10 secs 
-Total CPU  time to Placer completion: 10 secs 
+Total REAL time to Placer completion: 20 secs 
+Total CPU  time to Placer completion: 24 secs 
 Running post-placement packing...
 Writing output files...
 
 Design Summary:
 Number of errors:      0
-Number of warnings:    6
+Number of warnings:    7
 Slice Logic Utilization:
-  Number of Slice Registers:                    52 out of  11,440    1%
-    Number used as Flip Flops:                  52
+  Number of Slice Registers:                   109 out of  11,440    1%
+    Number used as Flip Flops:                 109
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        318 out of   5,720    5%
-    Number used as logic:                      316 out of   5,720    5%
-      Number using O6 output only:             294
-      Number using O5 output only:               0
-      Number using O5 and O6:                   22
+  Number of Slice LUTs:                      1,196 out of   5,720   20%
+    Number used as logic:                    1,193 out of   5,720   20%
+      Number using O6 output only:             973
+      Number using O5 output only:              43
+      Number using O5 and O6:                  177
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   1,440    0%
-    Number used exclusively as route-thrus:      2
-      Number with same-slice register load:      1
-      Number with same-slice carry load:         1
+    Number used exclusively as route-thrus:      3
+      Number with same-slice register load:      0
+      Number with same-slice carry load:         3
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   133 out of   1,430    9%
-  Number of MUXCYs used:                        24 out of   2,860    1%
-  Number of LUT Flip Flop pairs used:          326
-    Number with an unused Flip Flop:           275 out of     326   84%
-    Number with an unused LUT:                   8 out of     326    2%
-    Number of fully used LUT-FF pairs:          43 out of     326   13%
-    Number of unique control sets:               5
+  Number of occupied Slices:                   337 out of   1,430   23%
+  Number of MUXCYs used:                       568 out of   2,860   19%
+  Number of LUT Flip Flop pairs used:        1,197
+    Number with an unused Flip Flop:         1,093 out of   1,197   91%
+    Number with an unused LUT:                   1 out of   1,197    1%
+    Number of fully used LUT-FF pairs:         103 out of   1,197    8%
+    Number of unique control sets:               8
     Number of slice register sites lost
-      to control set restrictions:              12 out of  11,440    1%
+      to control set restrictions:              35 out of  11,440    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -996,11 +1601,11 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                4.78
+Average Fanout of Non-Clock Nets:                5.18
 
-Peak Memory Usage:  4493 MB
-Total REAL time to MAP completion:  11 secs 
-Total CPU time to MAP completion (all processors):   11 secs 
+Peak Memory Usage:  4529 MB
+Total REAL time to MAP completion:  21 secs 
+Total CPU time to MAP completion (all processors):   24 secs 
 
 Mapping completed.
 See MAP report file "mojo_top_0.mrp" for details.
@@ -1026,30 +1631,30 @@ Device speed data version:  "PRODUCTION 1.23 2013-10-13".
 Device Utilization Summary:
 
 Slice Logic Utilization:
-  Number of Slice Registers:                    52 out of  11,440    1%
-    Number used as Flip Flops:                  52
+  Number of Slice Registers:                   109 out of  11,440    1%
+    Number used as Flip Flops:                 109
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        318 out of   5,720    5%
-    Number used as logic:                      316 out of   5,720    5%
-      Number using O6 output only:             294
-      Number using O5 output only:               0
-      Number using O5 and O6:                   22
+  Number of Slice LUTs:                      1,196 out of   5,720   20%
+    Number used as logic:                    1,193 out of   5,720   20%
+      Number using O6 output only:             973
+      Number using O5 output only:              43
+      Number using O5 and O6:                  177
       Number used as ROM:                        0
     Number used as Memory:                       0 out of   1,440    0%
-    Number used exclusively as route-thrus:      2
-      Number with same-slice register load:      1
-      Number with same-slice carry load:         1
+    Number used exclusively as route-thrus:      3
+      Number with same-slice register load:      0
+      Number with same-slice carry load:         3
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   133 out of   1,430    9%
-  Number of MUXCYs used:                        24 out of   2,860    1%
-  Number of LUT Flip Flop pairs used:          326
-    Number with an unused Flip Flop:           275 out of     326   84%
-    Number with an unused LUT:                   8 out of     326    2%
-    Number of fully used LUT-FF pairs:          43 out of     326   13%
+  Number of occupied Slices:                   337 out of   1,430   23%
+  Number of MUXCYs used:                       568 out of   2,860   19%
+  Number of LUT Flip Flop pairs used:        1,197
+    Number with an unused Flip Flop:         1,093 out of   1,197   91%
+    Number with an unused LUT:                   1 out of   1,197    1%
+    Number of fully used LUT-FF pairs:         103 out of   1,197    8%
     Number of slice register sites lost
       to control set restrictions:               0 out of  11,440    0%
 
@@ -1093,13 +1698,32 @@ Overall effort level (-ol):   Standard
 Router effort level (-rl):    High 
 
 PAR will use up to 2 processors
+WARNING:Par:288 - The signal io_button(1)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_button(2)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_button(3)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_button(4)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal cclk_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(0)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(1)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(2)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(3)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(4)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(5)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(6)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(7)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(8)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(9)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal spi_sck_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal avr_rx_busy_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(10)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(11)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(12)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(20)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(13)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(21)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(14)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(22)_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal io_dip(23)_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal io_dip(15)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(16)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(17)_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal io_dip(18)_IBUF has no load.  PAR will not attempt to route this signal.
@@ -1110,29 +1734,27 @@ WARNING:Par:288 - The signal spi_mosi_IBUF has no load.  PAR will not attempt to
 Starting Multi-threaded Router
 
 
-Phase  1  : 2027 unrouted;      REAL time: 6 secs 
+Phase  1  : 6766 unrouted;      REAL time: 3 secs 
 
-Phase  2  : 1886 unrouted;      REAL time: 6 secs 
+Phase  2  : 6365 unrouted;      REAL time: 3 secs 
 
-Phase  3  : 1319 unrouted;      REAL time: 7 secs 
+Phase  3  : 2028 unrouted;      REAL time: 5 secs 
 
-Phase  4  : 1319 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 7 secs 
+Phase  4  : 3002 unrouted; (Setup:5092015, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
 
-Updating file: mojo_top_0_routed.ncd with current fully routed design.
+Phase  5  : 0 unrouted; (Setup:5227633, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
+Phase  6  : 0 unrouted; (Setup:5227633, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
+Phase  7  : 0 unrouted; (Setup:5227633, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
+Phase  8  : 0 unrouted; (Setup:5227633, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
+Phase  9  : 0 unrouted; (Setup:5227633, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
-
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 8 secs 
-Total REAL time to Router completion: 8 secs 
-Total CPU time to Router completion (all processors): 9 secs 
+Phase 10  : 0 unrouted; (Setup:5182244, Hold:0, Component Switching Limit:0)     REAL time: 19 secs 
+Total REAL time to Router completion: 19 secs 
+Total CPU time to Router completion (all processors): 27 secs 
 
 Generating "PAR" statistics.
 
@@ -1143,7 +1765,7 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|           clk_BUFGP | BUFGMUX_X2Y11| No   |   15 |  0.039     |  1.504      |
+|           clk_BUFGP | BUFGMUX_X2Y11| No   |   53 |  0.093     |  1.494      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -1154,7 +1776,25 @@ the minimum and maximum path delays which includes logic delays.
 * The fanout is the number of component pins not the individual BEL loads,
 for example SLICE loads not FF loads.
 
-Timing Score: 0 (Setup: 0, Hold: 0, Component Switching Limit: 0)
+Timing Score: 5182244 (Setup: 5182244, Hold: 0, Component Switching Limit: 0)
+
+WARNING:Par:468 - Your design did not meet timing.  The following are some suggestions to assist you to meet timing in your design.
+
+   Review the timing report using Timing Analyzer (In ISE select "Post-Place &
+   Route Static Timing Report"). Go to the failing constraint(s) and evaluate the failing paths for each constraint.
+
+   Try the Design Goal and Strategies for Timing Performance(In ISE select Project -> Design Goals & Strategies) to ensure the best options
+   are set in the tools for timing closure.
+
+   Increase the PAR Effort Level setting to "high"
+
+   Use the Xilinx "SmartXplorer" script to try special combinations of
+   options known to produce very good results.
+
+   Visit the Xilinx technical support web at http://support.xilinx.com and go to
+   either "Troubleshoot->Tech Tips->Timing & Constraints" or "
+   TechXclusives->Timing Closure" for tips and suggestions for meeting timing
+   in your design.
 
 Asterisk (*) preceding a constraint indicates it was not met.
    This may be due to a setup or hold violation.
@@ -1163,31 +1803,31 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH | SETUP       |    14.680ns|     5.320ns|       0|           0
-   50%                                      | HOLD        |     0.414ns|            |       0|           0
+* TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH | SETUP       |   -72.533ns|    92.533ns|      80|     5182244
+   50%                                      | HOLD        |     0.405ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
-All constraints were met.
+1 constraint not met.
 
 
 Generating Pad Report.
 
 All signals are completely routed.
 
-WARNING:Par:283 - There are 14 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+WARNING:Par:283 - There are 33 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 9 secs 
-Total CPU time to PAR completion (all processors): 9 secs 
+Total REAL time to PAR completion: 20 secs 
+Total CPU time to PAR completion (all processors): 27 secs 
 
-Peak Memory Usage:  4464 MB
+Peak Memory Usage:  4508 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.
-Timing: Completed - No errors found.
+Timing: Completed - 80 errors found.
 
 Number of error messages: 0
-Number of warning messages: 16
+Number of warning messages: 36
 Number of info messages: 0
 
 Writing design to file mojo_top_0_routed.ncd
@@ -1203,13 +1843,13 @@ Loading device for application Rf_Device from file '6slx9.nph' in environment
 D:\Programs\ISE\14.7\ISE_DS\ISE\.
    "mojo_top_0" is an NCD, version 3.2, device xc6slx9, package tqg144, speed -2
 
-Analysis completed Wed Oct 30 10:12:22 2019
+Analysis completed Mon Nov 04 15:26:02 2019
 --------------------------------------------------------------------------------
 
 Generating Report ...
 
 Number of warnings: 0
-Total time: 5 secs 
+Total time: 4 secs 
 
 *** Running xdl
     with args -secure -ncd2xdl -nopips "mojo_top_0_routed.ncd" "mojo_top_0_routed.xdl"
@@ -1225,9 +1865,9 @@ Successfully converted design 'mojo_top_0_routed.ncd' to 'mojo_top_0_routed.xdl'
 *** Running bitgen
     with args "mojo_top_0_routed.ncd" "mojo_top_0.bit" "mojo_top_0.pcf" -g Binary:Yes -g Compress -w -intstyle pa
 
-[Wed Oct 30 10:12:55 2019] impl_1 finished
-wait_on_run: Time (s): elapsed = 00:00:25 . Memory (MB): peak = 286.852 ; gain = 0.000
-INFO: [Common 17-206] Exiting PlanAhead at Wed Oct 30 10:12:55 2019...
+[Mon Nov 04 15:26:25 2019] impl_1 finished
+wait_on_run: Time (s): elapsed = 00:00:15 . Memory (MB): peak = 289.594 ; gain = 0.000
+INFO: [Common 17-206] Exiting PlanAhead at Mon Nov 04 15:26:25 2019...
 INFO: [Common 17-83] Releasing license: PlanAhead
 
 Finished building project.

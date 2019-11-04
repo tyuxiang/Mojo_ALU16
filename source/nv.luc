@@ -1,19 +1,40 @@
 module nv (
+    input firstNumber[16],
+    input secondNumber[16],
+    input sum[16],
     input a31,
     input b31,
     input s31,
-    input alufn,
+    input alufn[2],
     output v,
-    output n
+    output n,
+    output z
   ) {
 
   always {
     n = s31;
-    if(alufn == b1){
-      v = (-b31&a31&(~s31)) | ((~(-b31))&(~a31)&s31);
+    if(alufn == b01){
+      v = ((~b31)&a31&(~s31)) | (b31&(~a31)&s31);
+    }
+    else if(alufn == b00){
+      v = (b31&a31&(~s31)) | ((~b31)&(~a31)&s31);
+    }
+    else if(alufn == b10){
+      if (firstNumber != 0 && sum / firstNumber != secondNumber) {
+        v = 1;
+      }
+      else{
+        v = 0;
+      }
     }
     else{
-      v = (b31&a31&(~s31)) | ((~b31)&(~a31)&s31);
+      v = 0;
+    }
+    if(sum == h0000){
+      z = 1;
+    }
+    else{
+      z = 0;
     }
   }
 }

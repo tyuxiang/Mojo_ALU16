@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module bool_4 (
+module bool_8 (
     input [15:0] firstNumber,
     input [15:0] secondNumber,
     input [3:0] alufn,

@@ -1,8 +1,11 @@
-module alu (
+module new_alu (
     input firstNumber[16],  // input of 1st number
     input secondNumber[16], // inoput of 2nd number
     input alufn[6],         // input of alufn
-    output answer[16]       // output of answer
+    output answer[16],     // output of answer
+    output n,
+    output v, 
+    output z     
   ) {
   
     adder adder;
@@ -14,6 +17,9 @@ module alu (
   
   always {
     answer = hx;                // not have any answer
+    v=bx;
+    n=bx;
+    z=bx;
     adder.firstNumber = hx;
     adder.secondNumber = hx;
     adder.alufn = hx;
@@ -27,6 +33,9 @@ module alu (
     comp.v = hx;
     comp.n = hx;
     comp.alufn = hx;
+    nv.firstNumber = hx;
+    nv.secondNumber = hx;
+    nv.sum = hx;
     nv.a31 = hx;
     nv.b31 = hx;
     nv.s31 = hx;
@@ -36,6 +45,16 @@ module alu (
       adder.secondNumber = secondNumber;
       adder.alufn = alufn[1:0];
       answer = adder.answer;
+      nv.alufn = alufn[1:0];
+      nv.firstNumber = firstNumber;
+      nv.secondNumber = secondNumber;
+      nv.sum = adder.answer;
+      nv.s31=adder.answer[15];
+      nv.a31=firstNumber[15];
+      nv.b31=secondNumber[15];
+      z=nv.z;
+      v=nv.v;
+      n=nv.n;
     }
     if(alufn[5] == b0 & alufn[4] == b1){
       bool.firstNumber = firstNumber;
@@ -52,11 +71,15 @@ module alu (
     if(alufn[5] == b1 & alufn[4] == b1){
       adder.firstNumber = firstNumber;
       adder.secondNumber = secondNumber;
-      adder.alufn = alufn[0];
+      adder.alufn = alufn[1:0];
+      nv.alufn = alufn[1:0];
+      nv.firstNumber = firstNumber;
+      nv.secondNumber = secondNumber;
+      nv.sum = adder.answer;
       nv.s31 = adder.answer[15];
       nv.a31 = firstNumber[15];
       nv.b31 = secondNumber[15];
-      comp.z = adder.z;
+      comp.z = nv.z;
       comp.v = nv.v;
       comp.n = nv.n;
       comp.alufn = alufn[2:1];

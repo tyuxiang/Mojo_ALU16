@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module shft_5 (
+module shft_9 (
     input [15:0] firstNumber,
     input [3:0] secondNumber,
     input [1:0] alufn,

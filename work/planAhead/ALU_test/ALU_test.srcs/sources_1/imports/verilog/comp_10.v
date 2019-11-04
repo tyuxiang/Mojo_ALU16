@@ -4,31 +4,33 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module adder_3 (
-    input [15:0] firstNumber,
-    input [15:0] secondNumber,
+module comp_10 (
+    input z,
+    input v,
+    input n,
     input [1:0] alufn,
-    output reg [15:0] answer,
-    output reg z
+    output reg [15:0] answer
   );
   
   
   
   always @* begin
     answer = 4'bxxxx;
-    if (firstNumber == secondNumber) begin
-      z = 1'h1;
-    end else begin
-      z = 1'h0;
-    end
     if (alufn == 2'h0) begin
-      answer = firstNumber + secondNumber;
+      answer = 16'h0000;
+      answer[0+0-:1] = ~(n ^ v);
     end
     if (alufn == 2'h1) begin
-      answer = firstNumber - secondNumber;
+      answer = 16'h0000;
+      answer[0+0-:1] = z;
     end
     if (alufn == 2'h2) begin
-      answer = firstNumber * secondNumber;
+      answer = 16'h0000;
+      answer[0+0-:1] = (n ^ v);
+    end
+    if (alufn == 2'h3) begin
+      answer = 16'h0000;
+      answer[0+0-:1] = z | (n ^ v);
     end
   end
 endmodule

@@ -4,10 +4,9 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module comp_6 (
-    input z,
-    input v,
-    input n,
+module adder_7 (
+    input [15:0] firstNumber,
+    input [15:0] secondNumber,
     input [1:0] alufn,
     output reg [15:0] answer
   );
@@ -16,17 +15,17 @@ module comp_6 (
   
   always @* begin
     answer = 4'bxxxx;
+    if (alufn == 2'h0) begin
+      answer = $signed(firstNumber) + $signed(secondNumber);
+    end
     if (alufn == 2'h1) begin
-      answer = 16'h0000;
-      answer[0+0-:1] = z;
+      answer = $signed(firstNumber) - $signed(secondNumber);
     end
     if (alufn == 2'h2) begin
-      answer = 16'h0000;
-      answer[0+0-:1] = (n ^ v);
+      answer = $signed(firstNumber) * $signed(secondNumber);
     end
     if (alufn == 2'h3) begin
-      answer = 16'h0000;
-      answer[0+0-:1] = z | (n ^ v);
+      answer = $signed(firstNumber) / $signed(secondNumber);
     end
   end
 endmodule

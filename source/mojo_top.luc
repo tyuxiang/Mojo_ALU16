@@ -19,17 +19,23 @@ module mojo_top (
   ) {
   
   sig rst;                  // reset signal
-  alu alu;
+  new_alu alu;
   
   .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
+    
+    edge_detector edge_detector (#RISE(1), #FALL(0));
     reset_conditioner reset_cond;
+    
     .rst(rst){
-      dff in1_reg[16];
-      dff in2_reg[16];
-      dff alufn_reg[6];
-      fsm state = {START, IN1, IN2, FUNCTION, SOLVE, ERROR}; // Initializate fsm
+      mult_seven_seg seg;                 // Initialize multi_seven_seg
+      mult_dec_ctr dec_ctr;               // Initialize multi_dec_ctr
+      counter ctr (#SIZE(1), #DIV(25));    // Initialize counter to count every 2^25(~33.5 million) clock cycle, on MOJO is 50 million clock cycle per second 
+      fsm state = {START, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, 
+      FOURTEEN, FIFTEEN, SIXTEEN, SEVENTEEN, EIGHTEEN, NINETEEN, TWENTY, TWENTYONE, TWENTYTWO, TWENTYTHREE, TWENTYFOUR, 
+        TWENTYFIVE, TWENTYSIX, TWENTYSEVEN, TWENTYEIGHT, TWENTYNINE, THIRTY, THIRTYONE, THIRTYTWO, THIRTYTHREE, THIRTYFOUR, 
+        THIRTYFIVE, THIRTYSIX, THIRTYSEVEN, THIRTYEIGHT, THIRTYNINE, FORTY, FORTYONE, FORTYTWO, FORTYTHREE, ERROR}; // Initializate fsm
     }
   }
   
@@ -43,49 +49,642 @@ module mojo_top (
     avr_rx = bz;            // not using serial port
     
     io_led = 3x{{8h00}};    // turn LEDs off
-    io_seg = 8hff;          // turn segments off
-    io_sel = 4hf;           // select no digits
     alu.firstNumber = 16x{0};  // input zero first
     alu.secondNumber = 16x{0}; // input zero first
     alu.alufn = 6x{0};         // input zero first
+        
+    edge_detector.in = bz; // Have 0 output from edge_detector
+    dec_ctr.inc = 0;       // Stop multi_dec_ctr from counting
+    seg.values = {bzzzz,bzzzz,bzzzz,bzzzz};    // Turn multi_seven_seg off
+    io_seg = 8hz;          // Turn segments off
+    io_sel = 4hz;          // Turn selection off
+    
+    // Have 2 different modes, an automatic testing mode and a manual testing mode
+    // Dip switch is used to select which mode the fpga is in
+    // If dip switch is on, automatic model is selected. Else is manual mode
+    if(io_dip[2][7]){
+      edge_detector.in = ctr.value;      // Input value of counter into edge detector
+      seg.values = dec_ctr.digits;       // Input the output of decimal counter into the multi seven seg values
+      dec_ctr.inc = edge_detector.out;
+      
+      io_seg = ~seg.seg;                 // Connect segments to the driver
+      io_sel = ~seg.sel;                 // Connect digit select to the driver
+    }
+    
     case (state.q) {
     
       // Default state is in start to allow for manual testing
       state.START:
         io_led[2][7] = 1;
-        if(io_button[0]){
-          state.d = state.IN1;
+        if(io_dip[2][7]){
+          state.d = state.ZERO;
         }
         
-      state.IN1:
-        in1_reg.d[7:0] = io_dip[0][7:0];
-        in1_reg.d[15:8] = io_dip[1][7:0];
-        io_led[2][6] = 1;
-        if(io_button[1]){
-          state.d = state.IN2;
-        }
-      state.IN2:
-        in2_reg.d[7:0] = io_dip[0][7:0];
-        in2_reg.d[15:8] = io_dip[1][7:0];
-        io_led[2][5] = 1;
-        if(io_button[2]){
-          state.d = state.FUNCTION;
-        }
-      state.FUNCTION:
-        alufn_reg.d[5:0] = io_dip[0][5:0];
-        io_led[2][4] = 1;
-        if(io_button[3]){
-          state.d = state.SOLVE;
-        }
-      state.SOLVE:
-        alu.firstNumber = in1_reg.q[15:0];
-        alu.secondNumber = in2_reg.q[15:0];
-        alu.alufn = alufn_reg.q[5:0];
+      state.ZERO:
+        alu.firstNumber = h0001;
+        alu.secondNumber = h0002;
+        alu.alufn = b000000;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
         io_led[1] = alu.answer[15:8];
         io_led[0] = alu.answer[7:0];
-        io_led[2][3] = 1;
-        if(io_button[4]){
+        if(edge_detector.out){
+          state.d = state.ONE;
+          if(alu.answer != h0003 | alu.z != 0 | alu.v != 0 | alu.n != 0){
+            state.d = state.ERROR;
+          }
+        }
+     
+      //plus
+      state.ONE:
+        alu.firstNumber = h7FFF;
+        alu.secondNumber = h7FFF;
+        alu.alufn = b000000;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TWO;
+          if(alu.answer != hFFFE | alu.z != 0 | alu.v != 1 | alu.n != 1){
+            state.d = state.ERROR;
+          }
+        }
+     
+      state.TWO:
+        alu.firstNumber = h0003;
+        alu.secondNumber = hFFFF;
+        alu.alufn = b000000;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.THREE;
+          if(alu.answer != h0002 | alu.z != 0 | alu.v != 0 | alu.n != 0){
+            state.d = state.ERROR;
+          }
+        }
+        
+      state.THREE:
+        alu.firstNumber = h8000;
+        alu.secondNumber = h8000;
+        alu.alufn = b000000;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.FOUR;
+          if(alu.answer != h0000 | alu.z != 1 | alu.v != 1 | alu.n != 0){
+            state.d = state.ERROR;
+          }
+        }
+      
+      //minus
+      state.FOUR:
+        alu.firstNumber = h0003;
+        alu.secondNumber = h0002;
+        alu.alufn = b000001;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.FIVE;
+          if(alu.answer != h0001 | alu.z != 0 | alu.v != 0 | alu.n != 0){
+            state.d = state.ERROR;
+          }
+        }
+      
+      state.FIVE:
+        alu.firstNumber = h0001;
+        alu.secondNumber = hFFFF;
+        alu.alufn = b000001;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.SIX;
+          if(alu.answer != h0002 | alu.z != 0 | alu.v != 0 | alu.n != 0){
+            state.d = state.ERROR;
+          }
+        }
+      
+      state.SIX:
+        alu.firstNumber = h7FFF;
+        alu.secondNumber = hFFFF;
+        alu.alufn = b000001;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.SEVEN;
+          if(alu.answer != h8000 | alu.z != 0 | alu.v != 1 | alu.n != 1){
+            state.d = state.ERROR;
+          }
+        }
+        
+      state.SEVEN:
+        alu.firstNumber = hF004;
+        alu.secondNumber = hF005;
+        alu.alufn = b000001;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.EIGHT;
+          if(alu.answer != hFFFF | alu.z != 0 | alu.v != 0 | alu.n != 1){
+            state.d = state.ERROR;
+          }
+        }
+        
+      //multiply
+      state.EIGHT:
+        alu.firstNumber = h0003;
+        alu.secondNumber = h0002;
+        alu.alufn = b000010;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.NINE;
+          if(alu.answer != h0006 | alu.z != 0 | alu.v != 0 | alu.n != 0){
+            state.d = state.ERROR;
+          }
+        }
+       
+      state.NINE:
+        alu.firstNumber = h7FFF;
+        alu.secondNumber = h7FFF;
+        alu.alufn = b000010;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TEN;
+          if(alu.answer != h0001 | alu.z != 0 | alu.v != 1 | alu.n != 0){
+            state.d = state.ERROR;
+          }
+        }
+        
+      state.TEN:
+        alu.firstNumber = h0001;
+        alu.secondNumber = hFFFF;
+        alu.alufn = b000010;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.ELEVEN;
+          if(alu.answer != hFFFF | alu.z != 0 | alu.v != 0 | alu.n != 1){
+            state.d = state.ERROR;
+          }
+        }
+        
+      state.ELEVEN:
+        alu.firstNumber = h0000;
+        alu.secondNumber = h0000;
+        alu.alufn = b00010;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TWELVE;
+          if(alu.answer != h0000 | alu.z != 1 | alu.v != 0 | alu.n != 0){
+            state.d = state.ERROR;
+          }
+        }
+        
+      state.TWELVE:
+        alu.firstNumber = hFFFF;
+        alu.secondNumber = hFFFA;
+        alu.alufn = b000010;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.THIRTEEN;
+          if(alu.answer != h0006 | alu.z != 0 | alu.v != 1 | alu.n != 0){
+            state.d = state.ERROR;
+          }
+        }
+        
+      //divide
+      state.THIRTEEN:
+        alu.firstNumber = h0004;
+        alu.secondNumber = h0002;
+        alu.alufn = b000011;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.FOURTEEN;
+          if(alu.answer != h0002 | alu.z != 0 | alu.v != 0 | alu.n != 0){
+            state.d = state.ERROR;
+          }
+        }
+        
+      state.FOURTEEN:
+        alu.firstNumber = h0004;
+        alu.secondNumber = hFFFE;
+        alu.alufn = b000011;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.FIFTEEN;
+          if(alu.answer != hFFFE | alu.z != 0 | alu.v != 0 | alu.n != 1){
+            state.d = state.ERROR;
+          }
+        }
+        
+      state.FIFTEEN:
+        alu.firstNumber = hFFFC;
+        alu.secondNumber = hFFFE;
+        alu.alufn = b000011;
+        io_led[2][0] = alu.z;
+        io_led[2][1] = alu.v;
+        io_led[2][2] = alu.n;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.SIXTEEN;
+          if(alu.answer != h0002 | alu.z != 0 | alu.v != 0 | alu.n != 0){
+            state.d = state.ERROR;
+          }
+        }
+      
+      //comp
+      state.SIXTEEN:
+        alu.firstNumber = h0001;
+        alu.secondNumber = h0001;
+        alu.alufn = b110001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.SEVENTEEN;
+          if(alu.answer != h0000){
+            state.d = state.ERROR;
+          }
+        }
+      
+      state.EIGHTEEN:
+        alu.firstNumber = h0001;
+        alu.secondNumber = hF003;
+        alu.alufn = b000001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.NINETEEN;
+          if(alu.answer != hF004){
+            state.d = state.ERROR;
+          }
+        }
+        
+      state.NINETEEN:
+        alu.firstNumber = h0001;
+        alu.secondNumber = hF003;
+        alu.alufn = b00001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TWENTY;
+          if(alu.answer != hF004){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.TWENTY:
+        alu.firstNumber = h0001;
+        alu.secondNumber = hF003;
+        alu.alufn = b00001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TWENTYONE;
+          if(alu.answer != hF004){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.TWENTYONE:
+        alu.firstNumber = h0001;
+        alu.secondNumber = hF003;
+        alu.alufn = b00001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TWENTYTWO;
+          if(alu.answer != hF004){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.TWENTYTWO:
+        alu.firstNumber = h0001;
+        alu.secondNumber = hF003;
+        alu.alufn = b00001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TWENTYTHREE;
+          if(alu.answer != hF004){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.TWENTYTHREE:
+        alu.firstNumber = h0001;
+        alu.secondNumber = hF003;
+        alu.alufn = b00001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TWENTYFOUR;
+          if(alu.answer != hF004){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.TWENTYFOUR:
+        alu.firstNumber = h0001;
+        alu.secondNumber = hF003;
+        alu.alufn = b00001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TWENTYFIVE;
+          if(alu.answer != hF004){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.TWENTYFIVE:
+        alu.firstNumber = h0001;
+        alu.secondNumber = hF003;
+        alu.alufn = b00001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TWENTYSIX;
+          if(alu.answer != hF004){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.TWENTYSIX:
+        alu.firstNumber = h0001;
+        alu.secondNumber = hF003;
+        alu.alufn = b00001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TWENTYSEVEN;
+          if(alu.answer != hF004){
+            state.d = state.ERROR;
+          }
+        }
+        
+        // STOP HERE
+      state.TWENTYSEVEN:
+        alu.firstNumber = b0101010101010101;
+        alu.secondNumber = b1010101010101010;
+        alu.alufn = b011000;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TWENTYEIGHT;
+          if(alu.answer != b0000000000000000){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.TWENTYEIGHT:
+        alu.firstNumber = b0101010101010101;
+        alu.secondNumber = b1111000011110000;
+        alu.alufn = b011000;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.TWENTYNINE;
+          if(alu.answer != b1111000011110000){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.TWENTYNINE:
+        alu.firstNumber = b0101010101010101;
+        alu.secondNumber = b1010101010101010;
+        alu.alufn = b011110;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.THIRTY;
+          if(alu.answer != b1111111111111111){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.THIRTY:
+        alu.firstNumber = b0101010101010101;
+        alu.secondNumber = b1111000011110000;
+        alu.alufn = b011110;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.THIRTYONE;
+          if(alu.answer != b1111010111110101){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.THIRTYONE:
+        alu.firstNumber = b0101010101010101;
+        alu.secondNumber = b1010101010101010;
+        alu.alufn = b010110;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.THIRTYTWO;
+          if(alu.answer != b1111111111111111){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.THIRTYTWO:
+        alu.firstNumber = b0101010101010101;
+        alu.secondNumber = b1111000011110000;
+        alu.alufn = b010110;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.THIRTYTHREE;
+          if(alu.answer != b1010010110100101){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.THIRTYTHREE:
+        alu.firstNumber = b0101010101010101;
+        alu.secondNumber = b1111000011110000;
+        alu.alufn = b011010;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.THIRTYFOUR;
+          if(alu.answer != b0101010101010101){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.THIRTYFOUR:
+        alu.firstNumber = b0101010101010101;
+        alu.secondNumber = b0101010101010101;
+        alu.alufn = b011010;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.THIRTYFIVE;
+          if(alu.answer != b0101010101010101){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.THIRTYFIVE:
+        alu.firstNumber = b1111111111111111;
+        alu.secondNumber = b1111;
+        alu.alufn = b100000;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.THIRTYSIX;
+          if(alu.answer != b1000000000000000){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.THIRTYSIX:
+        alu.firstNumber = b1111111111111110;
+        alu.secondNumber = b1111;
+        alu.alufn = b100000;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.THIRTYSEVEN;
+          if(alu.answer != b0000000000000000){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.THIRTYSEVEN:
+        alu.firstNumber = b1010101010101010;
+        alu.secondNumber = b10;
+        alu.alufn = b100000;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.THIRTYEIGHT;
+          if(alu.answer != b1010101010101010){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.THIRTYEIGHT:
+        alu.firstNumber = b1111111111111111;
+        alu.secondNumber = b1111;
+        alu.alufn = b100001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.THIRTYNINE;
+          if(alu.answer != b0000000000000001){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.THIRTYNINE:
+        alu.firstNumber = b0111111111111111;
+        alu.secondNumber = b1111;
+        alu.alufn = b100001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.FORTY;
+          if(alu.answer != b0000000000000000){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.FORTY:
+        alu.firstNumber = b1010101010101010;
+        alu.secondNumber = b10;
+        alu.alufn = b100001;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.FORTYONE;
+          if(alu.answer != b0010101010101010){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.FORTYONE:
+        alu.firstNumber = b1010101010101010;
+        alu.secondNumber = b1111;
+        alu.alufn = b100011;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.FORTYTWO;
+          if(alu.answer != b1111111111111111){
+            state.d = state.ERROR;
+          }
+        }
+
+      state.FORTYTWO:
+        alu.firstNumber = b0101010101010101;
+        alu.secondNumber = b1111;
+        alu.alufn = b100011;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(edge_detector.out){
+          state.d = state.START;
+          if(alu.answer != b0000000000000000){
+            state.d = state.ERROR;
+          }
+        }
+      
+      state.ERROR:
+        seg.values = {4b1100,4b1010,4b1011,4b1011};
+        if(io_button[0]){
           state.d = state.START;
         }
+        
   }
 }

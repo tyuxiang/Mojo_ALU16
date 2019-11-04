@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="ALU_test" board="Mojo" language="Lucid" version="2">
   <files>
+    <src>dec_ctr.luc</src>
     <src>comp.luc</src>
+    <component>edge_detector.luc</component>
+    <component>counter.luc</component>
+    <src>mult_seven_seg.luc</src>
+    <component>reset_conditioner.luc</component>
+    <src>seven_seg.luc</src>
+    <component>decoder.luc</component>
+    <src>mult_dec_ctr.luc</src>
     <src>shft.luc</src>
     <src top="true">mojo_top.luc</src>
-    <component>reset_conditioner.luc</component>
-    <src>alu.luc</src>
     <src>adder.luc</src>
+    <src>new_alu.luc</src>
     <src>bool.luc</src>
     <src>nv.luc</src>
     <constraint>custom.ucf</constraint>

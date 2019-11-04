@@ -2,29 +2,22 @@ module adder (
     input firstNumber[16],  // input of 1st number
     input secondNumber[16], // inoput of 2nd number
     input alufn[2],         // input of alufn
-    output answer[16],       // output of answer
-    output z
+    output answer[16]       // output of answer
   ) {
 
   always {
     answer = hx;
-    if(firstNumber == secondNumber){
-      z = 1;
-    }
-    else{
-      z = 0;
-    }
     if(alufn == b00){
-      answer = firstNumber + secondNumber;
+      answer = $signed(firstNumber) + $signed(secondNumber);
     }
     if(alufn == b01){
-      answer = firstNumber - secondNumber;
+      answer = $signed(firstNumber) - $signed(secondNumber);
     }
     if(alufn == b10){
-      answer = firstNumber * secondNumber;
+      answer = $signed(firstNumber) * $signed(secondNumber);
     }
     if(alufn == b11){
-      answer = firstNumber / secondNumber;
+      answer = $signed(firstNumber) / $signed(secondNumber);
     }
   }
 }

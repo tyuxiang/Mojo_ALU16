@@ -4,33 +4,34 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module alu_1 (
+module new_alu_1 (
     input [15:0] firstNumber,
     input [15:0] secondNumber,
     input [5:0] alufn,
-    output reg [15:0] answer
+    output reg [15:0] answer,
+    output reg n,
+    output reg v,
+    output reg z
   );
   
   
   
   wire [16-1:0] M_adder_answer;
-  wire [1-1:0] M_adder_z;
   reg [16-1:0] M_adder_firstNumber;
   reg [16-1:0] M_adder_secondNumber;
   reg [2-1:0] M_adder_alufn;
-  adder_3 adder (
+  adder_7 adder (
     .firstNumber(M_adder_firstNumber),
     .secondNumber(M_adder_secondNumber),
     .alufn(M_adder_alufn),
-    .answer(M_adder_answer),
-    .z(M_adder_z)
+    .answer(M_adder_answer)
   );
   
   wire [16-1:0] M_bool_answer;
   reg [16-1:0] M_bool_firstNumber;
   reg [16-1:0] M_bool_secondNumber;
   reg [4-1:0] M_bool_alufn;
-  bool_4 bool (
+  bool_8 bool (
     .firstNumber(M_bool_firstNumber),
     .secondNumber(M_bool_secondNumber),
     .alufn(M_bool_alufn),
@@ -41,7 +42,7 @@ module alu_1 (
   reg [16-1:0] M_shft_firstNumber;
   reg [4-1:0] M_shft_secondNumber;
   reg [2-1:0] M_shft_alufn;
-  shft_5 shft (
+  shft_9 shft (
     .firstNumber(M_shft_firstNumber),
     .secondNumber(M_shft_secondNumber),
     .alufn(M_shft_alufn),
@@ -53,7 +54,7 @@ module alu_1 (
   reg [1-1:0] M_comp_v;
   reg [1-1:0] M_comp_n;
   reg [2-1:0] M_comp_alufn;
-  comp_6 comp (
+  comp_10 comp (
     .z(M_comp_z),
     .v(M_comp_v),
     .n(M_comp_n),
@@ -63,21 +64,32 @@ module alu_1 (
   
   wire [1-1:0] M_nv_v;
   wire [1-1:0] M_nv_n;
+  wire [1-1:0] M_nv_z;
+  reg [16-1:0] M_nv_firstNumber;
+  reg [16-1:0] M_nv_secondNumber;
+  reg [16-1:0] M_nv_sum;
   reg [1-1:0] M_nv_a31;
   reg [1-1:0] M_nv_b31;
   reg [1-1:0] M_nv_s31;
-  reg [1-1:0] M_nv_alufn;
-  nv_7 nv (
+  reg [2-1:0] M_nv_alufn;
+  nv_11 nv (
+    .firstNumber(M_nv_firstNumber),
+    .secondNumber(M_nv_secondNumber),
+    .sum(M_nv_sum),
     .a31(M_nv_a31),
     .b31(M_nv_b31),
     .s31(M_nv_s31),
     .alufn(M_nv_alufn),
     .v(M_nv_v),
-    .n(M_nv_n)
+    .n(M_nv_n),
+    .z(M_nv_z)
   );
   
   always @* begin
     answer = 4'bxxxx;
+    v = 1'bx;
+    n = 1'bx;
+    z = 1'bx;
     M_adder_firstNumber = 4'bxxxx;
     M_adder_secondNumber = 4'bxxxx;
     M_adder_alufn = 4'bxxxx;
@@ -91,6 +103,9 @@ module alu_1 (
     M_comp_v = 4'bxxxx;
     M_comp_n = 4'bxxxx;
     M_comp_alufn = 4'bxxxx;
+    M_nv_firstNumber = 4'bxxxx;
+    M_nv_secondNumber = 4'bxxxx;
+    M_nv_sum = 4'bxxxx;
     M_nv_a31 = 4'bxxxx;
     M_nv_b31 = 4'bxxxx;
     M_nv_s31 = 4'bxxxx;
@@ -100,6 +115,16 @@ module alu_1 (
       M_adder_secondNumber = secondNumber;
       M_adder_alufn = alufn[0+1-:2];
       answer = M_adder_answer;
+      M_nv_alufn = alufn[0+1-:2];
+      M_nv_firstNumber = firstNumber;
+      M_nv_secondNumber = secondNumber;
+      M_nv_sum = M_adder_answer;
+      M_nv_s31 = M_adder_answer[15+0-:1];
+      M_nv_a31 = firstNumber[15+0-:1];
+      M_nv_b31 = secondNumber[15+0-:1];
+      z = M_nv_z;
+      v = M_nv_v;
+      n = M_nv_n;
     end
     if (alufn[5+0-:1] == 1'h0 & alufn[4+0-:1] == 1'h1) begin
       M_bool_firstNumber = firstNumber;
@@ -116,11 +141,15 @@ module alu_1 (
     if (alufn[5+0-:1] == 1'h1 & alufn[4+0-:1] == 1'h1) begin
       M_adder_firstNumber = firstNumber;
       M_adder_secondNumber = secondNumber;
-      M_adder_alufn = alufn[0+0-:1];
+      M_adder_alufn = alufn[0+1-:2];
+      M_nv_alufn = alufn[0+1-:2];
+      M_nv_firstNumber = firstNumber;
+      M_nv_secondNumber = secondNumber;
+      M_nv_sum = M_adder_answer;
       M_nv_s31 = M_adder_answer[15+0-:1];
       M_nv_a31 = firstNumber[15+0-:1];
       M_nv_b31 = secondNumber[15+0-:1];
-      M_comp_z = M_adder_z;
+      M_comp_z = M_nv_z;
       M_comp_v = M_nv_v;
       M_comp_n = M_nv_n;
       M_comp_alufn = alufn[1+1-:2];
