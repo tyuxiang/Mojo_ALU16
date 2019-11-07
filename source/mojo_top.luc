@@ -31,8 +31,11 @@ module mojo_top (
     .rst(rst){
       mult_seven_seg seg;                 // Initialize multi_seven_seg
       mult_dec_ctr dec_ctr;               // Initialize multi_dec_ctr
-      counter ctr (#SIZE(1), #DIV(25));   // Initialize counter to count every 2^25(~33.5 million) clock cycle, on MOJO is 50 million clock cycle per second 
-      fsm state = {START, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, 
+      counter ctr (#SIZE(1), #DIV(26));   // Initialize counter to count every 2^25(~33.5 million) clock cycle, on MOJO is 50 million clock cycle per second 
+      dff firstNumber[16];
+      dff secondNumber[16];
+      dff alufn[6];
+      fsm state = {START, MANUALONE, MANUALTWO, MANUALTHREE, ANSWER, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, 
       FOURTEEN, FIFTEEN, SIXTEEN, SEVENTEEN, EIGHTEEN, NINETEEN, TWENTY, TWENTYONE, TWENTYTWO, TWENTYTHREE, TWENTYFOUR, 
         TWENTYFIVE, TWENTYSIX, TWENTYSEVEN, TWENTYEIGHT, TWENTYNINE, THIRTY, THIRTYONE, THIRTYTWO, THIRTYTHREE, THIRTYFOUR, 
         THIRTYFIVE, THIRTYSIX, THIRTYSEVEN, THIRTYEIGHT, THIRTYNINE, FORTY, FORTYONE, FORTYTWO, INVALID, ERROR}; // Initializate fsm
@@ -79,6 +82,49 @@ module mojo_top (
         if(io_dip[2][7]){
           state.d = state.ZERO;
         }
+        if(io_button[0]){
+          state.d = state.MANUALONE;
+        }
+        
+      state.MANUALONE:
+        firstNumber.d[15:8] = io_dip[1][7:0];
+        firstNumber.d[7:0] = io_dip[0][7:0];
+        io_led[2][6] = 1;
+        if(io_button[1]){
+          state.d = state.MANUALTWO;
+        }
+        
+      state.MANUALTWO:
+        secondNumber.d[15:8] = io_dip[1][7:0];
+        secondNumber.d[7:0] = io_dip[0][7:0];
+        io_led[2][5] = 1;
+        if(io_button[2]){
+          state.d = state.MANUALTHREE;
+        }
+        
+      state.MANUALTHREE:
+        alufn.d[5:0] = io_dip[0][5:0];
+        io_led[2][4] = 1;
+        if(io_button[3]){
+          state.d = state.ANSWER;
+        }
+        
+      state.ANSWER:
+        alu.firstNumber = firstNumber.q;    
+        alu.secondNumber = secondNumber.q;
+        alu.alufn = alufn.q;
+        io_led[1] = alu.answer[15:8];
+        io_led[0] = alu.answer[7:0];
+        if(alufn.q[5] == 0 & alufn.q[4] == 0){
+          io_led[2][0] = alu.z;
+          io_led[2][1] = alu.v;
+          io_led[2][2] = alu.n;
+        }
+        io_led[2][3] = 1;
+        if(io_button[4]){
+          state.d = state.START;
+        }
+        
         //test cases: incase of overflow least significant 16bits shown
         //in each test case, we will assign 2 numbers to the alu and the alufn to the alu
         //we will then test the output from the alu. If it is wrong, it will go into the Error state
