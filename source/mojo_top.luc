@@ -86,6 +86,7 @@ module mojo_top (
           state.d = state.MANUALONE;
         }
         
+      // Manual testing state one, to input first number by changing the first 16 dip switches
       state.MANUALONE:
         firstNumber.d[15:8] = io_dip[1][7:0];
         firstNumber.d[7:0] = io_dip[0][7:0];
@@ -94,6 +95,7 @@ module mojo_top (
           state.d = state.MANUALTWO;
         }
         
+      // Manual testing state two, to input second number by changing the first 16 dip switches
       state.MANUALTWO:
         secondNumber.d[15:8] = io_dip[1][7:0];
         secondNumber.d[7:0] = io_dip[0][7:0];
@@ -102,6 +104,7 @@ module mojo_top (
           state.d = state.MANUALTHREE;
         }
         
+      //Manual testing state three, to input alufn by changing the first 6 dip switches
       state.MANUALTHREE:
         alufn.d[5:0] = io_dip[0][5:0];
         io_led[2][4] = 1;
@@ -109,6 +112,7 @@ module mojo_top (
           state.d = state.ANSWER;
         }
         
+      //State to output answer on the 1st 16 led and io_led[2][0] = z, io_led[2][1] = v, io_led[2][2] = n
       state.ANSWER:
         alu.firstNumber = firstNumber.q;    
         alu.secondNumber = secondNumber.q;
@@ -125,14 +129,14 @@ module mojo_top (
           state.d = state.START;
         }
         
-        //test cases: incase of overflow least significant 16bits shown
-        //in each test case, we will assign 2 numbers to the alu and the alufn to the alu
-        //we will then test the output from the alu. If it is wrong, it will go into the Error state
-        //only for the adder component(test case 0-15) will we test the output of z,v and n as well
-        
-        //addition (test case 0-3)
-        //test case 0: 0x0001+0x0002=0x0003, Positive + Positive, No overflow 
-        //z=0, v=0, n=0  
+      //test cases: incase of overflow least significant 16bits shown
+      //in each test case, we will assign 2 numbers to the alu and the alufn to the alu
+      //we will then test the output from the alu. If it is wrong, it will go into the Error state
+      //only for the adder component(test case 0-15) will we test the output of z,v and n as well
+      
+      //addition (test case 0-3)
+      //test case 0: 0x0001+0x0002=0x0003, Positive + Positive, No overflow 
+      //z=0, v=0, n=0  
       state.ZERO:    
         alu.firstNumber = h0001;    
         alu.secondNumber = h0002;
